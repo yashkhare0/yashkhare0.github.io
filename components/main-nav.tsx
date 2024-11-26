@@ -1,41 +1,35 @@
-import * as React from "react"
-import Link from "next/link"
-
-import { NavItem } from "@/types/nav"
+"use client";
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Menu, MenuItem } from "@/components/ui/navbar-menu";
+import { LinkPreview } from "@/components/ui/link-preview";
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { ThemeToggle } from "@/components/theme-toggle";
 
-interface MainNavProps {
-  items?: NavItem[]
-}
-
-export function MainNav({ items }: MainNavProps) {
+export function TopNavBar() {
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
-        <span className="inline-block font-bold">{siteConfig.name}</span>
-      </Link>
-      {items?.length ? (
-        <nav className="flex gap-6">
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    item.disabled && "cursor-not-allowed opacity-80"
-                  )}
-                >
-                  {item.title}
-                </Link>
-              )
-          )}
-        </nav>
-      ) : null}
+    <div className="">
+      <Navbar className="top-2" />
     </div>
-  )
+  );
+}
+ 
+// TODO: OPEN LINK IN A NEW TAB
+function Navbar({ className }: { className?: string }) {
+  const [active, setActive] = useState<string | null>(null);
+  return (
+    <div
+      className={cn("fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <LinkPreview url={siteConfig.links.linkedin} className="font-bold">
+                LinkedIn
+        </LinkPreview>
+        <LinkPreview url={siteConfig.links.github} className="font-bold">
+                Github
+        </LinkPreview> 
+        <ThemeToggle />
+      </Menu>
+    </div>
+  );
 }
