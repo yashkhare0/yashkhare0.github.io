@@ -13,7 +13,6 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "static": "next build && touch ./out/.nojekyll && echo 'yashkhare0.github.io' > ./out/CNAME",
-    "export": "next build && next export",
     "deploy": "gh-pages -d out -t true"
   },
   "dependencies": {
