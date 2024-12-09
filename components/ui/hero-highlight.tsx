@@ -1,7 +1,9 @@
 "use client";
-import { cn } from "@/lib/utils";
+
 import React from "react";
 import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 export const HeroHighlight = ({
   children,
@@ -11,8 +13,7 @@ export const HeroHighlight = ({
   containerClassName?: string;
 }) => {
   return (
-      <div className={cn("relative z-20", 
-        containerClassName)}>{children}</div>
+    <div className={cn("relative z-20", containerClassName)}>{children}</div>
   );
 };
 
@@ -42,8 +43,8 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block pb-1 px-1 rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500`,
-        className
+        `relative inline-block rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 px-1 pb-1 dark:from-indigo-500 dark:to-purple-500`,
+        className,
       )}
     >
       {children}

@@ -1,11 +1,12 @@
 "use client";
-import React, { useId, useMemo } from "react";
-import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+
+import React, { useEffect, useId, useMemo, useState } from "react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 type ParticlesProps = {
   id?: string;
@@ -56,7 +57,7 @@ export const SparklesCore = (props: ParticlesProps) => {
       {init && (
         <Particles
           id={id || generatedId}
-          className={cn("h-full w-full")}
+          className={cn("size-full")}
           particlesLoaded={particlesLoaded}
           options={{
             background: {

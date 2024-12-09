@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/lib/utils";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 export const BackgroundWithStars = ({
   children,
@@ -29,14 +30,14 @@ export const BackgroundWithStars = ({
   return (
     <div
       className={cn(
-        "fixed inset-0 h-full overflow-hidden bg-white dark:bg-black w-full z-0 group",
-        containerClassName
+        "group fixed inset-0 z-0 size-full overflow-hidden bg-white dark:bg-black",
+        containerClassName,
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800" />
       <motion.div
-        className="pointer-events-none bg-dot-thick-indigo-500 dark:bg-dot-thick-indigo-500 absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 bg-dot-thick-indigo-500 group-hover:opacity-100 dark:bg-dot-thick-indigo-500"
         style={{
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
@@ -55,6 +56,6 @@ export const BackgroundWithStars = ({
         }}
       />
       <div className="relative z-10 h-full overflow-auto">{children}</div>
-      </div>
+    </div>
   );
 };

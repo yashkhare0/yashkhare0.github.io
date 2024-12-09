@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useState } from "react";
+
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { siteConfig } from "@/config/site"
+import { Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function TopNavBar() {
@@ -13,21 +15,21 @@ export function TopNavBar() {
     </div>
   );
 }
- 
+
 // TODO: OPEN LINK IN A NEW TAB
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
-      className={cn("fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
+      className={cn("fixed inset-x-0 top-10 z-50 mx-auto max-w-sm", className)}
     >
       <Menu setActive={setActive}>
         <LinkPreview url={siteConfig.links.linkedin} className="font-bold">
-                LinkedIn
+          LinkedIn
         </LinkPreview>
         <LinkPreview url={siteConfig.links.github} className="font-bold">
-                Github
-        </LinkPreview> 
+          Github
+        </LinkPreview>
         <ThemeToggle />
       </Menu>
     </div>

@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
-import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
+import { createNoise3D } from "simplex-noise";
+
+import { cn } from "@/lib/utils";
 
 interface VortexProps {
   children?: any;
@@ -154,7 +155,6 @@ export const Vortex = (props: VortexProps) => {
     particleProps[i3] = vx;
     particleProps[i4] = vy;
     particleProps[i5] = life;
-
     (checkBounds(x, y, canvas) || life > ttl) && initParticle(i);
   };
 
@@ -167,7 +167,7 @@ export const Vortex = (props: VortexProps) => {
     ttl: number,
     radius: number,
     hue: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ) => {
     ctx.save();
     ctx.lineCap = "round";
@@ -187,7 +187,7 @@ export const Vortex = (props: VortexProps) => {
 
   const resize = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
+    ctx?: CanvasRenderingContext2D,
   ) => {
     const { innerWidth, innerHeight } = window;
 
@@ -200,7 +200,7 @@ export const Vortex = (props: VortexProps) => {
 
   const renderGlow = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ) => {
     ctx.save();
     ctx.filter = "blur(8px) brightness(200%)";
@@ -217,7 +217,7 @@ export const Vortex = (props: VortexProps) => {
 
   const renderToScreen = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ) => {
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
@@ -237,12 +237,12 @@ export const Vortex = (props: VortexProps) => {
   }, []);
 
   return (
-    <div className={cn("relative h-full w-full", props.containerClassName)}>
+    <div className={cn("relative size-full", props.containerClassName)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         ref={containerRef}
-        className="absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center"
+        className="absolute inset-0 z-0 flex size-full items-center justify-center bg-transparent"
       >
         <canvas ref={canvasRef}></canvas>
       </motion.div>

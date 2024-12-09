@@ -1,7 +1,14 @@
 "use client";
+
 import React from "react";
-import { Vortex } from "../ui/vortex";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Vortex } from "@/components/ui/vortex";
 
 export function ContactSection() {
   const openEmail = () => {
@@ -32,44 +39,43 @@ Looking forward to the possibility of working together!
 Best regards,
 
 [Your Full Name]
-    `);
+    `,
+    );
 
     const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=yash.khare.work@gmail.com&su=${subject}&body=${body}`;
-    window.open(mailtoLink, '_blank');
+    window.open(mailtoLink, "_blank");
   };
 
   const latestProject = () => {
-    window.open('https://meetelio.com', '_blank');
+    window.open("https://meetelio.com", "_blank");
   };
 
   return (
-    <div className="w-[99vw] h-screen overflow-hidden" id="contact">
+    <div className="h-screen w-[99vw] overflow-hidden" id="contact">
       <Vortex
         backgroundColor="black"
-        className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+        className="flex size-full flex-col items-center justify-center px-2 py-4 md:px-10"
       >
-        <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
-          Let's build something great together
+        <h2 className="text-center text-2xl font-bold text-white md:text-6xl">
+          Let&apos;s build something great together
         </h2>
-        <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">
-          I love working on groundbreaking concepts and I bet you are working on one.
+        <p className="mt-6 max-w-xl text-center text-sm text-white md:text-2xl">
+          I love working on groundbreaking concepts and I bet you are working on
+          one.
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row">
           <button
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset]"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset] transition duration-200 hover:bg-blue-700"
             onClick={openEmail}
           >
             Mail me
           </button>
 
-
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger>
-                <button className="px-4 py-2"  onClick={latestProject}>
-                  Check out my latest project
-                </button>
-          </TooltipTrigger>
+              <TooltipTrigger className="px-4 py-2" onClick={latestProject}>
+                Check out my latest project
+              </TooltipTrigger>
               <TooltipContent>
                 <p>Add to library</p>
               </TooltipContent>

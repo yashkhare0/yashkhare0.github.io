@@ -1,4 +1,4 @@
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Yash Khare",
@@ -15,4 +15,4 @@ export const siteConfig = {
     github: "https://github.com/yashkhare0/",
     resume: "https://www.linkedin.com/in/yash-khare/",
   },
-}
+};
