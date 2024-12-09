@@ -29,7 +29,7 @@ export const BackgroundWithStars = ({
   return (
     <div
       className={cn(
-        "relative min-h-screen flex items-center bg-white dark:bg-black justify-center w-full group z-0",
+        "fixed inset-0 h-full overflow-hidden bg-white dark:bg-black w-full z-0 group",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
@@ -54,7 +54,7 @@ export const BackgroundWithStars = ({
           `,
         }}
       />
-      {children}
-    </div>
+      <div className="relative z-10 h-full overflow-auto">{children}</div>
+      </div>
   );
 };

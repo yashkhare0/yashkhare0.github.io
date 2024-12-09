@@ -11,10 +11,17 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import FloatingIcons from "@/components/ui/floating-icons";
+import { AnimatedTooltip } from "../ui/animated-tooltip";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from 'embla-carousel-autoplay';
+import { Card, CardContent } from "../ui/card";
+import { Spotlight } from "../ui/spotlight";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 export function SkillSection() {
   return (
-    <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem] z-50 py-[5rem]">
+    <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem] py-[5rem]" id="skills">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -29,102 +36,80 @@ export function SkillSection() {
   );
 }
 
-const SkeletonOne = () => {
-  const variants = {
-    initial: {
-      x: 0,
+
+const Databases = () => {  
+  const databases = [
+    {
+      id: 1,
+      name: "Redis",
+      designation: "In-Memory Database",
+      image: "https://www.vectorlogo.zone/logos/redis/redis-icon.svg"
     },
-    animate: {
-      x: 10,
-      rotate: 5,
-      transition: {
-        duration: 0.2,
-      },
+    {
+      id: 2,
+      name: "MongoDB",
+      designation: "NoSQL Database",
+      image: "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg"
     },
-  };
-  const variantsSecond = {
-    initial: {
-      x: 0,
+    {
+      id: 3,
+      name: "PostgreSQL", 
+      designation: "Relational Database",
+      image: "https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg"
     },
-    animate: {
-      x: -10,
-      rotate: -5,
-      transition: {
-        duration: 0.2,
-      },
+    {
+      id: 4,
+      name: "SQLite",
+      designation: "Embedded Database",
+      image: "https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg"
     },
-  };
+    {
+      id: 5,
+      name: "ChromaDB",
+      designation: "Vector Database",
+      image: "https://www.trychroma.com/img/chroma.png"
+    },
+    {
+      id: 6,
+      name: "Neo4j",
+      designation: "Graph Database", 
+      image: "https://www.vectorlogo.zone/logos/neo4j/neo4j-icon.svg"
+    },
+    {
+      id: 7,
+      name: "pgvector",
+      designation: "Vector Database",
+      image: "/pg-vector.svg"
+    }
+  ];
 
   return (
     <motion.div
       initial="initial"
       whileHover="animate"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col p-8"
     >
-      <motion.div
-        variants={variants}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black"
-      >
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-      </motion.div>
-      <motion.div
-        variants={variantsSecond}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
-      >
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-      </motion.div>
-      <motion.div
-        variants={variants}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-white dark:bg-black"
-      >
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+      <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6">
+        <AnimatedTooltip items={databases} />
       </motion.div>
     </motion.div>
   );
-};
-const SkeletonTwo = () => {
-  const variants = {
-    initial: {
-      width: 0,
-    },
-    animate: {
-      width: "100%",
-      transition: {
-        duration: 0.2,
-      },
-    },
-    hover: {
-      width: ["0%", "100%"],
-      transition: {
-        duration: 2,
-      },
-    },
-  };
-  const arr = new Array(6).fill(0);
-  return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-    >
-      {arr.map((_, i) => (
-        <motion.div
-          key={"skelenton-two" + i}
-          variants={variants}
-          style={{
-            maxWidth: Math.random() * (100 - 40) + 40 + "%",
-          }}
-          className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-100 dark:bg-black w-full h-4"
-        ></motion.div>
-      ))}
-    </motion.div>
-  );
-};
-const SkeletonThree = () => {
+}
+
+function getRandomColorClass() {
+  const classes = [
+    "text-red-500",
+    "text-green-500",
+    "text-blue-500",
+    "text-pink-500",
+    "text-purple-500",
+    "text-teal-500",
+    "text-yellow-500",
+  ];
+  return classes[Math.floor(Math.random() * classes.length)];
+}
+
+const Scalability = () => {
   const variants = {
     initial: {
       backgroundPosition: "0 50%",
@@ -154,7 +139,7 @@ const SkeletonThree = () => {
     </motion.div>
   );
 };
-const SkeletonFour = () => {
+const Skillset = () => {
   const first = {
     initial: {
       x: 20,
@@ -175,67 +160,188 @@ const SkeletonFour = () => {
       rotate: 0,
     },
   };
+
+  const providers = [
+    {
+      id: 1,
+      name: "OpenAI",
+      designation: "AI Model Provider",
+      image: "https://avatars.githubusercontent.com/u/14957082?s=200&v=4",
+    },
+    {
+      id: 2,
+      name: "Anthropic",
+      designation: "AI Model Provider",
+      image: "https://avatars.githubusercontent.com/u/76263028?s=200&v=4",
+    },
+    {
+      id: 3,
+      name: "Mistral",
+      designation: "AI Model Provider",
+      image: "https://avatars.githubusercontent.com/u/132372032?s=200&v=4",
+    },
+    {
+      id: 4,
+      name: "Ollama",
+      designation: "Local Model Runner",
+      image: "https://avatars.githubusercontent.com/u/151674099?s=200&v=4",
+    },
+    {
+      id: 5,
+      name: "Stable Diffusion",
+      designation: "Image Generation",
+      image: "https://avatars.githubusercontent.com/u/100950301?s=200&v=4",
+    },
+  ];
+
+  const frameworks = [
+    {
+      id: 1,
+      name: "Langchain",
+      image: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4",
+    },
+    {
+      id: 2,
+      name: "LlamaIndex",
+      image: "https://avatars.githubusercontent.com/u/130722866?s=200&v=4",
+    },
+    {
+      id: 3,
+      name: "ComfyUI",
+      image: "https://avatars.githubusercontent.com/u/121283862?v=4",
+    },
+  ];
+
+  const useCases = [
+    {
+      id: 1,
+      name: "Text Summarization",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+    {
+      id: 2,
+      name: "Sentiment Analysis",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+    {
+      id: 3,
+      name: "Chatbots",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+    {
+      id: 4,
+      name: "Retrieval Augmented Generation",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+    {
+      id: 5,
+      name: "Image Generation",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+    {
+      id: 7,
+      name: "Fine-tuning and LoRA Training",
+      image:
+        "https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg",
+    },
+  ];
+
   return (
     <motion.div
       initial="initial"
       animate="animate"
       whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+      className="flex flex-col md:flex-row flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] space-y-2 md:space-y-0 md:space-x-2"
     >
       <motion.div
         variants={first}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-full md:w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-between"
       >
-        <Image
-          src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Just code in Vanilla Javascript
-        </p>
-        <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Delusional
-        </p>
-      </motion.div>
-      <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
-        <Image
-          src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Tailwind CSS is cool, you know
-        </p>
-        <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Sensible
+        <motion.div
+          initial="initial"
+          whileHover="animate"
+          className="flex w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] rounded-lg p-4 flex-col space-y-4"
+        >
+          <div className="grid grid-cols-3 gap-2 justify-center items-center">
+            {providers.map((provider, index) => (
+              <Image
+                key={index}
+                src={provider.image}
+                alt={`Provider ${index}`}
+                height={40}
+                width={40}
+                className="rounded-full object-cover"
+              />
+            ))}
+          </div>
+        </motion.div>
+        <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full px-3 py-1">
+          Providers
         </p>
       </motion.div>
+
+      <div className="h-full w-full md:w-1/3 relative z-20 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] flex flex-col items-center justify-between">
+        {/* Carousel */}
+
+        <Carousel
+          className="w-full h-full"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[Autoplay()]}
+        >
+          <CarouselContent>
+            {useCases.map((useCase, index) => (
+              <CarouselItem key={index}>
+                <Card className="flex bg-inherit h-full w-full justify-center align-middle border-transparent">
+                  <CardContent className="flex items-center justify-center p-6">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
+                      {useCase.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
       <motion.div
         variants={second}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-full md:w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-between"
       >
-        <Image
-          src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          I love angular, RSC, and Redux.
-        </p>
-        <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Helpless
+        <motion.div
+          initial="initial"
+          whileHover="animate"
+          className="flex w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] rounded-lg p-4 flex-col space-y-4"
+        >
+          <div className="grid grid-cols-3 gap-2 justify-center items-center">
+            {frameworks.map((framework, index) => (
+              <Image
+                key={index}
+                src={framework.image}
+                alt={`Framework ${index}`}
+                height={40}
+                width={40}
+                className="rounded-full object-cover"
+              />
+            ))}
+          </div>
+        </motion.div>
+        <p className="border border-green-500 bg-red-100 dark:bg-red-900/20 text-green-600 text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full px-3 py-1">
+          Frameworks
         </p>
       </motion.div>
     </motion.div>
   );
 };
+
+
 const SkeletonFive = () => {
   const variants = {
     initial: {
@@ -273,58 +379,65 @@ const SkeletonFive = () => {
         className="flex flex-row rounded-2xl border border-neutral-100 dark:border-white/[0.2] p-2  items-start space-x-2 bg-white dark:bg-black"
       >
         <Image
-          src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
+          src="https://fortune.com/img-assets/wp-content/uploads/2024/09/GettyImages-2165070986-e1725638639482.jpg"
           alt="avatar"
           height="100"
           width="100"
-          className="rounded-full h-10 w-10"
+          className="rounded-full object-cover h-10 w-10"
         />
         <p className="text-xs text-neutral-500">
-          There are a lot of cool framerworks out there like React, Angular,
-          Vue, Svelte that can make your life ....
+          Can you build a highly scalable GEN-AI Ops platform?
         </p>
       </motion.div>
       <motion.div
         variants={variantsSecond}
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center justify-end space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
       >
-        <p className="text-xs text-neutral-500">Use PHP.</p>
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
+        <p className="text-xs text-neutral-500">Sure! I've done that before.</p>
+        <Image
+          src="/logo.png"
+          alt="avatar"
+          height="40"
+          width="40"
+          className="rounded-full h-10 w-10 border"
+        />
       </motion.div>
     </motion.div>
   );
 };
 const items = [
   {
-    title: "AI Content Generation",
+    title: "Programming Languages",
     description: (
+      <div className="flex flex-wrap gap-2">
       <span className="text-sm">
-        Experience the power of AI in generating unique content.
+        Proven experience with JavaScript, Python, TypeScript, and Swift.
       </span>
+      </div>
     ),
-    header: <SkeletonOne />,
+    header: <FloatingIcons />, 
     className: "md:col-span-1",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Automated Proofreading",
+    title: "Data and Datebases",
     description: (
       <span className="text-sm">
-        Let AI handle the proofreading of your documents.
+       Designing and optimizing relational, non-relational, graph and vector datasets & Databases.
       </span>
     ),
-    header: <SkeletonTwo />,
+    header: <Databases />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Contextual Suggestions",
+    title: "Testing and Debugging",
     description: (
       <span className="text-sm">
-        Get AI-powered suggestions based on your writing context.
+        Experience with unit, integration, and end-to-end testing using Pytest, Jest, and Postman.
       </span>
     ),
-    header: <SkeletonThree />,
+    header: <Scalability />,
     className: "md:col-span-1",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
   },
@@ -332,19 +445,19 @@ const items = [
     title: "Sentiment Analysis",
     description: (
       <span className="text-sm">
-        Understand the sentiment of your text with AI analysis.
+         Hands-on experience with OpenAI, Hugging Face, and TensorFlow for building intelligent systems and NLP pipelines.
       </span>
     ),
-    header: <SkeletonFour />,
+    header: <Skillset />,
     className: "md:col-span-2",
     icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
   },
 
   {
-    title: "Text Summarization",
+    title: "Scalable Systems",
     description: (
       <span className="text-sm">
-        Summarize your lengthy documents with AI technology.
+        Proven experience in building scalable systems and APIs.
       </span>
     ),
     header: <SkeletonFive />,

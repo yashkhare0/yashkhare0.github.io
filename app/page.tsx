@@ -1,11 +1,17 @@
+import { ContactSection } from "@/components/blocks/contact-me"
 import { HeroSection } from "@/components/blocks/hero-section"
-import { BentoGridThirdDemo } from "@/components/blocks/skills-section"
+import { PortfolioSection } from "@/components/blocks/portfolio-section"
+import { SkillSection } from "@/components/blocks/skills-section"
 
 export default function IndexPage() {
   return (
-    <section className="flex flex-col min-h-screen justify-center overflow-auto">
-      <HeroSection className="max-w-6xl mt-[10rem] p-[5rem] border" />
-      <BentoGridThirdDemo />
-    </section>
+    <main className="container mx-auto px-4 space-y-[2rem] flex flex-col items-center">
+      <div id="home" className="h-[10rem]" />
+      <HeroSection className="lg w-full" />
+      <SkillSection />
+      <PortfolioSection />
+      <div className="h-[5rem]" />
+      <ContactSection />
+    </main>
   )
 }

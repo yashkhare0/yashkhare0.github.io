@@ -5,7 +5,12 @@ import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { Highlight } from "@/components/ui/hero-highlight";
 import { Cover } from "@/components/ui/cover";
 
+
+
 export const HeroSection: React.FC<{ className?: string }> = ({ className: containerClassName }) => {
+
+const tags = ["Full-Stack", "Back-End", "Front-End", "Gen-AI", "DevOps"];
+
   return (
     <div className={containerClassName}>
     <HeroHighlight>
@@ -22,16 +27,18 @@ export const HeroSection: React.FC<{ className?: string }> = ({ className: conta
           duration: 0.5,
           ease: [0.4, 0.0, 0.2, 1],
         }}
-        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+        className="text-4xl md:text-4xl lg:text-8xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
       >
         Hi, I'm{" "}
         <Highlight className="text-black dark:text-white">
-          Yash Khare,
+          Yash Khare.
         </Highlight>
-          <br />
-        <Cover className="text-black dark:text-white text-2xl px-4 md:text-4xl lg:text-5xl">
-          let's build together!
-        </Cover>
+        <br />
+        <div className="flex flex-row justify-evenly text-sm md:text-base lg:text-xl mt-[2rem]">
+          {tags.map((tag) => (
+            <Cover className="text-black dark:text-white" key={tag}>{tag}</Cover>
+          ))}
+        </div>
       </motion.h1>
     </HeroHighlight>
     </div>

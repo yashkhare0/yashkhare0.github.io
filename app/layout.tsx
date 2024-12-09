@@ -11,7 +11,6 @@ import { TopNavBar } from "@/components/main-nav";
 import { BackgroundWithStars } from "@/components/ui/stars-background";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 
-
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -32,27 +31,17 @@ export const viewport: Viewport = {
   ],
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "font-sans antialiased",
-          fontSans.variable
-        )}
-      >
+      <body className={cn("font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <BackgroundWithStars>
-          <TopNavBar />
-          {children}
-          <BottomNavBar />
-        </BackgroundWithStars>
-        <TailwindIndicator />
+            <TopNavBar />
+            {children}
+            <BottomNavBar />
+          </BackgroundWithStars>
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
     </html>

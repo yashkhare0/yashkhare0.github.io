@@ -8,9 +8,11 @@ import { SparklesCore } from "@/components/ui/sparkles";
 export const Cover = ({
   children,
   className,
+  itemKey,
 }: {
   children?: React.ReactNode;
   className?: string;
+  itemKey?: string;
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -24,7 +26,7 @@ export const Cover = ({
       setContainerWidth(ref.current?.clientWidth ?? 0);
 
       const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
+      const numberOfBeams = Math.floor(height / 10);
       const positions = Array.from(
         { length: numberOfBeams },
         (_, i) => (i + 1) * (height / (numberOfBeams + 1))
@@ -39,6 +41,7 @@ export const Cover = ({
       onMouseLeave={() => setHovered(false)}
       ref={ref}
       className="relative hover:bg-neutral-900  group/cover inline-block bg-transparent px-2 py-2  transition duration-200 rounded-sm"
+      key={itemKey}
     >
       <AnimatePresence>
         {hovered && (
