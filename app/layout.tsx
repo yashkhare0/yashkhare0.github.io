@@ -5,8 +5,8 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { BackgroundWithStars } from "@/components/ui/stars-background";
-import { BottomNavBar } from "@/components/bottom-dock";
-import { TopNavBar } from "@/components/main-nav";
+import { BottomNavBar } from "@/components/blocks/bottom-dock";
+import { TopNavBar } from "@/components/blocks/main-nav";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 

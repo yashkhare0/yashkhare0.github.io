@@ -14,6 +14,8 @@ export function BottomNavBar() {
         <IconHome className="size-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#home",
+      rel: undefined,
+      target: undefined,
     },
 
     {
@@ -22,6 +24,8 @@ export function BottomNavBar() {
         <IconTerminal2 className="size-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#skills",
+      rel: undefined,
+      target: undefined,
     },
     {
       title: "Projects",
@@ -29,6 +33,8 @@ export function BottomNavBar() {
         <LibraryIcon className="size-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#projects",
+      rel: undefined,
+      target: undefined,
     },
     {
       title: "Contact",
@@ -36,6 +42,8 @@ export function BottomNavBar() {
         <ContactIcon className="size-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#contact",
+      rel: undefined,
+      target: undefined,
     },
     {
       title: "My Resume",
@@ -43,7 +51,10 @@ export function BottomNavBar() {
         <DownloadCloudIcon className="size-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "https://drive.google.com/file/d/1NqG2voaHqT19_4HF9jxM2tnDPVv7_Iut/view?usp=drive_link",
+      rel: "noopener noreferrer",
+      target: "_blank",
     },
+
   ];
   return (
     <div className="fixed inset-x-0 bottom-2 z-50 mx-auto w-fit">

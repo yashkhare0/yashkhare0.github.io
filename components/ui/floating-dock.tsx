@@ -23,7 +23,7 @@ export const FloatingDock = ({
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; rel:string | undefined; target: string|undefined  }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -39,7 +39,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; rel:string | undefined; target: string|undefined  }[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -72,6 +72,8 @@ const FloatingDockMobile = ({
                   href={item.href}
                   key={item.title}
                   className="flex size-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  rel={item.rel}
+                  target={item.target}
                 >
                   <div className="size-4">{item.icon}</div>
                 </Link>
@@ -95,7 +97,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; rel:string | undefined; target: string|undefined  }[];
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
@@ -120,11 +122,15 @@ function IconContainer({
   title,
   icon,
   href,
+  target,
+  rel,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  target: string | undefined;
+  rel: string | undefined;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -169,7 +175,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href}>
+    <Link href={href} target={target} rel={rel}>
       <motion.div
         ref={ref}
         style={{ width, height }}
