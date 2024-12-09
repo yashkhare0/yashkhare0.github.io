@@ -51,7 +51,7 @@ export function BottomNavBar() {
     },
   ];
   return (
-    <div className="fixed bottom-2 max-w-md mx-auto z-50">
+    <div className="fixed bottom-2 max-w-md mx-auto z-50 inset-x-0">
       <FloatingDock items={links} />
     </div>
   );

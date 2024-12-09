@@ -12,7 +12,7 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export function BentoGridThirdDemo() {
+export function SkillSection() {
   return (
     <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem] z-50 py-[5rem]">
       {items.map((item, i) => (
