@@ -14,7 +14,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "format:solve-lints": "yarn format:write && yarn lint:fix",
     "static": "next build && touch ./out/.nojekyll && echo 'yashkhare0.github.io' > ./out/CNAME",
-    "deploy": "gh-pages -d out -t true"
+    "deploy": "gh-pages -d out -t true --repo https://github.com/yashkhare0/yashkhare0.github.io.git"
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.2",
