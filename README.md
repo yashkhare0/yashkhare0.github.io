@@ -1,21 +1,24 @@
 # yashkhare0
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+Landing page for [yashkhare0](https://github.com/yashkhare0) built with Next.js, Radix UI and Tailwind CSS.
 
-## Usage
+## Editing content
+
+All resume and landing page copy lives in [`config/content.ts`](config/content.ts). Updates to profiles, projects or testimonials can be made there without touching any UI code.
+
+## Development
 
 ```bash
-npx create-next-app -e https://github.com/shadcn/yashkhare0
+pnpm install
+pnpm dev
 ```
 
-## Features
+Run linting and type checks before committing:
 
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
+```bash
+pnpm lint
+pnpm typecheck
+```
 
 ## License
 
