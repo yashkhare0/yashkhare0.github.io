@@ -35,9 +35,9 @@ export const BackgroundWithStars = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="pointer-events-none absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800" />
+      <div className="pointer-events-none absolute inset-0 text-neutral-300 dark:text-neutral-800 bg-dot-thick" />
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 bg-dot-thick-indigo-500 group-hover:opacity-100 dark:bg-dot-thick-indigo-500"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 text-indigo-500 group-hover:opacity-100 bg-dot-thick dark:text-indigo-500"
         style={{
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
