@@ -16,6 +16,10 @@ export function IntroAnimation({ onComplete }: IntroAnimationProps) {
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
+        // Immediately disable pointer events before fading
+        if (containerRef.current) {
+          containerRef.current.style.pointerEvents = "none";
+        }
         // Fade out the intro
         gsap.to(containerRef.current, {
           opacity: 0,
