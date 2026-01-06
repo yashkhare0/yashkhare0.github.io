@@ -146,9 +146,9 @@ export function Labrador({
         <g ref={bodyRef}>
           {/* === TAIL === */}
           {!isSleeping && (
-            <g ref={tailRef} transform="translate(155, 95)">
-              <path d="M0 0 Q25 -15 30 -40 Q32 -55 28 -60" stroke="url(#labShade)" strokeWidth="16" strokeLinecap="round" fill="none" />
-              <path d="M0 0 Q25 -15 30 -40 Q32 -55 28 -60" stroke="url(#labFur)" strokeWidth="12" strokeLinecap="round" fill="none" />
+            <g ref={tailRef} transform="translate(152, 135)">
+              <path d="M0 0 Q18 -8 25 -22 Q30 -35 28 -42" stroke="url(#labShade)" strokeWidth="14" strokeLinecap="round" fill="none" />
+              <path d="M0 0 Q18 -8 25 -22 Q30 -35 28 -42" stroke="url(#labFur)" strokeWidth="10" strokeLinecap="round" fill="none" />
             </g>
           )}
 
@@ -191,16 +191,30 @@ export function Labrador({
 
         {/* === HEAD === */}
         <g transform={isSleeping ? "translate(-10, 25) rotate(-20, 100, 70)" : ""}>
-          {/* Left Ear */}
+          {/* Left Ear - Floppy Labrador style */}
           <g ref={earLeftRef}>
-            <ellipse cx="52" cy="55" rx="22" ry="32" fill="url(#labFur)" transform="rotate(-15, 52, 55)" />
-            <ellipse cx="52" cy="58" rx="14" ry="22" fill="#F5E6DC" transform="rotate(-15, 52, 58)" opacity="0.6" />
+            <path 
+              d="M58 50 Q35 45 30 65 Q28 85 40 95 Q52 100 58 85 Q60 70 58 50" 
+              fill="url(#labFur)" 
+            />
+            <path 
+              d="M55 55 Q42 52 38 68 Q37 82 45 88 Q52 90 55 80 Q56 68 55 55" 
+              fill="#F5E6DC" 
+              opacity="0.5" 
+            />
           </g>
           
-          {/* Right Ear */}
+          {/* Right Ear - Floppy Labrador style */}
           <g ref={earRightRef}>
-            <ellipse cx="148" cy="55" rx="22" ry="32" fill="url(#labFur)" transform="rotate(15, 148, 55)" />
-            <ellipse cx="148" cy="58" rx="14" ry="22" fill="#F5E6DC" transform="rotate(15, 148, 58)" opacity="0.6" />
+            <path 
+              d="M142 50 Q165 45 170 65 Q172 85 160 95 Q148 100 142 85 Q140 70 142 50" 
+              fill="url(#labFur)" 
+            />
+            <path 
+              d="M145 55 Q158 52 162 68 Q163 82 155 88 Q148 90 145 80 Q144 68 145 55" 
+              fill="#F5E6DC" 
+              opacity="0.5" 
+            />
           </g>
 
           {/* Head */}
@@ -280,7 +294,7 @@ export function RunningLabrador({
   const containerRef = useRef<HTMLDivElement>(null);
   const legsRef = useRef<(SVGGElement | null)[]>([]);
   const tailRef = useRef<SVGGElement>(null);
-  const earRef = useRef<SVGEllipseElement>(null);
+  const earRef = useRef<SVGGElement>(null);
   const tongueRef = useRef<SVGEllipseElement>(null);
 
   useEffect(() => {
@@ -340,10 +354,10 @@ export function RunningLabrador({
           </linearGradient>
         </defs>
 
-        {/* Tail */}
-        <g ref={tailRef} transform="translate(25, 55)">
-          <path d="M0 0 Q-15 -20 -10 -40 Q-8 -50 -12 -55" stroke="url(#runShade)" strokeWidth="14" strokeLinecap="round" fill="none" />
-          <path d="M0 0 Q-15 -20 -10 -40 Q-8 -50 -12 -55" stroke="url(#runFur)" strokeWidth="10" strokeLinecap="round" fill="none" />
+        {/* Tail - Happy curved up tail */}
+        <g ref={tailRef} transform="translate(30, 50)">
+          <path d="M0 0 Q-10 -15 -5 -30 Q0 -45 10 -50" stroke="url(#runShade)" strokeWidth="12" strokeLinecap="round" fill="none" />
+          <path d="M0 0 Q-10 -15 -5 -30 Q0 -45 10 -50" stroke="url(#runFur)" strokeWidth="8" strokeLinecap="round" fill="none" />
         </g>
 
         {/* Back legs */}
@@ -375,9 +389,18 @@ export function RunningLabrador({
 
         {/* Head */}
         <g transform="translate(170, 35)">
-          {/* Ear */}
-          <ellipse ref={earRef} cx="-15" cy="8" rx="14" ry="22" fill="url(#runFur)" transform="rotate(-30, -15, 8)" />
-          <ellipse cx="-15" cy="10" rx="8" ry="14" fill="#F5E6DC" opacity="0.5" transform="rotate(-30, -15, 10)" />
+          {/* Ear - Floppy Labrador style, flowing back */}
+          <g ref={earRef}>
+            <path 
+              d="M-5 5 Q-25 0 -35 15 Q-40 30 -30 40 Q-18 45 -10 35 Q-5 25 -5 5" 
+              fill="url(#runFur)" 
+            />
+            <path 
+              d="M-8 10 Q-22 8 -28 18 Q-32 28 -25 34 Q-16 36 -12 28 Q-8 20 -8 10" 
+              fill="#F5E6DC" 
+              opacity="0.5" 
+            />
+          </g>
 
           {/* Head shape */}
           <ellipse cx="15" cy="18" rx="32" ry="28" fill="url(#runFur)" />
