@@ -124,7 +124,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
     <section
       ref={sectionRef}
       data-section="hero"
-      className="section-viewport"
+      className="section-viewport center-content"
       style={{
         backgroundColor: "var(--warm-black)",
         color: "var(--cream-white)",

@@ -525,10 +525,19 @@
   position: fixed;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   background: var(--section-bg);
   color: var(--section-fg);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Center content for sections that don't need scrolling */
+.section-viewport.center-content {
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 

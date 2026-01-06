@@ -114,7 +114,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
     <section
       ref={sectionRef}
       data-section="projects"
-      className="section-viewport overflow-y-auto"
+      className="section-viewport"
       style={{
         backgroundColor: "var(--charcoal)",
         color: "var(--cream-white)",
@@ -130,7 +130,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-32">
         {/* Header */}
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-4">

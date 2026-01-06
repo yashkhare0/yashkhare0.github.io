@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import { useEffect, useRef, forwardRef, useImperativeHandle, useState } from "react";
 import { gsap } from "gsap";
 import { RunningLabrador } from "@/components/labrador/labrador";
 
@@ -116,13 +116,20 @@ export const GeometricTransition = forwardRef<TransitionHandle, GeometricTransit
       },
     }));
 
-    // Generate speed lines
-    const speedLines = Array.from({ length: 15 }, (_, i) => ({
-      top: `${5 + i * 6}%`,
-      width: `${Math.random() * 30 + 20}%`,
-      height: "2px",
-      delay: i * 0.02,
-    }));
+    // Generate speed lines only on client to avoid hydration mismatch
+    const [speedLines, setSpeedLines] = useState<Array<{ top: string; width: string; height: string; delay: number }>>([]);
+    
+    useEffect(() => {
+      // Generate random widths only on client side
+      setSpeedLines(
+        Array.from({ length: 15 }, (_, i) => ({
+          top: `${5 + i * 6}%`,
+          width: `${Math.random() * 30 + 20}%`,
+          height: "2px",
+          delay: i * 0.02,
+        }))
+      );
+    }, []);
 
     return (
       <div

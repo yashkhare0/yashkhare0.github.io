@@ -101,7 +101,7 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-32">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>

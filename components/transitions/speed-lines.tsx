@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 interface SpeedLinesProps {
@@ -9,6 +9,11 @@ interface SpeedLinesProps {
   color?: string;
   count?: number;
   duration?: number;
+}
+
+interface LineData {
+  offset: number;
+  length: number;
 }
 
 export function SpeedLines({
@@ -20,9 +25,20 @@ export function SpeedLines({
 }: SpeedLinesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const linesRef = useRef<HTMLDivElement[]>([]);
+  const [lineData, setLineData] = useState<LineData[]>([]);
+
+  // Generate random values only on client to avoid hydration mismatch
+  useEffect(() => {
+    setLineData(
+      Array.from({ length: count }, () => ({
+        offset: Math.random() * 100,
+        length: Math.random() * 20 + 10,
+      }))
+    );
+  }, [count]);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || lineData.length === 0) return;
 
     if (isActive) {
       linesRef.current.forEach((line, i) => {
@@ -39,7 +55,7 @@ export function SpeedLines({
           },
           {
             [isHorizontal ? "scaleX" : "scaleY"]: 1,
-            opacity: Math.random() * 0.5 + 0.3,
+            opacity: 0.3 + Math.random() * 0.5,
             duration: duration,
             delay,
             ease: "power2.out",
@@ -55,45 +71,39 @@ export function SpeedLines({
         );
       });
     }
-  }, [isActive, direction, duration]);
+  }, [isActive, direction, duration, lineData.length]);
 
-  const lines = Array.from({ length: count }, (_, i) => {
-    const isHorizontal = direction === "left" || direction === "right";
-    const randomOffset = Math.random() * 100;
-    const randomLength = Math.random() * 20 + 10;
-
-    return {
-      style: {
-        position: "absolute" as const,
-        backgroundColor: color,
-        [isHorizontal ? "height" : "width"]: "2px",
-        [isHorizontal ? "width" : "height"]: `${randomLength}%`,
-        [isHorizontal ? "top" : "left"]: `${randomOffset}%`,
-        [direction === "right" ? "left" : direction === "left" ? "right" : direction === "down" ? "top" : "bottom"]: 0,
-        transformOrigin:
-          direction === "right"
-            ? "left"
-            : direction === "left"
-            ? "right"
-            : direction === "down"
-            ? "top"
-            : "bottom",
-      },
-    };
-  });
+  const isHorizontal = direction === "left" || direction === "right";
 
   return (
     <div
       ref={containerRef}
       className="fixed inset-0 pointer-events-none overflow-hidden z-50"
     >
-      {lines.map((line, i) => (
+      {lineData.map((data, i) => (
         <div
           key={i}
           ref={(el) => {
             if (el) linesRef.current[i] = el;
           }}
-          style={line.style}
+          style={{
+            position: "absolute",
+            backgroundColor: color,
+            [isHorizontal ? "height" : "width"]: "2px",
+            [isHorizontal ? "width" : "height"]: `${data.length}%`,
+            [isHorizontal ? "top" : "left"]: `${data.offset}%`,
+            [direction === "right" ? "left" : direction === "left" ? "right" : direction === "down" ? "top" : "bottom"]: 0,
+            transformOrigin:
+              direction === "right"
+                ? "left"
+                : direction === "left"
+                ? "right"
+                : direction === "down"
+                ? "top"
+                : "bottom",
+            transform: isHorizontal ? "scaleX(0)" : "scaleY(0)",
+            opacity: 0,
+          }}
         />
       ))}
     </div>
@@ -115,9 +125,15 @@ export function BurstLines({
   count?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [lengths, setLengths] = useState<number[]>([]);
+
+  // Generate random lengths only on client to avoid hydration mismatch
+  useEffect(() => {
+    setLengths(Array.from({ length: count }, () => Math.random() * 100 + 50));
+  }, [count]);
 
   useEffect(() => {
-    if (!containerRef.current || !isActive) return;
+    if (!containerRef.current || !isActive || lengths.length === 0) return;
 
     const lines = containerRef.current.children;
 
@@ -135,34 +151,31 @@ export function BurstLines({
         ease: "power2.out",
       }
     );
-  }, [isActive]);
-
-  const burstLines = Array.from({ length: count }, (_, i) => {
-    const angle = (i / count) * 360;
-    const length = Math.random() * 100 + 50;
-
-    return {
-      style: {
-        position: "absolute" as const,
-        left: `${originX}%`,
-        top: `${originY}%`,
-        width: `${length}px`,
-        height: "2px",
-        backgroundColor: color,
-        transformOrigin: "left center",
-        transform: `rotate(${angle}deg)`,
-      },
-    };
-  });
+  }, [isActive, lengths.length]);
 
   return (
     <div
       ref={containerRef}
       className="fixed inset-0 pointer-events-none overflow-hidden z-50"
     >
-      {burstLines.map((line, i) => (
-        <div key={i} style={line.style} />
-      ))}
+      {lengths.map((length, i) => {
+        const angle = (i / count) * 360;
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: `${originX}%`,
+              top: `${originY}%`,
+              width: `${length}px`,
+              height: "2px",
+              backgroundColor: color,
+              transformOrigin: "left center",
+              transform: `rotate(${angle}deg)`,
+            }}
+          />
+        );
+      })}
     </div>
   );
 }

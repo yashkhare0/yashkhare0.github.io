@@ -128,27 +128,49 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSection, isTransitioning, navigateTo]);
 
-  // Wheel navigation (with debounce)
+  // Wheel navigation (with debounce) - allows internal scrolling within sections
   useEffect(() => {
     let wheelTimeout: NodeJS.Timeout;
-    let canScroll = true;
+    let canNavigate = true;
 
     const handleWheel = (e: WheelEvent) => {
-      if (isTransitioning || !canScroll) return;
+      if (isTransitioning || !canNavigate) return;
+
+      // Find the scrollable section container
+      const sectionEl = document.querySelector('[data-section]') as HTMLElement;
+      
+      if (sectionEl) {
+        const { scrollTop, scrollHeight, clientHeight } = sectionEl;
+        const isAtTop = scrollTop <= 5;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+        const hasScrollableContent = scrollHeight > clientHeight + 10;
+
+        // If section has scrollable content, allow internal scrolling
+        if (hasScrollableContent) {
+          // Scrolling down but not at bottom - let section scroll
+          if (e.deltaY > 0 && !isAtBottom) {
+            return;
+          }
+          // Scrolling up but not at top - let section scroll
+          if (e.deltaY < 0 && !isAtTop) {
+            return;
+          }
+        }
+      }
 
       const currentIndex = sections.indexOf(currentSection);
 
       if (e.deltaY > 50 && currentIndex < sections.length - 1) {
-        canScroll = false;
+        canNavigate = false;
         navigateTo(sections[currentIndex + 1]);
         wheelTimeout = setTimeout(() => {
-          canScroll = true;
+          canNavigate = true;
         }, 1500);
       } else if (e.deltaY < -50 && currentIndex > 0) {
-        canScroll = false;
+        canNavigate = false;
         navigateTo(sections[currentIndex - 1]);
         wheelTimeout = setTimeout(() => {
-          canScroll = true;
+          canNavigate = true;
         }, 1500);
       }
     };
@@ -160,21 +182,55 @@ export default function Home() {
     };
   }, [currentSection, isTransitioning, navigateTo]);
 
-  // Touch/swipe navigation
+  // Touch/swipe navigation - allows internal scrolling within sections
   useEffect(() => {
     let touchStartY = 0;
-    let touchEndY = 0;
+    let touchStartScrollTop = 0;
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      
+      // Store current scroll position of section
+      const sectionEl = document.querySelector('[data-section]') as HTMLElement;
+      touchStartScrollTop = sectionEl?.scrollTop || 0;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (isTransitioning) return;
 
-      touchEndY = e.changedTouches[0].clientY;
+      const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY - touchEndY;
       const currentIndex = sections.indexOf(currentSection);
+      
+      // Find the scrollable section container
+      const sectionEl = document.querySelector('[data-section]') as HTMLElement;
+
+      if (sectionEl) {
+        const { scrollTop, scrollHeight, clientHeight } = sectionEl;
+        const isAtTop = scrollTop <= 5;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+        const hasScrollableContent = scrollHeight > clientHeight + 10;
+        
+        // Check if the section actually scrolled during this touch
+        const didScroll = Math.abs(scrollTop - touchStartScrollTop) > 10;
+
+        // If section has scrollable content and it scrolled, don't navigate
+        if (hasScrollableContent && didScroll) {
+          return;
+        }
+
+        // If section has scrollable content, only navigate at boundaries
+        if (hasScrollableContent) {
+          // Swiping up (going to next) but not at bottom - don't navigate
+          if (diff > 0 && !isAtBottom) {
+            return;
+          }
+          // Swiping down (going to previous) but not at top - don't navigate
+          if (diff < 0 && !isAtTop) {
+            return;
+          }
+        }
+      }
 
       if (Math.abs(diff) > 50) {
         if (diff > 0 && currentIndex < sections.length - 1) {
