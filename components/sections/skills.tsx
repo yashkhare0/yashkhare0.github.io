@@ -24,10 +24,10 @@ import {
   SiFlutter,
   SiDjango,
   SiFastapi,
-  SiMicrosoftazure,
   SiGithubactions,
   SiLangchain,
 } from "react-icons/si";
+import { Cloud } from "lucide-react";
 import { Labrador } from "@/components/labrador/labrador";
 import { skills as skillsData, skillCategories } from "@/config/content";
 
@@ -59,7 +59,7 @@ const skillIconMap: Record<string, React.ComponentType<{ className?: string; sty
   "OpenCV": SiOpencv,
   "Docker": SiDocker,
   "Kubernetes": SiKubernetes,
-  "Azure": SiMicrosoftazure,
+  "Azure": Cloud,
   "GitHub Actions": SiGithubactions,
   "LangChain": SiLangchain,
   "Python": SiPython,

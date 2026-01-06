@@ -79,9 +79,11 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
     }
   }, [isActive]);
 
-  // Wake up dog on first interaction
-  const handleFirstInteraction = () => {
-    if (!hasInteracted) {
+  // Listen for any interaction to wake up dog
+  useEffect(() => {
+    if (hasInteracted) return;
+
+    const handleInteraction = () => {
       setHasInteracted(true);
       setDogPose("sitting");
 
@@ -89,14 +91,8 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
       setTimeout(() => {
         setDogPose("curious");
       }, 2000);
-    }
-  };
+    };
 
-  // Listen for any interaction
-  useEffect(() => {
-    if (hasInteracted) return;
-
-    const handleInteraction = () => handleFirstInteraction();
     window.addEventListener("mousemove", handleInteraction, { once: true });
     window.addEventListener("click", handleInteraction, { once: true });
     window.addEventListener("keydown", handleInteraction, { once: true });
