@@ -102,7 +102,7 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-32">
+      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-12 py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text content */}
           <div ref={contentRef} className="space-y-8">

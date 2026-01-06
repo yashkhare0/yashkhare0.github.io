@@ -130,7 +130,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-32">
+      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-12 py-24">
         {/* Header */}
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-4">

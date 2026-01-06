@@ -109,7 +109,7 @@ export function Contact({ onNavigate, isActive = false }: ContactProps) {
       {/* Content */}
       <div
         ref={contentRef}
-        className="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-12 pt-16 pb-32 text-center"
+        className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-4xl mx-auto px-6 md:px-12 py-24 text-center"
       >
         {/* Happy dog */}
         <div className="mb-8">

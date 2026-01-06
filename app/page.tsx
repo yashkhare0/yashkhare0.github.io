@@ -262,6 +262,13 @@ export default function Home() {
     );
   }, [currentSection]);
 
+  // Wrapper to handle string -> Section type conversion for child components
+  const handleNavigate = (section: string) => {
+    if (sections.includes(section as Section)) {
+      navigateTo(section as Section);
+    }
+  };
+
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
       {/* Intro Animation */}
@@ -269,19 +276,19 @@ export default function Home() {
 
       {/* Current Section */}
       {currentSection === "hero" && (
-        <Hero onNavigate={navigateTo} isActive={currentSection === "hero" && !showIntro} />
+        <Hero onNavigate={handleNavigate} isActive={currentSection === "hero" && !showIntro} />
       )}
       {currentSection === "about" && (
-        <About onNavigate={navigateTo} isActive={currentSection === "about"} />
+        <About onNavigate={handleNavigate} isActive={currentSection === "about"} />
       )}
       {currentSection === "skills" && (
-        <Skills onNavigate={navigateTo} isActive={currentSection === "skills"} />
+        <Skills onNavigate={handleNavigate} isActive={currentSection === "skills"} />
       )}
       {currentSection === "projects" && (
-        <Projects onNavigate={navigateTo} isActive={currentSection === "projects"} />
+        <Projects onNavigate={handleNavigate} isActive={currentSection === "projects"} />
       )}
       {currentSection === "contact" && (
-        <Contact onNavigate={navigateTo} isActive={currentSection === "contact"} />
+        <Contact onNavigate={handleNavigate} isActive={currentSection === "contact"} />
       )}
 
       {/* Geometric Transition Overlay */}
