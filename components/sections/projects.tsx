@@ -4,62 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowUpRight, Github } from "lucide-react";
 import { Labrador } from "@/components/labrador/labrador";
+import { projects } from "@/config/content";
 
 interface ProjectsProps {
   onNavigate?: (section: string) => void;
   isActive?: boolean;
 }
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  year: string;
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    id: "1",
-    title: "Weather Visualizer",
-    description: "Atmospheric data meets stunning visuals inspired by anime art styles. Real-time weather with beautiful design.",
-    tags: ["Next.js", "Tailwind", "Weather API"],
-    liveUrl: "#",
-    githubUrl: "#",
-    year: "2025",
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Design System",
-    description: "A comprehensive component library built for consistency. 50+ components with full documentation.",
-    tags: ["React", "TypeScript", "Storybook"],
-    liveUrl: "#",
-    githubUrl: "#",
-    year: "2024",
-  },
-  {
-    id: "3",
-    title: "AI Art Generator",
-    description: "Machine learning meets creativity — an interface for generating AI-powered artwork.",
-    tags: ["Python", "TensorFlow", "React"],
-    liveUrl: "#",
-    githubUrl: "#",
-    year: "2024",
-  },
-  {
-    id: "4",
-    title: "E-Commerce Platform",
-    description: "Complete shopping experience with elegant product displays and smooth checkout flow.",
-    tags: ["Next.js", "Stripe", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
-    year: "2024",
-  },
-];
 
 export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
   const sectionRef = useRef<HTMLElement>(null);

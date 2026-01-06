@@ -2,21 +2,28 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import { Labrador } from "@/components/labrador/labrador";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { contactContent, socialLinks as socialLinksData, siteConfig } from "@/config/content";
 
 interface ContactProps {
   onNavigate?: (section: string) => void;
   isActive?: boolean;
 }
 
-const socialLinks = [
-  { name: "Email", href: "mailto:hello@yashkhare.dev", icon: Mail, label: "hello@yashkhare.dev" },
-  { name: "GitHub", href: "https://github.com/yashkhare0", icon: Github, label: "@yashkhare0" },
-  { name: "LinkedIn", href: "https://linkedin.com/in/yashkhare0", icon: Linkedin, label: "yashkhare0" },
-  { name: "Twitter", href: "https://twitter.com/yashkhare0", icon: Twitter, label: "@yashkhare0" },
-];
+const iconMap = {
+  mail: Mail,
+  github: Github,
+  linkedin: Linkedin,
+};
+
+const socialLinks = socialLinksData.map((link) => ({
+  name: link.name,
+  href: link.href,
+  icon: iconMap[link.icon as keyof typeof iconMap] || Mail,
+  label: link.label,
+}));
 
 export function Contact({ onNavigate, isActive = false }: ContactProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -118,14 +125,14 @@ export function Contact({ onNavigate, isActive = false }: ContactProps) {
 
         {/* Title */}
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-display mb-6">
-          Let's create
+          {contactContent.headline.prefix}
           <br />
-          something{" "}
+          {contactContent.headline.middle}{" "}
           <span
             className="relative inline-block"
             style={{ color: "var(--warm-black)" }}
           >
-            amazing
+            {contactContent.headline.highlight}
             <svg
               className="absolute -bottom-2 left-0 w-full"
               viewBox="0 0 200 8"
@@ -143,15 +150,13 @@ export function Contact({ onNavigate, isActive = false }: ContactProps) {
         </h2>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl font-body opacity-90 max-w-xl mx-auto mb-12">
-          Have a project in mind? Or just want to say hello?
-          <br />
-          I'd love to hear from you!
+        <p className="text-xl md:text-2xl font-body opacity-90 max-w-xl mx-auto mb-12 whitespace-pre-line">
+          {contactContent.subtitle}
         </p>
 
         {/* Main CTA */}
         <a
-          href="mailto:hello@yashkhare.dev"
+          href={`mailto:${siteConfig.email}`}
           className="inline-flex items-center gap-3 px-10 py-5 text-lg font-display uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-rotate-1"
           style={{
             backgroundColor: "var(--warm-black)",
@@ -160,7 +165,7 @@ export function Contact({ onNavigate, isActive = false }: ContactProps) {
           }}
         >
           <Mail className="w-5 h-5" />
-          Get in Touch
+          {contactContent.ctaLabel}
           <ArrowUpRight className="w-5 h-5" />
         </a>
 

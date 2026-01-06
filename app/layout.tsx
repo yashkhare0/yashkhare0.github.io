@@ -24,12 +24,42 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yash Khare — Designer & Engineer",
+  title: "Yash Khare | AI Developer & Full-Stack Engineer",
   description:
-    "Personal portfolio of Yash Khare — Crafting digital experiences with bold geometry and anime-inspired warmth.",
+    "AI Developer & Full-Stack Engineer with 4+ years experience. Specialized in Python (Django, FastAPI) and React. Building scalable AI products in Berlin.",
+  keywords: [
+    "AI Developer",
+    "Full-Stack Engineer",
+    "Python",
+    "Django",
+    "FastAPI",
+    "React",
+    "Next.js",
+    "RAG",
+    "LLM",
+    "Machine Learning",
+    "Berlin",
+  ],
+  authors: [{ name: "Yash Khare" }],
+  creator: "Yash Khare",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yashkhare0.github.io",
+    title: "Yash Khare | AI Developer & Full-Stack Engineer",
+    description:
+      "AI Developer & Full-Stack Engineer with 4+ years experience. Building scalable AI products in Berlin.",
+    siteName: "Yash Khare",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yash Khare | AI Developer & Full-Stack Engineer",
+    description:
+      "AI Developer & Full-Stack Engineer with 4+ years experience. Building scalable AI products in Berlin.",
   },
 };
 

@@ -10,40 +10,75 @@ import {
   SiNodedotjs,
   SiPython,
   SiDocker,
-  SiFigma,
   SiPostgresql,
   SiMongodb,
-  SiAmazonwebservices,
-  SiGit,
+  SiRedis,
+  SiNeo4J,
+  SiKubernetes,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiNumpy,
+  SiPandas,
+  SiOpencv,
+  SiFlutter,
+  SiDjango,
+  SiFastapi,
+  SiMicrosoftazure,
+  SiGithubactions,
+  SiLangchain,
 } from "react-icons/si";
 import { Labrador } from "@/components/labrador/labrador";
+import { skills as skillsData, skillCategories } from "@/config/content";
 
 interface SkillsProps {
   onNavigate?: (section: string) => void;
   isActive?: boolean;
 }
 
-const skills = [
-  { name: "React", icon: SiReact, category: "frontend" },
-  { name: "Next.js", icon: SiNextdotjs, category: "frontend" },
-  { name: "TypeScript", icon: SiTypescript, category: "frontend" },
-  { name: "Tailwind", icon: SiTailwindcss, category: "frontend" },
-  { name: "Node.js", icon: SiNodedotjs, category: "backend" },
-  { name: "Python", icon: SiPython, category: "backend" },
-  { name: "PostgreSQL", icon: SiPostgresql, category: "backend" },
-  { name: "MongoDB", icon: SiMongodb, category: "backend" },
-  { name: "Docker", icon: SiDocker, category: "tools" },
-  { name: "AWS", icon: SiAmazonwebservices, category: "tools" },
-  { name: "Git", icon: SiGit, category: "tools" },
-  { name: "Figma", icon: SiFigma, category: "tools" },
-];
+// Map skill names to their icons
+const skillIconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+  "Django": SiDjango,
+  "FastAPI": SiFastapi,
+  "Node.js": SiNodedotjs,
+  "PostgreSQL": SiPostgresql,
+  "Redis": SiRedis,
+  "Neo4j": SiNeo4J,
+  "MongoDB": SiMongodb,
+  "React": SiReact,
+  "Next.js": SiNextdotjs,
+  "TypeScript": SiTypescript,
+  "Tailwind": SiTailwindcss,
+  "React Native": SiReact,
+  "Flutter": SiFlutter,
+  "TensorFlow": SiTensorflow,
+  "PyTorch": SiPytorch,
+  "scikit-learn": SiScikitlearn,
+  "NumPy": SiNumpy,
+  "Pandas": SiPandas,
+  "OpenCV": SiOpencv,
+  "Docker": SiDocker,
+  "Kubernetes": SiKubernetes,
+  "Azure": SiMicrosoftazure,
+  "GitHub Actions": SiGithubactions,
+  "LangChain": SiLangchain,
+  "Python": SiPython,
+};
 
-const categories = [
-  { key: "all", label: "All" },
-  { key: "frontend", label: "Frontend" },
-  { key: "backend", label: "Backend" },
-  { key: "tools", label: "Tools" },
-];
+// Default icon for skills without a specific icon
+const DefaultIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <div className={className} style={style}>
+    <span className="text-2xl">◇</span>
+  </div>
+);
+
+const skills = skillsData.map(skill => ({
+  name: skill.name,
+  icon: skillIconMap[skill.name] || DefaultIcon,
+  category: skill.category,
+}));
+
+const categories = skillCategories;
 
 export function Skills({ onNavigate, isActive = false }: SkillsProps) {
   const sectionRef = useRef<HTMLElement>(null);

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Labrador } from "@/components/labrador/labrador";
 import { TriangleAccent } from "@/components/transitions/geometric-transition";
+import { heroContent } from "@/config/content";
 
 interface HeroProps {
   onNavigate?: (section: string) => void;
@@ -108,13 +109,13 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
   }, [hasInteracted]);
 
   // Split name into characters for animation - two lines
-  const firstName = "YASH".split("").map((char, i) => (
+  const firstName = heroContent.firstName.split("").map((char, i) => (
     <span key={`first-${i}`} className="char inline-block">
       {char}
     </span>
   ));
   
-  const lastName = "KHARE".split("").map((char, i) => (
+  const lastName = heroContent.lastName.split("").map((char, i) => (
     <span key={`last-${i}`} className="char inline-block">
       {char}
     </span>
@@ -180,32 +181,38 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
             ref={subtitleRef}
             className="text-xl md:text-2xl lg:text-3xl font-body max-w-2xl leading-relaxed opacity-80"
           >
-            Designer & Engineer crafting digital experiences with{" "}
-            <span style={{ color: "var(--sunset-coral)" }}>bold geometry</span> and{" "}
-            <span style={{ color: "var(--golden-hour)" }}>anime warmth</span>.
+            {heroContent.tagline.prefix}{" "}
+            <span style={{ color: heroContent.tagline.highlights[0].color }}>
+              {heroContent.tagline.highlights[0].text}
+            </span>{" "}
+            and{" "}
+            <span style={{ color: heroContent.tagline.highlights[1].color }}>
+              {heroContent.tagline.highlights[1].text}
+            </span>
+            {heroContent.tagline.suffix}
           </p>
 
           {/* CTAs */}
           <div ref={ctaRef} className="flex flex-wrap gap-4 mt-12">
             <button
-              onClick={() => onNavigate?.("projects")}
+              onClick={() => onNavigate?.(heroContent.cta.primary.section)}
               className="btn-geometric"
               style={{
                 backgroundColor: "var(--cream-white)",
                 color: "var(--warm-black)",
               }}
             >
-              View Work
+              {heroContent.cta.primary.label}
             </button>
             <button
-              onClick={() => onNavigate?.("contact")}
+              onClick={() => onNavigate?.(heroContent.cta.secondary.section)}
               className="btn-outline"
               style={{
                 borderColor: "var(--cream-white)",
                 color: "var(--cream-white)",
               }}
             >
-              Say Hello
+              {heroContent.cta.secondary.label}
             </button>
           </div>
         </div>

@@ -4,29 +4,12 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Labrador } from "@/components/labrador/labrador";
 import { TriangleAccent } from "@/components/transitions/geometric-transition";
+import { aboutContent } from "@/config/content";
 
 interface AboutProps {
   onNavigate?: (section: string) => void;
   isActive?: boolean;
 }
-
-const traits = [
-  {
-    title: "Design",
-    description: "Interfaces that guide without instructing, delight without distracting.",
-    icon: "◇",
-  },
-  {
-    title: "Engineering",
-    description: "Architecture that scales, performs, and reads like poetry.",
-    icon: "△",
-  },
-  {
-    title: "Human",
-    description: "Trail explorer with my labrador, sketch enthusiast, AI curious.",
-    icon: "○",
-  },
-];
 
 export function About({ onNavigate, isActive = false }: AboutProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -122,22 +105,18 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
 
             {/* Title */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-display leading-tight">
-              Building with
+              {aboutContent.headline.prefix}
               <br />
-              <span style={{ color: "var(--golden-hour)" }}>intention</span>
+              <span style={{ color: "var(--golden-hour)" }}>{aboutContent.headline.highlight}</span>
             </h2>
 
             {/* Description */}
             <p className="text-xl font-body leading-relaxed opacity-80">
-              I'm a designer and engineer who believes the best interfaces are{" "}
-              <strong className="text-white">invisible</strong> — they guide without
-              instructing, delight without distracting.
+              {aboutContent.intro}
             </p>
 
             <p className="text-lg font-body leading-relaxed opacity-60">
-              Based in India, I specialize in creating digital experiences that
-              bridge aesthetics and functionality. Every project is an opportunity
-              to craft something meaningful.
+              {aboutContent.description}
             </p>
           </div>
 
@@ -188,7 +167,7 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
 
         {/* Trait cards */}
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 mt-20">
-          {traits.map((trait, i) => (
+          {aboutContent.traits.map((trait, i) => (
             <div
               key={trait.title}
               className="geo-card p-8 group"
