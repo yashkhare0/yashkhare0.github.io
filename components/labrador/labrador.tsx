@@ -35,13 +35,18 @@ export function Labrador({
     setCurrentPose(pose);
   }, [pose]);
 
-  // Tail wag
+  // Tail wag - wiggles from the base (butt)
   useEffect(() => {
     if (!tailRef.current || currentPose === "sleeping") return;
     const speed = currentPose === "excited" ? 0.12 : currentPose === "playful" ? 0.2 : 0.4;
+    const angle = currentPose === "excited" ? 20 : currentPose === "playful" ? 15 : 10;
+    
+    // Set initial rotation to center the wag
+    gsap.set(tailRef.current, { rotation: -angle / 2, transformOrigin: "0% 0%" });
+    
     const anim = gsap.to(tailRef.current, {
-      rotation: 25,
-      transformOrigin: "50% 100%",
+      rotation: angle / 2,
+      transformOrigin: "0% 0%", // Anchor at base of tail (where it meets the body)
       duration: speed,
       yoyo: true,
       repeat: -1,
@@ -311,9 +316,10 @@ export function RunningLabrador({
       });
     });
 
-    // Tail wag
+    // Tail wag - wiggles from base
     if (tailRef.current) {
-      gsap.to(tailRef.current, { rotation: 20, transformOrigin: "0% 100%", duration: 0.12, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.set(tailRef.current, { rotation: -10, transformOrigin: "100% 100%" });
+      gsap.to(tailRef.current, { rotation: 10, transformOrigin: "100% 100%", duration: 0.12, yoyo: true, repeat: -1, ease: "sine.inOut" });
     }
 
     // Ear flop
