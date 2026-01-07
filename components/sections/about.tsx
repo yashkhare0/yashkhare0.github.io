@@ -85,8 +85,8 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-12 py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Text content */}
           <div ref={contentRef} className="space-y-8">
             {/* Section label */}
@@ -104,35 +104,35 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
             </div>
 
             {/* Title */}
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-display leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display leading-tight">
               {aboutContent.headline.prefix}
               <br />
               <span style={{ color: "var(--golden-hour)" }}>{aboutContent.headline.highlight}</span>
             </h2>
 
             {/* Description */}
-            <p className="text-xl font-body leading-relaxed opacity-80">
+            <p className="text-base sm:text-lg md:text-xl font-body leading-relaxed opacity-80">
               {aboutContent.intro}
             </p>
 
-            <p className="text-lg font-body leading-relaxed opacity-60">
+            <p className="text-sm sm:text-base md:text-lg font-body leading-relaxed opacity-60">
               {aboutContent.description}
             </p>
           </div>
 
           {/* Visual side with dog */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center mt-8 lg:mt-0">
             {/* Geometric frame */}
             <div
-              className="relative w-72 h-80 md:w-80 md:h-96"
+              className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-72 md:h-80 lg:w-80 lg:h-96"
               style={{
-                border: "3px solid var(--golden-hour)",
+                border: "2px sm:border-[3px] solid var(--golden-hour)",
                 transform: "rotate(3deg)",
               }}
             >
               {/* Inner content */}
               <div
-                className="absolute inset-4 flex items-center justify-center"
+                className="absolute inset-3 sm:inset-4 flex items-center justify-center scale-75 sm:scale-100"
                 style={{
                   backgroundColor: "rgba(255, 179, 71, 0.1)",
                 }}
@@ -142,18 +142,18 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
 
               {/* Corner accents */}
               <div
-                className="absolute -top-2 -left-2 w-6 h-6"
+                className="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 w-4 h-4 sm:w-6 sm:h-6"
                 style={{ backgroundColor: "var(--golden-hour)" }}
               />
               <div
-                className="absolute -bottom-2 -right-2 w-6 h-6"
+                className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6"
                 style={{ backgroundColor: "var(--golden-hour)" }}
               />
             </div>
 
             {/* Floating label */}
             <div
-              className="absolute -bottom-4 right-0 px-4 py-2 font-mono text-sm"
+              className="absolute -bottom-2 sm:-bottom-4 right-0 px-2 sm:px-4 py-1 sm:py-2 font-mono text-xs sm:text-sm"
               style={{
                 backgroundColor: "var(--golden-hour)",
                 color: "var(--deep-indigo)",
@@ -166,11 +166,11 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
         </div>
 
         {/* Trait cards */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 mt-20">
+        <div ref={cardsRef} className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-12 md:mt-20">
           {aboutContent.traits.map((trait, i) => (
             <div
               key={trait.title}
-              className="geo-card p-8 group"
+              className="geo-card p-4 sm:p-6 md:p-8 group"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.03)",
                 borderColor: "rgba(255, 255, 255, 0.1)",
@@ -178,17 +178,17 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
             >
               {/* Icon */}
               <div
-                className="w-12 h-12 flex items-center justify-center text-2xl mb-6 transition-transform group-hover:scale-110"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-6 transition-transform group-hover:scale-110"
                 style={{ color: "var(--golden-hour)" }}
               >
                 {trait.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-display mb-4">{trait.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-display mb-3 sm:mb-4">{trait.title}</h3>
 
               {/* Description */}
-              <p className="font-body text-sm leading-relaxed opacity-70">
+              <p className="font-body text-xs sm:text-sm leading-relaxed opacity-70">
                 {trait.description}
               </p>
             </div>
@@ -197,7 +197,7 @@ export function About({ onNavigate, isActive = false }: AboutProps) {
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
         {["hero", "about", "skills", "projects", "contact"].map((section, i) => (
           <button
             key={section}

@@ -371,8 +371,8 @@ export const socialLinks = [
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/yashkhare0",
-    label: "yashkhare0",
+    href: "https://www.linkedin.com/in/yash-khare/",
+    label: "yash-khare",
     icon: "linkedin",
   },
 ];

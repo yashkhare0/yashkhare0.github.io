@@ -13,6 +13,7 @@ import {
 } from "@/components/transitions/geometric-transition";
 import { SpeedLines } from "@/components/transitions/speed-lines";
 import { IntroAnimation } from "@/components/loading/intro-animation";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 type Section = "hero" | "about" | "skills" | "projects" | "contact";
 
@@ -309,13 +310,13 @@ export default function Home() {
       />
 
       {/* Section indicator */}
-      <div className="fixed top-8 left-8 z-40 flex items-center gap-3">
+      <div className="fixed top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 z-40 flex items-center gap-2 sm:gap-3">
         <div
-          className="w-3 h-3 rounded-full animate-pulse"
+          className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse"
           style={{ backgroundColor: transitionAccents[currentSection] }}
         />
         <span
-          className="text-xs uppercase tracking-[0.2em] font-body"
+          className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-body"
           style={{
             color: sectionColors[currentSection] === "#FFF8F0" ? "#121212" : "#FFF8F0",
           }}
@@ -324,13 +325,23 @@ export default function Home() {
         </span>
       </div>
 
+      {/* Theme toggle - fixed in header */}
+      <div 
+        className="fixed top-4 sm:top-6 md:top-8 right-16 sm:right-20 md:right-24 z-40"
+        style={{
+          color: sectionColors[currentSection] === "#FFF8F0" ? "#121212" : "#FFF8F0",
+        }}
+      >
+        <ThemeToggle />
+      </div>
+
       {/* Progress indicator */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2">
+      <div className="fixed right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1.5 sm:gap-2">
         {sections.map((section, i) => (
           <button
             key={section}
             onClick={() => navigateTo(section)}
-            className="group relative w-3 h-8 flex items-center justify-center"
+            className="group relative w-3 h-6 sm:h-8 flex items-center justify-center"
             disabled={isTransitioning}
             aria-label={`Go to ${section}`}
           >
@@ -348,13 +359,13 @@ export default function Home() {
             {/* Active indicator */}
             {currentSection === section && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
+                className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
                 style={{ backgroundColor: transitionAccents[currentSection] }}
               />
             )}
-            {/* Tooltip on hover */}
+            {/* Tooltip on hover - hidden on mobile */}
             <span
-              className="absolute right-6 px-2 py-1 text-xs font-body capitalize opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+              className="absolute right-6 px-2 py-1 text-xs font-body capitalize opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden sm:block"
               style={{
                 backgroundColor: transitionAccents[currentSection],
                 color: "#121212",

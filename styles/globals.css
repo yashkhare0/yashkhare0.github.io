@@ -417,18 +417,26 @@
 
 .btn-geometric {
   position: relative;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   background: var(--foreground);
   color: var(--background);
   border: none;
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   transition: all 0.3s var(--ease-overshoot);
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-geometric {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
 }
 
 .btn-geometric:hover {
@@ -441,10 +449,10 @@
 
 .btn-outline {
   position: relative;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   background: transparent;
@@ -452,6 +460,13 @@
   border: 2px solid var(--foreground);
   transition: all 0.3s var(--ease-overshoot);
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-outline {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+  }
 }
 
 .btn-outline::before {
@@ -478,13 +493,20 @@
    ============================================ */
 
 .nav-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border: 2px solid var(--foreground);
   border-radius: 50%;
   background: transparent;
   transition: all 0.4s var(--ease-overshoot);
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .nav-dot:hover {
@@ -582,8 +604,42 @@
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+  .text-giant {
+    font-size: clamp(2rem, 14vw, 4rem);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
   .text-giant {
     font-size: clamp(2.5rem, 12vw, 6rem);
   }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-giant {
+    font-size: clamp(4rem, 10vw, 8rem);
+  }
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .nav-dot {
+    min-height: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Fix for sections to prevent horizontal overflow */
+.section-viewport {
+  max-width: 100vw;
+  overflow-x: hidden;
 }

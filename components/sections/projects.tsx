@@ -80,9 +80,9 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-12 py-24">
+      <div className="relative z-10 w-full min-h-screen flex flex-col justify-start max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24 pb-24">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-8 md:mb-16 mt-8 md:mt-0">
           <div className="flex items-center gap-4 mb-4">
             <div
               className="w-3 h-3 rounded-full"
@@ -96,7 +96,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
             </span>
           </div>
 
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display">
             Projects that
             <br />
             <span style={{ color: "var(--sakura-pink)" }}>spark joy</span>
@@ -106,7 +106,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
         {/* Featured project */}
         {featuredProject && (
           <div
-            className="project-card group relative mb-12 p-8 md:p-12 transition-all duration-300"
+            className="project-card group relative mb-8 md:mb-12 p-4 sm:p-6 md:p-8 lg:p-12 transition-all duration-300"
             style={{
               backgroundColor: "rgba(255, 255, 255, 0.03)",
               border: "2px solid rgba(255, 143, 163, 0.2)",
@@ -117,7 +117,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
           >
             {/* Featured badge */}
             <div
-              className="absolute top-0 right-0 px-4 py-2 text-xs uppercase tracking-wider font-body"
+              className="absolute top-0 right-0 px-3 py-1.5 sm:px-4 sm:py-2 text-xs uppercase tracking-wider font-body"
               style={{
                 backgroundColor: "var(--sakura-pink)",
                 color: "var(--charcoal)",
@@ -126,22 +126,22 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
               ★ Featured
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center mt-6 sm:mt-0">
               <div>
                 <span className="text-sm font-mono opacity-50">{featuredProject.year}</span>
-                <h3 className="text-3xl md:text-4xl font-display mt-2 mb-4 group-hover:translate-x-2 transition-transform">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display mt-2 mb-4 group-hover:translate-x-2 transition-transform">
                   {featuredProject.title}
                 </h3>
-                <p className="text-lg font-body opacity-70 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg font-body opacity-70 leading-relaxed mb-4 sm:mb-6">
                   {featuredProject.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                   {featuredProject.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-mono"
+                      className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-mono"
                       style={{
                         border: "1px solid rgba(255, 143, 163, 0.3)",
                       }}
@@ -152,11 +152,11 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   {featuredProject.liveUrl && (
                     <a
                       href={featuredProject.liveUrl}
-                      className="btn-geometric flex items-center gap-2"
+                      className="btn-geometric flex items-center gap-2 text-sm sm:text-base"
                       style={{
                         backgroundColor: "var(--sakura-pink)",
                         color: "var(--charcoal)",
@@ -169,7 +169,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
                   {featuredProject.githubUrl && (
                     <a
                       href={featuredProject.githubUrl}
-                      className="btn-outline flex items-center gap-2"
+                      className="btn-outline flex items-center gap-2 text-sm sm:text-base"
                       style={{
                         borderColor: "var(--cream-white)",
                         color: "var(--cream-white)",
@@ -184,7 +184,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
 
               {/* Placeholder visual */}
               <div
-                className="aspect-video md:aspect-square flex items-center justify-center"
+                className="aspect-video lg:aspect-square flex items-center justify-center mt-4 lg:mt-0"
                 style={{
                   backgroundColor: "rgba(255, 143, 163, 0.1)",
                   border: "2px dashed rgba(255, 143, 163, 0.3)",
@@ -197,11 +197,11 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
         )}
 
         {/* Other projects grid */}
-        <div ref={cardsRef} className="relative grid md:grid-cols-2 gap-6">
+        <div ref={cardsRef} className="relative grid sm:grid-cols-2 gap-4 sm:gap-6">
           {otherProjects.map((project, i) => (
             <div
               key={project.id}
-              className="project-card group relative p-6 transition-all duration-300 cursor-pointer"
+              className="project-card group relative p-4 sm:p-6 transition-all duration-300 cursor-pointer"
               style={{
                 backgroundColor: hoveredProject === project.id ? "rgba(255, 143, 163, 0.05)" : "rgba(255, 255, 255, 0.02)",
                 border: `2px solid ${hoveredProject === project.id ? "var(--sakura-pink)" : "rgba(255, 255, 255, 0.05)"}`,
@@ -225,7 +225,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
               <span className="text-xs font-mono opacity-50">{project.year}</span>
 
               {/* Title */}
-              <h3 className="text-2xl font-display mt-2 mb-3 group-hover:translate-x-1 transition-transform">
+              <h3 className="text-xl sm:text-2xl font-display mt-2 mb-3 group-hover:translate-x-1 transition-transform pr-8">
                 {project.title}
               </h3>
 
@@ -249,7 +249,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
 
               {/* Arrow */}
               <ArrowUpRight
-                className="absolute top-6 right-6 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1 group-hover:-translate-y-1"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1 group-hover:-translate-y-1"
                 style={{ color: "var(--sakura-pink)" }}
               />
             </div>
@@ -272,7 +272,7 @@ export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
         {["hero", "about", "skills", "projects", "contact"].map((section) => (
           <button
             key={section}

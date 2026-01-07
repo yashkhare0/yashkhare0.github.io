@@ -131,7 +131,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
       <TriangleAccent
         position="top-right"
         color="var(--sunset-coral)"
-        size={Math.min(400, typeof window !== "undefined" ? window.innerWidth * 0.35 : 400)}
+        size={300}
         onClick={() => onNavigate?.("about")}
         interactive
       />
@@ -151,7 +151,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
       />
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="flex flex-col items-start">
           {/* Name */}
           <h1
@@ -165,7 +165,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
 
           {/* Diagonal underline */}
           <div
-            className="w-48 h-1 mt-4 mb-8"
+            className="w-24 sm:w-36 md:w-48 h-0.5 sm:h-1 mt-3 sm:mt-4 mb-6 sm:mb-8"
             style={{
               backgroundColor: "var(--sunset-coral)",
               transform: "skewX(-20deg)",
@@ -175,7 +175,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
           {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-xl md:text-2xl lg:text-3xl font-body max-w-2xl leading-relaxed opacity-80"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-body max-w-2xl leading-relaxed opacity-80"
           >
             {heroContent.tagline.prefix}{" "}
             <span style={{ color: heroContent.tagline.highlights[0].color }}>
@@ -189,10 +189,10 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-wrap gap-4 mt-12">
+          <div ref={ctaRef} className="flex flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-10 md:mt-12">
             <button
               onClick={() => onNavigate?.(heroContent.cta.primary.section)}
-              className="btn-geometric"
+              className="btn-geometric text-sm sm:text-base"
               style={{
                 backgroundColor: "var(--cream-white)",
                 color: "var(--warm-black)",
@@ -202,7 +202,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
             </button>
             <button
               onClick={() => onNavigate?.(heroContent.cta.secondary.section)}
-              className="btn-outline"
+              className="btn-outline text-sm sm:text-base"
               style={{
                 borderColor: "var(--cream-white)",
                 color: "var(--cream-white)",
@@ -216,7 +216,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
         {/* Labrador - positioned at bottom right */}
         <div
           ref={dogRef}
-          className="absolute bottom-8 right-8 md:bottom-16 md:right-16 lg:bottom-24 lg:right-24"
+          className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-16 md:right-16 lg:bottom-24 lg:right-24 scale-75 sm:scale-100"
         >
           <Labrador
             pose={dogPose}
@@ -230,7 +230,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
           {/* Speech bubble on first wake */}
           {hasInteracted && dogPose === "sitting" && (
             <div
-              className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-sm font-body whitespace-nowrap animate-overshoot-in"
+              className="absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-body whitespace-nowrap animate-overshoot-in"
               style={{
                 backgroundColor: "var(--cream-white)",
                 color: "var(--warm-black)",
@@ -243,16 +243,16 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
       </div>
 
       {/* Navigation hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs uppercase tracking-[0.3em] opacity-50 font-body">
+      <div className="absolute bottom-16 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] opacity-50 font-body">
           Navigate
         </span>
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           {["about", "skills", "projects", "contact"].map((section) => (
             <button
               key={section}
               onClick={() => onNavigate?.(section)}
-              className="nav-dot"
+              className="nav-dot w-2.5 h-2.5 sm:w-3 sm:h-3"
               style={{ borderColor: "var(--cream-white)" }}
               aria-label={`Go to ${section}`}
             />
@@ -261,7 +261,7 @@ export function Hero({ onNavigate, isActive = true }: HeroProps) {
       </div>
 
       {/* Keyboard hint */}
-      <div className="absolute bottom-8 right-8 text-xs opacity-30 font-mono hidden md:block">
+      <div className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 text-[10px] sm:text-xs opacity-30 font-mono hidden md:block">
         Press 1-5 or ←→
       </div>
     </section>

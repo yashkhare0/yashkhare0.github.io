@@ -136,26 +136,26 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-12 py-24">
+      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8 mb-8 sm:mb-12 md:mb-16">
           <div>
             {/* Section label */}
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <span
-                className="text-sm uppercase tracking-[0.3em] font-body"
+                className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-body"
                 style={{ color: "var(--electric-cyan)" }}
               >
                 Skills
               </span>
               <div
-                className="w-12 h-[2px]"
+                className="w-8 sm:w-12 h-[2px]"
                 style={{ backgroundColor: "var(--electric-cyan)" }}
               />
             </div>
 
             {/* Title */}
-            <h2 className="text-5xl md:text-6xl font-display">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display">
               Tech
               <br />
               <span style={{ color: "var(--electric-cyan)" }}>Arsenal</span>
@@ -163,12 +163,12 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
           </div>
 
           {/* Filter tabs */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setFilter(cat.key)}
-                className={`px-4 py-2 text-sm font-body uppercase tracking-wider transition-all ${
+                className={`px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-body uppercase tracking-wider transition-all ${
                   filter === cat.key
                     ? "text-white"
                     : "hover:opacity-70"
@@ -187,14 +187,14 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
         {/* Skills grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4"
         >
           {filteredSkills.map((skill) => {
             const Icon = skill.icon;
             return (
               <div
                 key={skill.name}
-                className="skill-item group relative p-6 flex flex-col items-center gap-4 cursor-pointer transition-all duration-300"
+                className="skill-item group relative p-3 sm:p-4 md:p-6 flex flex-col items-center gap-2 sm:gap-3 md:gap-4 cursor-pointer transition-all duration-300"
                 style={{
                   backgroundColor: "white",
                   border: `2px solid ${hoveredSkill === skill.name ? "var(--electric-cyan)" : "var(--border)"}`,
@@ -209,29 +209,29 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
                   className="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
                   style={{
                     borderStyle: "solid",
-                    borderWidth: hoveredSkill === skill.name ? "0 30px 30px 0" : "0 0 0 0",
+                    borderWidth: hoveredSkill === skill.name ? "0 20px 20px 0" : "0 0 0 0",
                     borderColor: "transparent var(--electric-cyan) transparent transparent",
                   }}
                 />
 
                 {/* Icon */}
                 <Icon
-                  className="w-10 h-10 transition-transform group-hover:scale-110"
+                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110"
                   style={{
                     color: hoveredSkill === skill.name ? "var(--electric-cyan)" : "var(--warm-black)",
                   }}
                 />
 
                 {/* Name */}
-                <span className="text-sm font-body font-medium">{skill.name}</span>
+                <span className="text-xs sm:text-sm font-body font-medium text-center">{skill.name}</span>
               </div>
             );
           })}
         </div>
 
         {/* Dog following hovered skill */}
-        <div className="mt-16 flex justify-center">
-          <div className="relative">
+        <div className="mt-8 sm:mt-12 md:mt-16 flex justify-center">
+          <div className="relative scale-75 sm:scale-100">
             <Labrador
               pose={hoveredSkill ? "playful" : "sitting"}
               size={100}
@@ -239,7 +239,7 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
             />
             {hoveredSkill && (
               <div
-                className="absolute -top-8 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-mono whitespace-nowrap animate-overshoot-in"
+                className="absolute -top-6 sm:-top-8 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono whitespace-nowrap animate-overshoot-in"
                 style={{
                   backgroundColor: "var(--electric-cyan)",
                   color: "white",
@@ -253,7 +253,7 @@ export function Skills({ onNavigate, isActive = false }: SkillsProps) {
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
         {["hero", "about", "skills", "projects", "contact"].map((section) => (
           <button
             key={section}
