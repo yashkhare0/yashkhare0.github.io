@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import Image from "next/image"
 import { ArrowDown, ArrowRight } from "lucide-react"
-import { heroContent } from "@/config/content"
+import { useTranslation } from "@/lib/i18n"
 import { DotGrid } from "@/components/effects/dot-grid"
 
 interface HeroProps {
@@ -14,6 +14,7 @@ interface HeroProps {
 }
 
 export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const nameRef = useRef<HTMLHeadingElement>(null)
   const greetRef = useRef<HTMLParagraphElement>(null)
@@ -154,7 +155,7 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
               className="font-mono text-sm tracking-[0.2em] uppercase mb-6 opacity-0"
               style={{ color: "var(--accent-gold)" }}
             >
-              {heroContent.greeting}
+              {t.hero.greeting}
             </p>
 
             {/* Name — Instrument Serif, italic, single line */}
@@ -163,7 +164,7 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
               className="text-hero mb-5 opacity-0"
               style={{ color: "var(--text-primary)" }}
             >
-              {heroContent.name}
+              {t.hero.name}
             </h1>
 
             {/* Tagline */}
@@ -172,7 +173,7 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
               className="font-display text-xl sm:text-2xl md:text-3xl font-medium mb-6 opacity-0"
               style={{ color: "var(--text-secondary)" }}
             >
-              {heroContent.tagline}
+              {t.hero.tagline}
             </p>
 
             {/* Description */}
@@ -181,29 +182,29 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
               className="font-body text-base sm:text-lg max-w-xl mb-10 leading-relaxed opacity-0"
               style={{ color: "var(--text-tertiary)" }}
             >
-              {heroContent.description}
+              {t.hero.description}
             </p>
 
             {/* CTA Buttons */}
             <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-12">
               <button
-                onClick={() => onNavigate(heroContent.cta.primary.section)}
+                onClick={() => onNavigate("projects")}
                 className="btn-gold cursor-pointer"
               >
-                <span>{heroContent.cta.primary.label}</span>
+                <span>{t.hero.ctaPrimary}</span>
                 <ArrowRight size={14} />
               </button>
               <button
-                onClick={() => onNavigate(heroContent.cta.secondary.section)}
+                onClick={() => onNavigate("contact")}
                 className="btn-outline-gold cursor-pointer"
               >
-                <span>{heroContent.cta.secondary.label}</span>
+                <span>{t.hero.ctaSecondary}</span>
               </button>
             </div>
 
             {/* Stats */}
             <div ref={statsRef} className="flex items-center gap-10 sm:gap-14">
-              {heroContent.stats.map((stat, i) => (
+              {t.hero.stats.map((stat, i) => (
                 <div key={i} className="opacity-0">
                   <div
                     className="font-serif text-3xl sm:text-4xl mb-1"
@@ -270,7 +271,7 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
           className="font-mono text-[10px] uppercase tracking-[0.2em]"
           style={{ color: "var(--text-tertiary)" }}
         >
-          Explore
+          {t.nav.explore}
         </span>
         <ArrowDown size={14} style={{ color: "var(--accent-gold)" }} />
       </div>

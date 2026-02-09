@@ -5,6 +5,7 @@ import { gsap } from "gsap"
 import { ArrowUpRight, Github, Star } from "lucide-react"
 import { projects } from "@/config/content"
 import { MagneticCard } from "@/components/effects/magnetic-card"
+import { useTranslation } from "@/lib/i18n"
 
 interface ProjectsProps {
   onNavigate: (section: string) => void
@@ -13,6 +14,7 @@ interface ProjectsProps {
 }
 
 export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -20,8 +22,14 @@ export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps
   const gridRef = useRef<HTMLDivElement>(null)
   const animatedRef = useRef(false)
 
-  const featuredProject = projects.find((p) => p.featured)
-  const otherProjects = projects.filter((p) => !p.featured)
+  const mergedProjects = projects.map((p, i) => ({
+    ...p,
+    title: t.projects.items[i]?.title ?? p.title,
+    description: t.projects.items[i]?.description ?? p.description,
+  }))
+
+  const featuredProject = mergedProjects.find((p) => p.featured)
+  const otherProjects = mergedProjects.filter((p) => !p.featured)
 
   useEffect(() => {
     if (!isActive || (hasBeenVisited && animatedRef.current)) return
@@ -87,17 +95,17 @@ export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps
         <div ref={headingRef} className="mb-12 opacity-0">
           <div className="flex items-baseline gap-4">
             <h2 className="text-section-heading font-display">
-              Projects
+              {t.projects.headline}
             </h2>
             <span
               className="font-mono text-sm px-3 py-1 rounded-full"
               style={{ background: "var(--accent-gold-muted)", color: "var(--accent-gold)" }}
             >
-              {projects.length}
+              {mergedProjects.length}
             </span>
           </div>
           <p className="font-body text-lg mt-2" style={{ color: "var(--text-secondary)" }}>
-            Products I&apos;ve built and shipped
+            {t.projects.subheadline}
           </p>
         </div>
 
@@ -112,7 +120,7 @@ export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps
                 <div className="flex items-center gap-2.5 mb-4">
                   <Star size={14} style={{ color: "var(--accent-gold)" }} />
                   <span className="font-mono text-[11px] uppercase tracking-[0.15em]" style={{ color: "var(--accent-gold)" }}>
-                    Featured
+                    {t.projects.featured}
                   </span>
                 </div>
 
@@ -137,14 +145,14 @@ export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps
                     <a href={featuredProject.githubUrl} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-1.5 font-body text-sm cursor-pointer transition-colors"
                       style={{ color: "var(--accent-gold)" }}>
-                      <Github size={14} /> <span>Source</span>
+                      <Github size={14} /> <span>{t.projects.source}</span>
                     </a>
                   )}
                   {featuredProject.liveUrl && (
                     <a href={featuredProject.liveUrl} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-1.5 font-body text-sm cursor-pointer transition-colors"
                       style={{ color: "var(--accent-gold)" }}>
-                      <ArrowUpRight size={14} /> <span>Live</span>
+                      <ArrowUpRight size={14} /> <span>{t.projects.live}</span>
                     </a>
                   )}
                 </div>

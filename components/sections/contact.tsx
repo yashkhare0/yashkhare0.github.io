@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { Mail, Github, Linkedin, ArrowUpRight, ArrowUp } from "lucide-react"
-import { contactContent, socialLinks, siteConfig } from "@/config/content"
+import { socialLinks, siteConfig } from "@/config/content"
+import { useTranslation } from "@/lib/i18n"
 
 interface ContactProps {
   onNavigate: (section: string) => void
@@ -18,10 +19,12 @@ const iconMap: Record<string, React.ReactNode> = {
 }
 
 export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const linksRef = useRef<HTMLDivElement>(null)
+  const backToTopRef = useRef<HTMLDivElement>(null)
   const footerRef = useRef<HTMLDivElement>(null)
   const animatedRef = useRef(false)
 
@@ -61,13 +64,32 @@ export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) 
       )
     }
 
+    // Back to top
+    if (backToTopRef.current) {
+      tl.fromTo(
+        backToTopRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 },
+        0.8
+      )
+
+      gsap.to(backToTopRef.current, {
+        y: -6,
+        duration: 1.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: 2,
+      })
+    }
+
     // Footer
     if (footerRef.current) {
       tl.fromTo(
         footerRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.5 },
-        0.8
+        0.9
       )
     }
   }, [isActive, hasBeenVisited])
@@ -85,14 +107,14 @@ export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) 
           className="font-serif text-4xl sm:text-5xl md:text-6xl mb-3"
           style={{ color: "var(--text-primary)" }}
         >
-          {contactContent.headline}{" "}
-          <span className="text-gradient-gold italic">{contactContent.highlight}</span>
+          {t.contact.headline}{" "}
+          <span className="text-gradient-gold italic">{t.contact.highlight}</span>
         </h2>
         <p
           className="font-body text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto"
           style={{ color: "var(--text-secondary)" }}
         >
-          {contactContent.subtitle}
+          {t.contact.subtitle}
         </p>
 
         {/* CTA */}
@@ -101,7 +123,7 @@ export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) 
           className="btn-gold inline-flex mb-14"
         >
           <Mail size={15} />
-          <span>{contactContent.ctaLabel}</span>
+          <span>{t.contact.ctaLabel}</span>
         </a>
 
         {/* Social links — horizontal */}
@@ -136,24 +158,29 @@ export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) 
         </div>
       </div>
 
+      {/* Back to top — centered, matching Hero's Explore indicator */}
+      <div
+        ref={backToTopRef}
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer opacity-0"
+        onClick={() => onNavigate("hero")}
+      >
+        <ArrowUp size={14} style={{ color: "var(--accent-gold)" }} />
+        <span
+          className="font-mono text-[10px] uppercase tracking-[0.2em]"
+          style={{ color: "var(--text-tertiary)" }}
+        >
+          {t.common.backToTop}
+        </span>
+      </div>
+
       {/* Footer */}
       <div
         ref={footerRef}
-        className="absolute bottom-6 left-0 right-0 flex items-center justify-between px-6 sm:px-8 opacity-0"
+        className="absolute bottom-4 left-0 right-0 flex items-center justify-center px-6 sm:px-8 opacity-0"
       >
         <span className="font-mono text-xs" style={{ color: "var(--text-tertiary)" }}>
           &copy; {new Date().getFullYear()} {siteConfig.name}
         </span>
-        <button
-          onClick={() => onNavigate("hero")}
-          className="flex items-center gap-1.5 font-mono text-xs transition-colors cursor-pointer"
-          style={{ color: "var(--text-tertiary)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-gold)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-tertiary)")}
-        >
-          <ArrowUp size={12} />
-          <span>Back to top</span>
-        </button>
       </div>
     </section>
   )

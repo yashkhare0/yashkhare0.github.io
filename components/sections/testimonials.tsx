@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { testimonials } from "@/config/content"
+import { useTranslation } from "@/lib/i18n"
 
 interface TestimonialsProps {
   onNavigate: (section: string) => void
@@ -11,6 +11,7 @@ interface TestimonialsProps {
 }
 
 export function Testimonials({ onNavigate, isActive, hasBeenVisited }: TestimonialsProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -77,15 +78,15 @@ export function Testimonials({ onNavigate, isActive, hasBeenVisited }: Testimoni
             &ldquo;
           </span>
           <h2 className="text-section-heading font-display">
-            Kind Words
+            {t.testimonials.headline}
           </h2>
         </div>
 
         {/* Testimonials — large editorial quotes */}
         <div ref={cardsRef} className="space-y-8">
-          {testimonials.map((testimonial) => (
+          {t.testimonials.items.map((testimonial, i) => (
             <div
-              key={testimonial.id}
+              key={`${testimonial.name}-${i}`}
               className="card-editorial p-8 sm:p-10 opacity-0"
             >
               <div className="relative z-10">

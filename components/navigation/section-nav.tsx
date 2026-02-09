@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import { gsap } from "gsap"
+import { useTranslation } from "@/lib/i18n"
 
 interface SectionNavProps {
   sections: string[]
@@ -10,19 +11,20 @@ interface SectionNavProps {
   disabled?: boolean
 }
 
-const sectionLabels: Record<string, string> = {
-  hero: "Home",
-  about: "About",
-  experience: "Work",
-  skills: "Skills",
-  projects: "Projects",
-  blog: "Blog",
-  testimonials: "Praise",
-  contact: "Contact",
-}
-
 export function SectionNav({ sections, currentSection, onNavigate, disabled }: SectionNavProps) {
+  const t = useTranslation()
   const navRef = useRef<HTMLDivElement>(null)
+
+  const sectionLabels: Record<string, string> = {
+    hero: t.nav.home,
+    about: t.nav.about,
+    experience: t.nav.work,
+    skills: t.nav.skills,
+    projects: t.nav.projects,
+    blog: t.nav.blog,
+    testimonials: t.nav.praise,
+    contact: t.nav.contact,
+  }
 
   useEffect(() => {
     if (!navRef.current) return

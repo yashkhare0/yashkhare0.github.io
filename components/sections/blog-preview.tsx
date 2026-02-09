@@ -5,6 +5,7 @@ import { gsap } from "gsap"
 import { ArrowUpRight, Clock, Calendar } from "lucide-react"
 import { blogPosts } from "@/config/content"
 import { MagneticCard } from "@/components/effects/magnetic-card"
+import { useTranslation } from "@/lib/i18n"
 
 interface BlogPreviewProps {
   onNavigate: (section: string) => void
@@ -13,6 +14,7 @@ interface BlogPreviewProps {
 }
 
 export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPreviewProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -73,6 +75,12 @@ export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPrevie
     })
   }
 
+  const mergedPosts = blogPosts.map((post, i) => ({
+    ...post,
+    title: t.blog.posts[i]?.title ?? post.title,
+    excerpt: t.blog.posts[i]?.excerpt ?? post.excerpt,
+  }))
+
   return (
     <section
       ref={sectionRef}
@@ -85,16 +93,16 @@ export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPrevie
         {/* Heading — no divider, serif accent */}
         <div ref={headingRef} className="mb-14 opacity-0">
           <h2 className="text-section-heading font-display">
-            Writing
+            {t.blog.headline}
           </h2>
           <p className="font-body text-lg mt-2" style={{ color: "var(--text-secondary)" }}>
-            Thoughts on AI, engineering, and building products
+            {t.blog.subheadline}
           </p>
         </div>
 
         {/* Blog grid */}
         <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPosts.map((post) => (
+          {mergedPosts.map((post) => (
             <MagneticCard key={post.id} intensity={5} className="opacity-0">
               <article className="card-editorial p-6 h-full group cursor-pointer">
                 <div className="relative z-20">

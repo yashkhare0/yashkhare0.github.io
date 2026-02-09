@@ -2,16 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
-import { skills, skillCategories } from "@/config/content"
+import { skills } from "@/config/content"
 import { MagneticCard } from "@/components/effects/magnetic-card"
-
-const categoryLabelMap: Record<string, string> = {
-  ai_llm: "AI / LLM",
-  ml_data: "ML / Data",
-  backend: "Backend",
-  infra: "Infra",
-  frontend: "Frontend",
-}
+import { useTranslation } from "@/lib/i18n"
 
 interface SkillsProps {
   onNavigate: (section: string) => void
@@ -20,6 +13,7 @@ interface SkillsProps {
 }
 
 export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -27,6 +21,10 @@ export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
   const gridRef = useRef<HTMLDivElement>(null)
   const [activeCategory, setActiveCategory] = useState<string>("all")
   const animatedRef = useRef(false)
+
+  const categoryLabelMap: Record<string, string> = Object.fromEntries(
+    t.skills.categories.map((c) => [c.key, c.label])
+  )
 
   const filteredSkills =
     activeCategory === "all"
@@ -110,7 +108,7 @@ export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
         <div ref={headingRef} className="mb-10 opacity-0">
           <div className="flex items-baseline gap-4">
             <h2 className="text-section-heading font-display">
-              Tech Stack
+              {t.skills.headline}
             </h2>
             <span
               className="font-mono text-sm px-3 py-1 rounded-full"
@@ -123,13 +121,13 @@ export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
             </span>
           </div>
           <p className="font-body text-lg mt-2" style={{ color: "var(--text-secondary)" }}>
-            Technologies I work with daily
+            {t.skills.subheadline}
           </p>
         </div>
 
         {/* Category tabs */}
         <div ref={tabsRef} className="flex flex-wrap gap-2 mb-10">
-          {skillCategories.map((cat) => (
+          {t.skills.categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
@@ -172,8 +170,8 @@ export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
         {/* Filtered count */}
         <div className="mt-8">
           <span className="font-mono text-sm" style={{ color: "var(--text-tertiary)" }}>
-            {filteredSkills.length} technologies
-            {activeCategory !== "all" && ` in ${skillCategories.find((c) => c.key === activeCategory)?.label}`}
+            {filteredSkills.length} {t.skills.technologiesCount}
+            {activeCategory !== "all" && ` ${t.skills.inCategory} ${t.skills.categories.find((c) => c.key === activeCategory)?.label}`}
           </span>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { Cpu, Code, Users, Github, Flame, Calendar, TrendingUp } from "lucide-react"
-import { aboutContent, education, spokenLanguages, siteConfig } from "@/config/content"
+import { useTranslation } from "@/lib/i18n"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 
 interface AboutProps {
@@ -48,6 +48,7 @@ interface StreakData {
 }
 
 export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
+  const t = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -226,10 +227,10 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
         {/* Heading — editorial style, no gold divider */}
         <div ref={headingRef} className="mb-14 relative opacity-0">
           <h2 className="text-section-heading font-display">
-            {aboutContent.headline}
+            {t.about.headline}
           </h2>
           <p className="font-body text-lg mt-2" style={{ color: "var(--text-secondary)" }}>
-            {aboutContent.subheadline}
+            {t.about.subheadline}
           </p>
         </div>
 
@@ -237,7 +238,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 mb-16">
           {/* Text column */}
           <div ref={textRef}>
-            {aboutContent.paragraphs.map((paragraph, i) => (
+            {t.about.paragraphs.map((paragraph, i) => (
               <p
                 key={i}
                 className="font-body text-base leading-[1.8] mb-5 opacity-0"
@@ -250,11 +251,11 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
             {/* Languages */}
             <div className="mt-8 opacity-0">
               <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "var(--text-tertiary)" }}>
-                Languages
+                {t.about.languagesHeading}
               </h3>
               <div className="flex flex-wrap gap-3">
-                {spokenLanguages.map((lang) => (
-                  <div key={lang.language} className="skill-tag">
+                {t.about.languages.map((lang, i) => (
+                  <div key={i} className="skill-tag">
                     <span className="font-medium" style={{ color: "var(--text-primary)" }}>{lang.language}</span>
                     <span style={{ color: "var(--text-tertiary)" }}>/ {lang.level}</span>
                   </div>
@@ -265,7 +266,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
 
           {/* Highlight Cards — magnetic tilt */}
           <div ref={cardsRef} className="space-y-4">
-            {aboutContent.highlights.map((highlight, i) => (
+            {t.about.highlights.map((highlight, i) => (
               <MagneticCard key={i} className="opacity-0">
                 <div className="card-editorial p-6">
                   <div className="relative z-20 flex items-start gap-4">
@@ -296,12 +297,12 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
         {/* Education */}
         <div ref={educationRef} className="opacity-0 mb-16">
           <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-5" style={{ color: "var(--text-tertiary)" }}>
-            Education
+            {t.about.educationHeading}
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {education.map((edu) => (
+            {t.about.education.map((edu, i) => (
               <div
-                key={edu.id}
+                key={i}
                 className="p-5 rounded-lg border"
                 style={{
                   background: "var(--bg-elevated)",
@@ -328,7 +329,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
         {/* GitHub Activity */}
         <div ref={activityRef} className="opacity-0">
           <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "var(--text-tertiary)" }}>
-            GitHub Activity
+            {t.about.githubHeading}
           </h3>
 
           {ghLoading ? (
@@ -355,7 +356,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
               style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
             >
               <p className="font-body text-sm mb-3" style={{ color: "var(--text-tertiary)" }}>
-                GitHub activity unavailable right now
+                {t.about.githubUnavailable}
               </p>
               <a
                 href="https://github.com/yashkhare0"
@@ -365,7 +366,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
                 style={{ color: "var(--accent-gold)" }}
               >
                 <Github size={14} />
-                <span>View profile on GitHub</span>
+                <span>{t.about.viewOnGithub}</span>
               </a>
             </div>
           ) : (
@@ -383,7 +384,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
                     <div className="flex items-center gap-1.5">
                       <Calendar size={11} style={{ color: "var(--text-tertiary)" }} />
                       <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        Total Contributions
+                        {t.about.totalContributions}
                       </span>
                     </div>
                   </div>
@@ -394,12 +395,12 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
                       style={{ color: "var(--accent-gold)" }}
                     >
                       {streakData.currentStreak.length}
-                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>days</span>
+                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Flame size={11} style={{ color: "var(--text-tertiary)" }} />
                       <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        Current Streak
+                        {t.about.currentStreak}
                       </span>
                     </div>
                   </div>
@@ -410,12 +411,12 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
                       style={{ color: "var(--accent-gold)" }}
                     >
                       {streakData.longestStreak.length}
-                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>days</span>
+                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <TrendingUp size={11} style={{ color: "var(--text-tertiary)" }} />
                       <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        Longest Streak
+                        {t.about.longestStreak}
                       </span>
                     </div>
                   </div>
@@ -457,7 +458,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
 
                     {/* Legend */}
                     <div className="flex items-center justify-end gap-2 mt-3">
-                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>Less</span>
+                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.less}</span>
                       {levelColors.map((color, i) => (
                         <div
                           key={i}
@@ -465,7 +466,7 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
                           style={{ width: "10px", height: "10px", background: color }}
                         />
                       ))}
-                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>More</span>
+                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.more}</span>
                     </div>
                   </div>
                 </div>

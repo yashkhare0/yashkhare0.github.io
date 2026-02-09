@@ -260,9 +260,6 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
         >
           <div>
             <h3 className="font-display text-sm font-semibold">Chat with Yash</h3>
-            <p className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>
-              AI-powered &middot; {MODEL.split("/")[1]?.split(":")[0]}
-            </p>
           </div>
           <div
             className="w-2 h-2 rounded-full"
