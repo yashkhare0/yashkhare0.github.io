@@ -3,6 +3,12 @@
 import { useLocale, locales, type Locale } from "@/lib/i18n"
 import { useRouter } from "next/navigation"
 
+const localeFlags: Record<Locale, { flag: string; label: string }> = {
+  en: { flag: "🇬🇧", label: "English" },
+  de: { flag: "🇩🇪", label: "Deutsch" },
+  fr: { flag: "🇫🇷", label: "Français" },
+}
+
 export function LanguageSwitcher() {
   const currentLocale = useLocale()
   const router = useRouter()
@@ -13,37 +19,34 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1">
-      {locales.map((locale, i) => (
-        <span key={locale} className="flex items-center">
-          {i > 0 && (
-            <span
-              className="mx-1 font-mono text-[10px]"
-              style={{ color: "var(--border-default)" }}
-            >
-              /
-            </span>
-          )}
-          <button
-            onClick={() => handleSwitch(locale)}
-            className="font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-200 cursor-pointer"
-            style={{
-              color: locale === currentLocale ? "var(--accent-gold)" : "var(--text-tertiary)",
-            }}
-            onMouseEnter={(e) => {
-              if (locale !== currentLocale) {
-                e.currentTarget.style.color = "var(--text-secondary)"
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (locale !== currentLocale) {
-                e.currentTarget.style.color = "var(--text-tertiary)"
-              }
-            }}
-          >
-            {locale}
-          </button>
-        </span>
+    <div className="fixed top-5 sm:top-6 right-27 sm:right-33 z-50 flex items-center gap-1">
+      {locales.map((locale) => (
+        <button
+          key={locale}
+          onClick={() => handleSwitch(locale)}
+          className="w-8 h-8 flex items-center justify-center rounded-full border cursor-pointer transition-all duration-300 hover:scale-110 text-sm leading-none"
+          style={{
+            background: locale === currentLocale ? "var(--bg-elevated)" : "transparent",
+            borderColor:
+              locale === currentLocale ? "var(--accent-gold)" : "var(--border-default)",
+            opacity: locale === currentLocale ? 1 : 0.5,
+          }}
+          aria-label={`Switch to ${localeFlags[locale].label}`}
+          onMouseEnter={(e) => {
+            if (locale !== currentLocale) {
+              e.currentTarget.style.opacity = "1"
+              e.currentTarget.style.borderColor = "var(--text-secondary)"
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (locale !== currentLocale) {
+              e.currentTarget.style.opacity = "0.5"
+              e.currentTarget.style.borderColor = "var(--border-default)"
+            }
+          }}
+        >
+          <span className="text-[15px]">{localeFlags[locale].flag}</span>
+        </button>
       ))}
     </div>
   )

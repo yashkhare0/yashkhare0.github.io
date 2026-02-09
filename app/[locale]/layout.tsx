@@ -1,6 +1,7 @@
 import { TranslationProvider } from "@/lib/i18n"
 import { messages } from "@/messages"
 import type { Translations } from "@/messages"
+import { LanguageSwitcher } from "@/components/ui/language-switcher"
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "de" }, { locale: "fr" }]
@@ -18,6 +19,7 @@ export default async function LocaleLayout({
 
   return (
     <TranslationProvider locale={locale} messages={t}>
+      <LanguageSwitcher />
       {children}
     </TranslationProvider>
   )

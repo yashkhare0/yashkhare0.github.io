@@ -170,7 +170,7 @@ export function Hero({ onNavigate, isActive, hasBeenVisited }: HeroProps) {
             {/* Tagline */}
             <p
               ref={taglineRef}
-              className="font-display text-xl sm:text-2xl md:text-3xl font-medium mb-6 opacity-0"
+              className="font-display text-xl sm:text-2xl md:text-3xl font-medium mb-6 leading-normal opacity-0"
               style={{ color: "var(--text-secondary)" }}
             >
               {t.hero.tagline}

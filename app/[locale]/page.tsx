@@ -11,7 +11,6 @@ import { BlogPreview } from "@/components/sections/blog-preview"
 import { Testimonials } from "@/components/sections/testimonials"
 import { Contact } from "@/components/sections/contact"
 import { SectionNav } from "@/components/navigation/section-nav"
-import { LanguageSwitcher } from "@/components/ui/language-switcher"
 
 type Section = "hero" | "about" | "experience" | "skills" | "projects" | "blog" | "testimonials" | "contact"
 
@@ -257,7 +256,7 @@ export default function Home() {
         style={{ background: "var(--bg-primary)" }}
       />
 
-      {/* Section indicator + Language switcher */}
+      {/* Section indicator */}
       <div className="fixed top-5 sm:top-6 left-5 sm:left-6 z-50 flex items-center gap-4">
         <span
           className="font-mono text-[11px] uppercase tracking-[0.15em]"
@@ -265,7 +264,6 @@ export default function Home() {
         >
           {String(sectionList.indexOf(currentSection) + 1).padStart(2, "0")} / {String(sectionList.length).padStart(2, "0")}
         </span>
-        <LanguageSwitcher />
       </div>
 
       {/* Section navigation */}

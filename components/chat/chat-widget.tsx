@@ -1,6 +1,5 @@
 "use client"
 
-/// <reference types="react" />
 import React, { useState, useRef, useEffect, useCallback } from "react"
 import { gsap } from "gsap"
 import { Send, AlertCircle, Mail } from "lucide-react"
@@ -13,6 +12,8 @@ interface Message {
 interface ChatWidgetProps {
   isOpen: boolean
 }
+
+const IS_DEV = process.env.NODE_ENV === "development"
 
 const SYSTEM_PROMPT = `You are an AI chatbot on Yash Khare's portfolio website. You speak as Yash in first person — casually, directly, and with personality. But you are NOT actually Yash. You are an AI he built for fun on his portfolio.
 
@@ -109,7 +110,6 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
         { opacity: 0, y: 20, scale: 0.95, pointerEvents: "none" },
         { opacity: 1, y: 0, scale: 1, pointerEvents: "auto", duration: 0.35, ease: "power3.out" }
       )
-      // Focus input after animation
       setTimeout(() => inputRef.current?.focus(), 350)
     } else {
       gsap.to(panelRef.current, {
@@ -134,6 +134,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
 
     const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY
     if (!apiKey) {
+      if (IS_DEV) console.error("[Chat] NEXT_PUBLIC_OPENROUTER_API_KEY is not set in .env")
       setError("no_key")
       return
     }
@@ -144,7 +145,25 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
     setInput("")
     setIsLoading(true)
     setError(null)
-    setUserMessageCount((c: number) => c + 1)
+    setUserMessageCount((c) => c + 1)
+
+    const requestBody = {
+      model: MODEL,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...updatedMessages,
+      ],
+      stream: true,
+      max_tokens: 500,
+    }
+
+    if (IS_DEV) {
+      console.log("[Chat] Sending request to OpenRouter", {
+        model: MODEL,
+        messageCount: updatedMessages.length,
+        apiKeyPrefix: apiKey.slice(0, 12) + "...",
+      })
+    }
 
     try {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -155,25 +174,32 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
           "HTTP-Referer": "https://yashkhare0.github.io",
           "X-Title": "Yash Khare Portfolio",
         },
-        body: JSON.stringify({
-          model: MODEL,
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            ...updatedMessages,
-          ],
-          stream: true,
-          max_tokens: 500,
-        }),
+        body: JSON.stringify(requestBody),
       })
 
-      if (response.status === 429) {
-        setError("rate_limit")
-        setIsLoading(false)
-        return
-      }
-
       if (!response.ok) {
-        setError("api_error")
+        let errorBody = ""
+        try {
+          errorBody = await response.text()
+        } catch {
+          // ignore
+        }
+
+        if (IS_DEV) {
+          console.error("[Chat] OpenRouter API error", {
+            status: response.status,
+            statusText: response.statusText,
+            body: errorBody,
+            model: MODEL,
+            headers: Object.fromEntries(response.headers.entries()),
+          })
+        }
+
+        if (response.status === 429) {
+          setError("rate_limit")
+        } else {
+          setError("api_error")
+        }
         setIsLoading(false)
         return
       }
@@ -181,6 +207,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
       // Streaming response
       const reader = response.body?.getReader()
       if (!reader) {
+        if (IS_DEV) console.error("[Chat] Response body is null — cannot stream")
         setError("api_error")
         setIsLoading(false)
         return
@@ -190,7 +217,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
       let assistantContent = ""
 
       // Add empty assistant message to start streaming into
-      setMessages((prev: Message[]) => [...prev, { role: "assistant", content: "" }])
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }])
 
       while (true) {
         const { done, value } = await reader.read()
@@ -206,23 +233,41 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
 
             try {
               const parsed = JSON.parse(data)
+
+              // Check for error in stream
+              if (parsed.error) {
+                if (IS_DEV) console.error("[Chat] Stream error from OpenRouter", parsed.error)
+                setError("api_error")
+                break
+              }
+
               const delta = parsed.choices?.[0]?.delta?.content
               if (delta) {
                 assistantContent += delta
                 const currentContent = assistantContent
-                setMessages((prev: Message[]) => {
+                setMessages((prev) => {
                   const updated = [...prev]
                   updated[updated.length - 1] = { role: "assistant", content: currentContent }
                   return updated
                 })
               }
             } catch {
-              // Skip malformed JSON chunks
+              if (IS_DEV && data.length > 0) {
+                console.warn("[Chat] Skipping malformed SSE chunk:", data.slice(0, 200))
+              }
             }
           }
         }
       }
-    } catch {
+
+      if (IS_DEV) {
+        console.log("[Chat] Response complete", {
+          totalLength: assistantContent.length,
+          preview: assistantContent.slice(0, 100),
+        })
+      }
+    } catch (err) {
+      if (IS_DEV) console.error("[Chat] Network/fetch error", err)
       setError("network")
     } finally {
       setIsLoading(false)
@@ -237,7 +282,6 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
   }
 
   const limitReached = userMessageCount >= MAX_MESSAGES
-
   return (
     <div
       ref={panelRef}
@@ -260,6 +304,11 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
         >
           <div>
             <h3 className="font-display text-sm font-semibold">Chat with Yash</h3>
+            {IS_DEV && (
+              <p className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>
+                DEV &middot; {MODEL}
+              </p>
+            )}
           </div>
           <div
             className="w-2 h-2 rounded-full"
@@ -279,13 +328,11 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
           This is an AI chatbot I built for fun — not actually me, not a representative.
           If it says something weird,{" "}
           <a
-            href="https://www.linkedin.com/in/yash-khare/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:yash.khare.work@gmail.com"
             className="underline font-medium"
             style={{ color: "var(--accent-gold)" }}
           >
-            connect on LinkedIn
+            shoot me a message
           </a>.
         </div>
 
@@ -302,7 +349,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
             </div>
           )}
 
-          {messages.map((msg: Message, i: number) => (
+          {messages.map((msg, i) => (
             <div
               key={i}
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
@@ -336,7 +383,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
               <AlertCircle size={14} className="shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
               <div>
                 <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
-                  The chatbot has reached its daily limit.
+                  I&apos;m getting too many requests right now. Try again in a minute!
                 </p>
                 <a
                   href="mailto:yash.khare.work@gmail.com"
@@ -359,13 +406,6 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
                 <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
                   You&apos;ve hit the {MAX_MESSAGES}-message limit for this session.
                 </p>
-                <a
-                  href="mailto:yash.khare.work@gmail.com"
-                  className="inline-flex items-center gap-1 font-body text-xs mt-1"
-                  style={{ color: "var(--accent-gold)" }}
-                >
-                  <Mail size={11} /> Continue via email
-                </a>
               </div>
             </div>
           )}
@@ -377,10 +417,9 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
             >
               <AlertCircle size={14} className="shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
               <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
-                Something went wrong. Try again or{" "}
-                <a href="mailto:yash.khare.work@gmail.com" style={{ color: "var(--accent-gold)" }}>
-                  email me directly
-                </a>.
+                {error === "no_key" && (IS_DEV ? "NEXT_PUBLIC_OPENROUTER_API_KEY not set. Check .env" : "Chat is temporarily unavailable.")}
+                {error === "api_error" && (IS_DEV ? "API error — check console for full response body." : "Something went wrong. Try again in a moment.")}
+                {error === "network" && (IS_DEV ? "Network error — check console for details." : "Network issue — check your connection and try again.")}
               </p>
             </div>
           )}
@@ -397,7 +436,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
             ref={inputRef}
             type="text"
             value={input}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={limitReached ? "Message limit reached" : "Ask me anything..."}
             disabled={isLoading || limitReached}
