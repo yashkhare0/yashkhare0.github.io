@@ -28,7 +28,7 @@ export const heroContent = {
   },
   stats: [
     { value: "6+", label: "Years Experience" },
-    { value: "8", label: "Products Shipped" },
+    { value: "11", label: "Products Shipped" },
     { value: "175K+", label: "Revenue Generated" },
   ],
 }
@@ -274,6 +274,25 @@ export const projects: Project[] = [
     description:
       "Company's most important internal AI platform. Designed the end-to-end workflow for live transcript ingestion and custom analysis, running as an internal API product.",
     tags: ["FastAPI", "PostgreSQL", "PGVector", "Azure", "RabbitMQ"],
+    liveUrl: "https://sonar.apx.team",
+    year: "2025",
+  },
+  {
+    id: "cosma",
+    title: "Cosma",
+    description:
+      "AI-powered business assistant that helps teams manage workflows, automate repetitive tasks, and surface insights from company data. Built as a full-stack product.",
+    tags: ["Next.js", "AI", "SaaS", "Automation"],
+    liveUrl: "https://cosma.app",
+    year: "2025",
+  },
+  {
+    id: "radar",
+    title: "Radar",
+    description:
+      "Internal intelligence tool for monitoring and analyzing market signals, competitive landscape, and industry trends. Delivers actionable insights to product and strategy teams.",
+    tags: ["Next.js", "FastAPI", "Analytics", "Internal Tool"],
+    liveUrl: "https://radar.apx.team",
     year: "2025",
   },
   {
@@ -282,6 +301,17 @@ export const projects: Project[] = [
     description:
       "COSMO's highest adopted internal platform of 2025, reaching 25% usage without any communications or marketing. Built end-to-end as an internal tool.",
     tags: ["Next.js", "FastAPI", "Azure", "Internal Tool"],
+    liveUrl: "https://translate.apx.team",
+    year: "2025",
+  },
+  {
+    id: "voko",
+    title: "Voko",
+    description:
+      "Interactive CLI tool for managing i18n in JavaScript and TypeScript projects. Supports Google Translate, DeepL, LibreTranslate, and Yandex out of the box. Published on npm as @yashkhare0/voko-cli.",
+    tags: ["CLI", "i18n", "TypeScript", "Open Source", "npm"],
+    liveUrl: "https://yashkhare0.github.io/voko/",
+    githubUrl: "https://github.com/yashkhare0/voko",
     year: "2025",
   },
   {

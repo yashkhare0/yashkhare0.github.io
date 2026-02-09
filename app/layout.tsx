@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
-import { Syne, Inter, JetBrains_Mono } from "next/font/google"
+import { Syne, Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { ChatProvider } from "@/components/chat/chat-provider"
 import "@/styles/globals.css"
 
 const syne = Syne({
@@ -20,6 +22,14 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: "swap",
+})
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-hero",
   display: "swap",
 })
 
@@ -73,7 +83,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}
     >
       <head>
         <link
@@ -86,12 +96,14 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem={false}
+          enableSystem={true}
           disableTransitionOnChange={false}
         >
           {/* Noise texture overlay */}
           <div className="noise-overlay" aria-hidden="true" />
+          <ThemeToggle />
           {children}
+          <ChatProvider />
         </ThemeProvider>
       </body>
     </html>

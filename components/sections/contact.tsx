@@ -8,115 +8,127 @@ import { contactContent, socialLinks, siteConfig } from "@/config/content"
 interface ContactProps {
   onNavigate: (section: string) => void
   isActive: boolean
+  hasBeenVisited?: boolean
 }
 
 const iconMap: Record<string, React.ReactNode> = {
-  mail: <Mail size={20} />,
-  github: <Github size={20} />,
-  linkedin: <Linkedin size={20} />,
+  mail: <Mail size={18} />,
+  github: <Github size={18} />,
+  linkedin: <Linkedin size={18} />,
 }
 
-export function Contact({ onNavigate, isActive }: ContactProps) {
+export function Contact({ onNavigate, isActive, hasBeenVisited }: ContactProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
+  const numberRef = useRef<HTMLSpanElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const linksRef = useRef<HTMLDivElement>(null)
   const footerRef = useRef<HTMLDivElement>(null)
+  const animatedRef = useRef(false)
 
   useEffect(() => {
-    if (!isActive) return
+    if (!isActive || (hasBeenVisited && animatedRef.current)) return
+    animatedRef.current = true
 
-    const tl = gsap.timeline({ delay: 0.2 })
+    const tl = gsap.timeline({ delay: 0.15 })
 
-    if (headingRef.current) {
+    // Number
+    if (numberRef.current) {
       tl.fromTo(
-        headingRef.current.children,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
+        numberRef.current,
+        { clipPath: "inset(100% 0 0 0)" },
+        { clipPath: "inset(0% 0 0 0)", duration: 0.8, ease: "power3.out" },
         0
       )
     }
 
+    // Content — circular clip-path reveal
+    if (contentRef.current) {
+      tl.fromTo(
+        contentRef.current,
+        { opacity: 0, clipPath: "circle(0% at 50% 50%)" },
+        { opacity: 1, clipPath: "circle(80% at 50% 50%)", duration: 1, ease: "power3.out" },
+        0.1
+      )
+    }
+
+    // Links — stagger up
     if (linksRef.current) {
       tl.fromTo(
         linksRef.current.children,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power3.out" },
         0.5
       )
     }
 
+    // Footer
     if (footerRef.current) {
       tl.fromTo(
         footerRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.6, ease: "power2.out" },
+        { opacity: 1, duration: 0.5 },
         0.8
       )
     }
-  }, [isActive])
+  }, [isActive, hasBeenVisited])
 
   return (
     <section
       ref={sectionRef}
       className="section-viewport items-center justify-center relative"
     >
-      <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 text-center">
-        {/* Heading */}
-        <div ref={headingRef}>
-          <div className="divider-gold mx-auto mb-6 opacity-0" />
-          <h2 className="text-section-heading font-display mb-2 opacity-0">
-            {contactContent.headline}{" "}
-            <span className="text-gradient-gold">{contactContent.highlight}</span>
-          </h2>
-          <p
-            className="font-body text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto opacity-0"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            {contactContent.subtitle}
-          </p>
+      <span ref={numberRef} className="section-number" style={{ right: "auto", left: 0 }}>07</span>
 
-          {/* CTA */}
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="btn-gold inline-flex mb-12 opacity-0"
-          >
-            <Mail size={16} />
-            <span>{contactContent.ctaLabel}</span>
-          </a>
-        </div>
+      <div ref={contentRef} className="relative z-10 max-w-2xl mx-auto px-6 sm:px-8 text-center opacity-0">
+        {/* Heading — large serif */}
+        <h2
+          className="font-serif text-4xl sm:text-5xl md:text-6xl mb-3"
+          style={{ color: "var(--text-primary)" }}
+        >
+          {contactContent.headline}{" "}
+          <span className="text-gradient-gold italic">{contactContent.highlight}</span>
+        </h2>
+        <p
+          className="font-body text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          {contactContent.subtitle}
+        </p>
 
-        {/* Social links */}
-        <div ref={linksRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* CTA */}
+        <a
+          href={`mailto:${siteConfig.email}`}
+          className="btn-gold inline-flex mb-14"
+        >
+          <Mail size={15} />
+          <span>{contactContent.ctaLabel}</span>
+        </a>
+
+        {/* Social links — horizontal */}
+        <div ref={linksRef} className="flex flex-col sm:flex-row items-center justify-center gap-3">
           {socialLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target={link.href.startsWith("mailto") ? undefined : "_blank"}
               rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-              className="group flex items-center gap-3 px-5 py-3 rounded-lg border transition-all duration-300 cursor-pointer opacity-0"
+              className="group flex items-center gap-2.5 px-4 py-2.5 rounded-lg border transition-all duration-300 cursor-pointer opacity-0"
               style={{
                 background: "var(--bg-elevated)",
                 borderColor: "var(--border-subtle)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--border-gold)"
-                e.currentTarget.style.boxShadow = "var(--shadow-gold)"
+                e.currentTarget.style.borderColor = "var(--border-default)"
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "var(--border-subtle)"
-                e.currentTarget.style.boxShadow = "none"
               }}
             >
               <span style={{ color: "var(--accent-gold)" }}>{iconMap[link.icon]}</span>
-              <div className="text-left">
-                <span className="font-body text-sm font-medium block">{link.name}</span>
-                <span className="font-mono text-xs block" style={{ color: "var(--text-tertiary)" }}>
-                  {link.label}
-                </span>
-              </div>
+              <span className="font-body text-sm font-medium">{link.name}</span>
               <ArrowUpRight
-                size={14}
-                className="ml-auto transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                size={13}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 style={{ color: "var(--text-tertiary)" }}
               />
             </a>

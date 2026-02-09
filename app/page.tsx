@@ -14,43 +14,86 @@ import { SectionNav } from "@/components/navigation/section-nav"
 
 type Section = "hero" | "about" | "experience" | "skills" | "projects" | "blog" | "testimonials" | "contact"
 
-const sections: Section[] = ["hero", "about", "experience", "skills", "projects", "blog", "testimonials", "contact"]
+const sectionList: Section[] = ["hero", "about", "experience", "skills", "projects", "blog", "testimonials", "contact"]
+
+function SectionRenderer({
+  section,
+  onNavigate,
+  isActive,
+  hasBeenVisited,
+}: {
+  section: Section
+  onNavigate: (s: string) => void
+  isActive: boolean
+  hasBeenVisited: boolean
+}) {
+  const props = { onNavigate, isActive, hasBeenVisited }
+  switch (section) {
+    case "hero": return <Hero {...props} />
+    case "about": return <About {...props} />
+    case "experience": return <Experience {...props} />
+    case "skills": return <Skills {...props} />
+    case "projects": return <Projects {...props} />
+    case "blog": return <BlogPreview {...props} />
+    case "testimonials": return <Testimonials {...props} />
+    case "contact": return <Contact {...props} />
+  }
+}
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState<Section>("hero")
+  const [displayedSection, setDisplayedSection] = useState<Section>("hero")
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [visitedSections, setVisitedSections] = useState<Set<Section>>(new Set(["hero"]))
   const containerRef = useRef<HTMLDivElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
+  const wipeRef = useRef<HTMLDivElement>(null)
 
-  // Navigate to a section with smooth morphing transition
+  // Navigate to a section with diagonal clip-path wipe
   const navigateTo = useCallback(
     async (section: Section) => {
       if (section === currentSection || isTransitioning) return
 
       setIsTransitioning(true)
 
-      // Smooth fade transition via overlay
-      if (overlayRef.current) {
-        await gsap.to(overlayRef.current, {
+      const currentIndex = sectionList.indexOf(currentSection)
+      const targetIndex = sectionList.indexOf(section)
+      const goingForward = targetIndex > currentIndex
+
+      // Phase 1: Wipe covers the screen — old section still visible underneath
+      if (wipeRef.current) {
+        gsap.set(wipeRef.current, {
+          clipPath: goingForward
+            ? "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)"
+            : "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
           opacity: 1,
+        })
+
+        await gsap.to(wipeRef.current, {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           duration: 0.4,
-          ease: "power2.inOut",
+          ease: "power3.inOut",
         })
       }
 
-      // Change section at peak of transition
+      // Phase 2: Screen is fully covered — safe to swap sections
+      setVisitedSections((prev) => new Set(prev).add(section))
       setCurrentSection(section)
+      setDisplayedSection(section)
 
-      // Small delay for React to render new section
-      await new Promise((resolve) => setTimeout(resolve, 50))
+      // Let React render the new section behind the wipe
+      await new Promise((resolve) => setTimeout(resolve, 80))
 
-      // Reveal new section
-      if (overlayRef.current) {
-        await gsap.to(overlayRef.current, {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.out",
+      // Phase 3: Wipe reveals the new section
+      if (wipeRef.current) {
+        await gsap.to(wipeRef.current, {
+          clipPath: goingForward
+            ? "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)"
+            : "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+          duration: 0.4,
+          ease: "power3.inOut",
         })
+
+        gsap.set(wipeRef.current, { opacity: 0 })
       }
 
       setIsTransitioning(false)
@@ -63,19 +106,19 @@ export default function Home() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isTransitioning) return
 
-      const currentIndex = sections.indexOf(currentSection)
+      const currentIndex = sectionList.indexOf(currentSection)
 
       switch (e.key) {
         case "ArrowRight":
         case "ArrowDown":
-          if (currentIndex < sections.length - 1) {
-            navigateTo(sections[currentIndex + 1])
+          if (currentIndex < sectionList.length - 1) {
+            navigateTo(sectionList[currentIndex + 1])
           }
           break
         case "ArrowLeft":
         case "ArrowUp":
           if (currentIndex > 0) {
-            navigateTo(sections[currentIndex - 1])
+            navigateTo(sectionList[currentIndex - 1])
           }
           break
         case "Home":
@@ -88,8 +131,8 @@ export default function Home() {
 
       // Number keys 1-8
       const num = parseInt(e.key)
-      if (num >= 1 && num <= sections.length) {
-        navigateTo(sections[num - 1])
+      if (num >= 1 && num <= sectionList.length) {
+        navigateTo(sectionList[num - 1])
       }
     }
 
@@ -119,15 +162,15 @@ export default function Home() {
         }
       }
 
-      const currentIndex = sections.indexOf(currentSection)
+      const currentIndex = sectionList.indexOf(currentSection)
 
-      if (e.deltaY > 50 && currentIndex < sections.length - 1) {
+      if (e.deltaY > 50 && currentIndex < sectionList.length - 1) {
         canNavigate = false
-        navigateTo(sections[currentIndex + 1])
+        navigateTo(sectionList[currentIndex + 1])
         wheelTimeout = setTimeout(() => { canNavigate = true }, 1200)
       } else if (e.deltaY < -50 && currentIndex > 0) {
         canNavigate = false
-        navigateTo(sections[currentIndex - 1])
+        navigateTo(sectionList[currentIndex - 1])
         wheelTimeout = setTimeout(() => { canNavigate = true }, 1200)
       }
     }
@@ -155,7 +198,7 @@ export default function Home() {
 
       const touchEndY = e.changedTouches[0].clientY
       const diff = touchStartY - touchEndY
-      const currentIndex = sections.indexOf(currentSection)
+      const currentIndex = sectionList.indexOf(currentSection)
 
       const sectionEl = document.querySelector(".section-viewport") as HTMLElement
       if (sectionEl) {
@@ -173,10 +216,10 @@ export default function Home() {
       }
 
       if (Math.abs(diff) > 50) {
-        if (diff > 0 && currentIndex < sections.length - 1) {
-          navigateTo(sections[currentIndex + 1])
+        if (diff > 0 && currentIndex < sectionList.length - 1) {
+          navigateTo(sectionList[currentIndex + 1])
         } else if (diff < 0 && currentIndex > 0) {
-          navigateTo(sections[currentIndex - 1])
+          navigateTo(sectionList[currentIndex - 1])
         }
       }
     }
@@ -190,65 +233,42 @@ export default function Home() {
     }
   }, [currentSection, isTransitioning, navigateTo])
 
-  // Wrapper for child components
   const handleNavigate = (section: string) => {
-    if (sections.includes(section as Section)) {
+    if (sectionList.includes(section as Section)) {
       navigateTo(section as Section)
     }
   }
 
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
-      {/* Current Section */}
-      {currentSection === "hero" && (
-        <Hero onNavigate={handleNavigate} isActive={currentSection === "hero"} />
-      )}
-      {currentSection === "about" && (
-        <About onNavigate={handleNavigate} isActive={currentSection === "about"} />
-      )}
-      {currentSection === "experience" && (
-        <Experience onNavigate={handleNavigate} isActive={currentSection === "experience"} />
-      )}
-      {currentSection === "skills" && (
-        <Skills onNavigate={handleNavigate} isActive={currentSection === "skills"} />
-      )}
-      {currentSection === "projects" && (
-        <Projects onNavigate={handleNavigate} isActive={currentSection === "projects"} />
-      )}
-      {currentSection === "blog" && (
-        <BlogPreview onNavigate={handleNavigate} isActive={currentSection === "blog"} />
-      )}
-      {currentSection === "testimonials" && (
-        <Testimonials onNavigate={handleNavigate} isActive={currentSection === "testimonials"} />
-      )}
-      {currentSection === "contact" && (
-        <Contact onNavigate={handleNavigate} isActive={currentSection === "contact"} />
-      )}
+      {/* Displayed section — stays mounted until wipe fully covers */}
+      <SectionRenderer
+        section={displayedSection}
+        onNavigate={handleNavigate}
+        isActive={displayedSection === currentSection}
+        hasBeenVisited={visitedSections.has(displayedSection) && displayedSection !== currentSection}
+      />
 
-      {/* Transition overlay */}
+      {/* Diagonal wipe transition overlay */}
       <div
-        ref={overlayRef}
+        ref={wipeRef}
         className="fixed inset-0 z-40 pointer-events-none opacity-0"
         style={{ background: "var(--bg-primary)" }}
       />
 
       {/* Section indicator */}
       <div className="fixed top-5 sm:top-6 left-5 sm:left-6 z-50 flex items-center gap-2.5">
-        <div
-          className="w-2 h-2 rounded-full animate-pulse-gold"
-          style={{ backgroundColor: "var(--accent-gold)" }}
-        />
         <span
           className="font-mono text-[11px] uppercase tracking-[0.15em]"
           style={{ color: "var(--text-tertiary)" }}
         >
-          {currentSection}
+          {String(sectionList.indexOf(currentSection) + 1).padStart(2, "0")} / {String(sectionList.length).padStart(2, "0")}
         </span>
       </div>
 
-      {/* Section navigation dots */}
+      {/* Section navigation */}
       <SectionNav
-        sections={sections}
+        sections={sectionList}
         currentSection={currentSection}
         onNavigate={handleNavigate}
         disabled={isTransitioning}

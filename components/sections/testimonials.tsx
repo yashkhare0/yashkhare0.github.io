@@ -2,88 +2,105 @@
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { Quote } from "lucide-react"
 import { testimonials } from "@/config/content"
 
 interface TestimonialsProps {
   onNavigate: (section: string) => void
   isActive: boolean
+  hasBeenVisited?: boolean
 }
 
-export function Testimonials({ onNavigate, isActive }: TestimonialsProps) {
+export function Testimonials({ onNavigate, isActive, hasBeenVisited }: TestimonialsProps) {
   const sectionRef = useRef<HTMLElement>(null)
+  const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
+  const animatedRef = useRef(false)
 
   useEffect(() => {
-    if (!isActive) return
+    if (!isActive || (hasBeenVisited && animatedRef.current)) return
+    animatedRef.current = true
 
-    const tl = gsap.timeline({ delay: 0.2 })
+    const tl = gsap.timeline({ delay: 0.15 })
 
-    if (headingRef.current) {
+    // Number
+    if (numberRef.current) {
       tl.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        numberRef.current,
+        { clipPath: "inset(100% 0 0 0)" },
+        { clipPath: "inset(0% 0 0 0)", duration: 0.8, ease: "power3.out" },
         0
       )
     }
 
-    if (cardsRef.current) {
+    // Heading
+    if (headingRef.current) {
       tl.fromTo(
-        cardsRef.current.children,
-        { opacity: 0, y: 30, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.2, ease: "power3.out" },
-        0.3
+        headingRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        0.1
       )
     }
-  }, [isActive])
+
+    // Cards — slide in from alternating sides
+    if (cardsRef.current) {
+      const items = cardsRef.current.children
+      Array.from(items).forEach((item, i) => {
+        const fromLeft = i % 2 === 0
+        tl.fromTo(
+          item,
+          { opacity: 0, x: fromLeft ? -50 : 50 },
+          { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+          0.25 + i * 0.15
+        )
+      })
+    }
+  }, [isActive, hasBeenVisited])
 
   return (
     <section
       ref={sectionRef}
-      className="section-viewport"
+      className="section-viewport items-center justify-center"
     >
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
-        {/* Section heading */}
-        <div ref={headingRef} className="mb-16 opacity-0">
-          <div className="divider-gold mb-4" />
-          <h2 className="text-section-heading font-display mb-2">
-            Testimonials
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8">
+        {/* Section number */}
+        <span ref={numberRef} className="section-number">06</span>
+
+        {/* Heading — centered, large serif quote mark */}
+        <div ref={headingRef} className="mb-14 opacity-0">
+          <span
+            className="font-serif text-6xl sm:text-8xl block mb-2 leading-none"
+            style={{ color: "var(--accent-gold)" }}
+            aria-hidden="true"
+          >
+            &ldquo;
+          </span>
+          <h2 className="text-section-heading font-display">
+            Kind Words
           </h2>
-          <p className="font-body text-lg" style={{ color: "var(--text-secondary)" }}>
-            What people say about working with me
-          </p>
         </div>
 
-        {/* Testimonials grid */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-6">
+        {/* Testimonials — large editorial quotes */}
+        <div ref={cardsRef} className="space-y-8">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="card-cinematic p-6 sm:p-8 opacity-0"
+              className="card-editorial p-8 sm:p-10 opacity-0"
             >
               <div className="relative z-10">
-                {/* Quote icon */}
-                <div
-                  className="mb-4"
-                  style={{ color: "var(--accent-gold)" }}
-                >
-                  <Quote size={24} />
-                </div>
-
-                {/* Quote text */}
+                {/* Large quote text */}
                 <blockquote
-                  className="font-body text-sm sm:text-base leading-relaxed mb-6 italic"
-                  style={{ color: "var(--text-secondary)" }}
+                  className="font-serif text-xl sm:text-2xl leading-relaxed mb-6 italic"
+                  style={{ color: "var(--text-primary)" }}
                 >
-                  &ldquo;{testimonial.quote}&rdquo;
+                  {testimonial.quote}
                 </blockquote>
 
-                {/* Author */}
+                {/* Author — inline */}
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center font-display text-sm font-bold"
+                    className="w-9 h-9 rounded-full flex items-center justify-center font-display text-xs font-bold"
                     style={{
                       background: "var(--accent-gold-muted)",
                       color: "var(--accent-gold)",

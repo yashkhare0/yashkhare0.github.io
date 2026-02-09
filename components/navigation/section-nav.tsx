@@ -10,6 +10,17 @@ interface SectionNavProps {
   disabled?: boolean
 }
 
+const sectionLabels: Record<string, string> = {
+  hero: "Home",
+  about: "About",
+  experience: "Work",
+  skills: "Skills",
+  projects: "Projects",
+  blog: "Blog",
+  testimonials: "Praise",
+  contact: "Contact",
+}
+
 export function SectionNav({ sections, currentSection, onNavigate, disabled }: SectionNavProps) {
   const navRef = useRef<HTMLDivElement>(null)
 
@@ -26,35 +37,49 @@ export function SectionNav({ sections, currentSection, onNavigate, disabled }: S
   return (
     <nav
       ref={navRef}
-      className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 opacity-0"
+      className="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end gap-1 opacity-0"
       aria-label="Section navigation"
     >
-      {sections.map((section) => (
-        <button
-          key={section}
-          onClick={() => onNavigate(section)}
-          disabled={disabled}
-          className="group relative flex items-center cursor-pointer"
-          aria-label={`Go to ${section}`}
-          aria-current={currentSection === section ? "true" : undefined}
-        >
-          {/* Tooltip */}
-          <span
-            className="absolute right-8 px-2.5 py-1 rounded text-xs font-body capitalize whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden sm:block"
-            style={{
-              background: "var(--accent-gold)",
-              color: "var(--text-inverse)",
-            }}
+      {sections.map((section, i) => {
+        const isActive = currentSection === section
+        return (
+          <button
+            key={section}
+            onClick={() => onNavigate(section)}
+            disabled={disabled}
+            className="group relative flex items-center gap-3 py-1.5 px-2 cursor-pointer rounded-lg transition-all duration-300 hover:bg-[var(--bg-surface)]"
+            aria-label={`Go to ${sectionLabels[section] || section}`}
+            aria-current={isActive ? "true" : undefined}
           >
-            {section}
-          </span>
+            {/* Label — slides in on hover, always visible for active */}
+            <span
+              className={`font-mono text-[11px] uppercase tracking-[0.12em] transition-all duration-300 whitespace-nowrap ${
+                isActive
+                  ? "opacity-0 translate-x-2 max-w-0 lg:opacity-100 lg:translate-x-0 lg:max-w-[80px] group-hover:opacity-100 group-hover:translate-x-0 group-hover:max-w-[80px]"
+                  : "opacity-0 translate-x-2 max-w-0 group-hover:opacity-70 group-hover:translate-x-0 group-hover:max-w-[80px]"
+              }`}
+              style={{
+                color: isActive ? "var(--accent-gold)" : "var(--text-tertiary)",
+                overflow: "hidden",
+              }}
+            >
+              {sectionLabels[section] || section}
+            </span>
 
-          {/* Dot */}
-          <div
-            className={`nav-dot ${currentSection === section ? "active" : ""}`}
-          />
-        </button>
-      ))}
+            {/* Dot / line indicator */}
+            <div
+              className="flex-shrink-0 rounded-full transition-all duration-400"
+              style={{
+                width: isActive ? "20px" : "6px",
+                height: "6px",
+                background: isActive ? "var(--accent-gold)" : "var(--border-default)",
+                borderRadius: isActive ? "3px" : "50%",
+                boxShadow: isActive ? "0 0 12px var(--accent-gold-glow)" : "none",
+              }}
+            />
+          </button>
+        )
+      })}
     </nav>
   )
 }
