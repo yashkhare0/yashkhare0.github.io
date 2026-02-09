@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback } from "react"
+/// <reference types="react" />
+import React, { useState, useRef, useEffect, useCallback } from "react"
 import { gsap } from "gsap"
 import { Send, AlertCircle, Mail } from "lucide-react"
 
@@ -143,7 +144,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
     setInput("")
     setIsLoading(true)
     setError(null)
-    setUserMessageCount((c) => c + 1)
+    setUserMessageCount((c: number) => c + 1)
 
     try {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -189,7 +190,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
       let assistantContent = ""
 
       // Add empty assistant message to start streaming into
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }])
+      setMessages((prev: Message[]) => [...prev, { role: "assistant", content: "" }])
 
       while (true) {
         const { done, value } = await reader.read()
@@ -209,7 +210,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
               if (delta) {
                 assistantContent += delta
                 const currentContent = assistantContent
-                setMessages((prev) => {
+                setMessages((prev: Message[]) => {
                   const updated = [...prev]
                   updated[updated.length - 1] = { role: "assistant", content: currentContent }
                   return updated
@@ -254,7 +255,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
       >
         {/* Header */}
         <div
-          className="px-4 py-3 border-b flex items-center justify-between flex-shrink-0"
+          className="px-4 py-3 border-b flex items-center justify-between shrink-0"
           style={{ borderColor: "var(--border-subtle)" }}
         >
           <div>
@@ -271,7 +272,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
 
         {/* Disclaimer */}
         <div
-          className="px-4 py-2.5 text-[11px] leading-relaxed flex-shrink-0 border-b"
+          className="px-4 py-2.5 text-[11px] leading-relaxed shrink-0 border-b"
           style={{
             background: "var(--accent-gold-muted)",
             color: "var(--text-secondary)",
@@ -304,7 +305,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
             </div>
           )}
 
-          {messages.map((msg, i) => (
+          {messages.map((msg: Message, i: number) => (
             <div
               key={i}
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
@@ -335,7 +336,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
               className="flex items-start gap-2 p-3 rounded-lg border"
               style={{ background: "var(--bg-surface)", borderColor: "var(--border-subtle)" }}
             >
-              <AlertCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
+              <AlertCircle size={14} className="shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
               <div>
                 <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
                   The chatbot has reached its daily limit.
@@ -356,7 +357,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
               className="flex items-start gap-2 p-3 rounded-lg border"
               style={{ background: "var(--bg-surface)", borderColor: "var(--border-subtle)" }}
             >
-              <AlertCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
+              <AlertCircle size={14} className="shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
               <div>
                 <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
                   You&apos;ve hit the {MAX_MESSAGES}-message limit for this session.
@@ -377,7 +378,7 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
               className="flex items-start gap-2 p-3 rounded-lg border"
               style={{ background: "var(--bg-surface)", borderColor: "var(--border-subtle)" }}
             >
-              <AlertCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
+              <AlertCircle size={14} className="shrink-0 mt-0.5" style={{ color: "var(--accent-warm)" }} />
               <p className="font-body text-xs" style={{ color: "var(--text-secondary)" }}>
                 Something went wrong. Try again or{" "}
                 <a href="mailto:yash.khare.work@gmail.com" style={{ color: "var(--accent-gold)" }}>
@@ -392,14 +393,14 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
 
         {/* Input */}
         <div
-          className="px-4 py-3 border-t flex items-center gap-2 flex-shrink-0"
+          className="px-4 py-3 border-t flex items-center gap-2 shrink-0"
           style={{ borderColor: "var(--border-subtle)" }}
         >
           <input
             ref={inputRef}
             type="text"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={limitReached ? "Message limit reached" : "Ask me anything..."}
             disabled={isLoading || limitReached}
@@ -409,7 +410,8 @@ export function ChatWidget({ isOpen }: ChatWidgetProps) {
           <button
             onClick={sendMessage}
             disabled={isLoading || !input.trim() || limitReached}
-            className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-105"
+            aria-label="Send message"
+            className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-105"
             style={{
               background: "var(--accent-gold)",
               color: "var(--text-inverse)",
