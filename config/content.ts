@@ -19,7 +19,7 @@ export const siteConfig = {
 export const heroContent = {
   greeting: "Hi, I'm",
   name: "Yash Khare",
-  tagline: "AI Software Engineer",
+  tagline: "Senior AI Software Engineer",
   description:
     "I ship fast without gambling with quality. Turning LLM/ML capabilities into reliable product features, building platforms that let teams ship repeatedly. Based in Berlin.",
   cta: {

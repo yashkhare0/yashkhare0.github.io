@@ -1,0 +1,56 @@
+# Yash Khare
+
+> Senior AI Software Engineer based in Berlin, Germany — shipping production-ready AI products with solid foundations, from RAG pipelines and LLM integrations to full-stack platforms.
+
+Yash Khare is a Senior AI Software Engineer with 6+ years of experience building and shipping AI-powered products end-to-end. He works at the intersection of AI engineering and scalable product development, turning LLM/ML capabilities into reliable product features. He has co-founded an AI startup, led remote teams across time zones, and generated six-figure revenues within months of launch.
+
+Currently based in Berlin, Yash holds a Master's in Management (Innovation & High Tech) from ESCP Europe Business School (GMAT 730, 96th percentile). He combines deep technical execution with business acumen and ships fast without gambling with quality.
+
+- Website: https://yashkhare0.github.io
+- Email: yash.khare.work@gmail.com
+- GitHub: https://github.com/yashkhare0
+- LinkedIn: https://www.linkedin.com/in/yash-khare/
+- Location: Berlin, Germany
+
+## Experience
+
+- [COSMO CONSULT — AI Software Engineer](https://yashkhare0.github.io): Current role (Apr 2025 – Present), Berlin. Developed, shipped, and maintains 8 products end-to-end in 8 months with avg time-to-deployment under 3 weeks. Architected Sonar (company's most important internal AI platform) for live transcript ingestion and custom analysis. Built Translate, COSMO's highest adopted internal platform of 2025, reaching 25% usage without any marketing. Tech: Next.js, Vercel, FastAPI, PostgreSQL, PGVector, Django, Neo4j, Azure, RabbitMQ, Pulumi, PostHog, WorkOS.
+- [GEM AI — Co-Founder & AI Engineer](https://yashkhare0.github.io): Paris, France (Jan 2024 – Jan 2025). Built Echo, an enterprise-grade RAG tool generating EUR 125,000 in licensing revenue in the first month. Scaled to a team of 10 developers and EUR 175,000+ revenue in 6 months. Built Snap-and-Solve (multi-LLM solver) in 25 days. Tech: Python, Django, FastAPI, ReactJS, TypeScript, Azure, Docker, Kubernetes, PostgreSQL, GitHub Actions.
+- [Pernod Ricard — UX Researcher](https://yashkhare0.github.io): Paris, France (Jul – Dec 2023). Automated data reporting with Python and Google Apps Script, reducing manual effort by 40%. Conducted qualitative user research and presented insights via PowerBI.
+- [Passionoid Technologies & Bliip Studios — Co-Founder & Software Engineer](https://yashkhare0.github.io): Pune, India (May 2019 – Sept 2022). Led a team of 5 developers delivering 16+ projects for national and international clients. Tech: ReactJS, Flutter, Django, React Native, PostgreSQL.
+
+## Projects
+
+- [noll.to](https://noll.to): Privacy-first document translation SaaS. Focused on layout retention, controlled data handling, and reliable document processing. Featured project.
+- [testkizuna.com](https://testkizuna.com): AI-assisted QA and testing product focused on turning quality checks into repeatable, automatable workflows.
+- [Sonar AI Platform](https://sonar.apx.team): Company's most important internal AI platform. End-to-end workflow for live transcript ingestion and custom analysis. Built with FastAPI, PostgreSQL, PGVector, Azure, RabbitMQ.
+- [Cosma](https://cosma.app): AI-powered business assistant that helps teams manage workflows, automate repetitive tasks, and surface insights from company data.
+- [Radar](https://radar.apx.team): Internal intelligence tool for monitoring and analyzing market signals, competitive landscape, and industry trends.
+- [Translate](https://translate.apx.team): COSMO's highest adopted internal platform of 2025, reaching 25% usage without any marketing. Built with Next.js, FastAPI, Azure.
+- [Voko — CLI for i18n](https://yashkhare0.github.io/voko/): Interactive CLI tool for managing internationalization in JavaScript and TypeScript projects. Open source, published on npm. Supports Google Translate, DeepL, LibreTranslate, and Yandex.
+- [Voko — GitHub Repository](https://github.com/yashkhare0/voko): Source code for Voko, the i18n CLI tool.
+
+## Skills
+
+- AI/LLM: RAG, Semantic Search, Prompt Engineering, Eval Patterns, Hugging Face, Transformers, Ollama, vLLM, LangChain, LlamaIndex
+- ML/Data: Pandas, NumPy, scikit-learn, PyTorch, TensorFlow
+- Backend: Python, FastAPI, Django, REST APIs, Async Python, Testing
+- Data & Infra: PostgreSQL, Redis, Neo4j, PGVector, RabbitMQ, Docker, Kubernetes, CI/CD, Azure, Monitoring, Pulumi, PostHog
+- Frontend: React, Next.js, TypeScript, Tailwind CSS, React Native, Flutter
+
+## Education
+
+- [ESCP Europe Business School](https://yashkhare0.github.io): Masters in Management, Innovation & High Tech, Berlin (Sep 2022 – Feb 2025). GMAT: 730 (96th percentile). Coursework: Advanced Python Programming, Machine Learning and Analysis, Data Driven Marketing.
+
+## Contact
+
+- [Email](mailto:yash.khare.work@gmail.com): yash.khare.work@gmail.com
+- [GitHub](https://github.com/yashkhare0): @yashkhare0
+- [LinkedIn](https://www.linkedin.com/in/yash-khare/): yash-khare
+
+## Optional
+
+- Languages spoken: English (Native), Hindi (Native), French (B1 – Intermediate), German (A1 – Beginner)
+- Echo — Enterprise RAG: Enterprise-grade scalable RAG tool built in 45 days with Python, Django, ReactJS, and PostgreSQL. Generated EUR 125,000 in licensing revenue in the first month.
+- Snap-and-Solve: AI-powered problem solver integrating OpenAI, Mistral, Anthropic, and Ollama. Built in 25 days with a team of 5. Deployed on Azure Kubernetes.
+- Adaptive Syllabus Mapper: Personalized learning path engine using sequential knowledge graphs. OCR with Keras, graphs with Neo4j, vectors with PGVector.
