@@ -238,24 +238,23 @@ const fr: Translations = {
     items: [
       {
         quote:
-          "Yash a une capacité exceptionnelle à transformer des concepts IA complexes en produits prêts pour la production. Sa vitesse d'exécution est remarquable.",
-        name: "Placeholder Name",
-        role: "CTO",
-        company: "Tech Company",
+          "Yash était toujours celui dans notre groupe qui pouvait transformer une idée à moitié formée en quelque chose de concret du jour au lendemain. Pendant que nous débattions encore des slides, il avait déjà un prototype fonctionnel. Ce réflexe de construire est rare, surtout chez quelqu'un qui comprend aussi le côté business.",
+        name: "Palak Gupta",
+        role: "Business Analyst",
+        company: "Enpal",
       },
       {
         quote:
-          "Travailler avec Yash a transformé notre approche de l'intégration IA. Il a livré un système RAG complet qui a généré des revenus dès le premier jour.",
-        name: "Placeholder Name",
-        role: "VP Engineering",
-        company: "AI Startup",
+          "Yash a livré 8 produits en 8 mois, la plupart en moins de 3 semaines de la première ligne de code à la production. Il n'attend pas des specs parfaites — il construit, recueille les retours et itère. Translate est devenu notre outil interne le plus adopté de 2025 sans aucun marketing. Ça dit tout sur la qualité de ce qu'il livre.",
+        name: "Nicolai Schmid",
+        role: "Manager",
+        company: "COSMO CONSULT",
       },
       {
-        quote:
-          "Une combinaison rare de profondeur technique et de compréhension business. Yash ne construit pas juste des fonctionnalités -- il construit des produits qui comptent.",
-        name: "Placeholder Name",
-        role: "Directeur Produit",
-        company: "Enterprise Corp",
+        quote: "",
+        name: "more_coming",
+        role: "",
+        company: "",
       },
     ],
   },

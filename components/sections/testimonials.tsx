@@ -84,41 +84,56 @@ export function Testimonials({ onNavigate, isActive, hasBeenVisited }: Testimoni
 
         {/* Testimonials — large editorial quotes */}
         <div ref={cardsRef} className="space-y-8">
-          {t.testimonials.items.map((testimonial, i) => (
-            <div
-              key={`${testimonial.name}-${i}`}
-              className="card-editorial p-8 sm:p-10 opacity-0"
-            >
-              <div className="relative z-10">
-                {/* Large quote text */}
-                <blockquote
-                  className="font-serif text-xl sm:text-2xl leading-relaxed mb-6 italic"
-                  style={{ color: "var(--text-primary)" }}
+          {t.testimonials.items.map((testimonial, i) =>
+            testimonial.name === "more_coming" ? (
+              <div
+                key="more-coming"
+                className="card-editorial p-8 sm:p-10 opacity-0 flex items-center justify-center"
+                style={{ borderStyle: "dashed" }}
+              >
+                <p
+                  className="font-serif text-lg sm:text-xl italic"
+                  style={{ color: "var(--text-tertiary)" }}
                 >
-                  {testimonial.quote}
-                </blockquote>
-
-                {/* Author — inline */}
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center font-display text-xs font-bold"
-                    style={{
-                      background: "var(--accent-gold-muted)",
-                      color: "var(--accent-gold)",
-                    }}
+                  More on the way, I promise!
+                </p>
+              </div>
+            ) : (
+              <div
+                key={`${testimonial.name}-${i}`}
+                className="card-editorial p-8 sm:p-10 opacity-0"
+              >
+                <div className="relative z-10">
+                  {/* Large quote text */}
+                  <blockquote
+                    className="font-serif text-xl sm:text-2xl leading-relaxed mb-6 italic"
+                    style={{ color: "var(--text-primary)" }}
                   >
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-body text-sm font-medium">{testimonial.name}</p>
-                    <p className="font-body text-xs" style={{ color: "var(--text-tertiary)" }}>
-                      {testimonial.role}, {testimonial.company}
-                    </p>
+                    {testimonial.quote}
+                  </blockquote>
+
+                  {/* Author — inline */}
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center font-display text-xs font-bold"
+                      style={{
+                        background: "var(--accent-gold-muted)",
+                        color: "var(--accent-gold)",
+                      }}
+                    >
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-medium">{testimonial.name}</p>
+                      <p className="font-body text-xs" style={{ color: "var(--text-tertiary)" }}>
+                        {testimonial.role}, {testimonial.company}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </section>

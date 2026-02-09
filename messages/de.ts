@@ -238,24 +238,23 @@ const de: Translations = {
     items: [
       {
         quote:
-          "Yash hat eine außergewöhnliche Fähigkeit, komplexe KI-Konzepte in produktionsreife Produkte umzuwandeln. Seine Umsetzungsgeschwindigkeit ist bemerkenswert.",
-        name: "Placeholder Name",
-        role: "CTO",
-        company: "Tech Company",
+          "Yash war in unserer Gruppe immer derjenige, der aus einer halbfertigen Idee über Nacht etwas Echtes machen konnte. Während wir noch über die Folien diskutierten, hatte er schon einen funktionierenden Prototyp. Dieser Drang zum Bauen ist selten, besonders in Kombination mit echtem Geschäftsverständnis.",
+        name: "Palak Gupta",
+        role: "Business Analyst",
+        company: "Enpal",
       },
       {
         quote:
-          "Die Zusammenarbeit mit Yash hat unseren Ansatz zur KI-Integration transformiert. Er hat ein komplettes RAG-System geliefert, das ab dem ersten Tag Umsatz generierte.",
-        name: "Placeholder Name",
-        role: "VP Engineering",
-        company: "AI Startup",
+          "Yash hat 8 Produkte in 8 Monaten geliefert, die meisten in unter 3 Wochen von der ersten Codezeile bis zur Produktion. Er wartet nicht auf perfekte Spezifikationen — er baut, holt Feedback und iteriert. Translate wurde unser meistgenutztes internes Tool 2025, ganz ohne Marketing. Das sagt alles über die Qualität seiner Arbeit.",
+        name: "Nicolai Schmid",
+        role: "Manager",
+        company: "COSMO CONSULT",
       },
       {
-        quote:
-          "Eine seltene Kombination aus technischer Tiefe und Geschäftsverständnis. Yash baut nicht nur Features -- er baut Produkte, die zählen.",
-        name: "Placeholder Name",
-        role: "Product Director",
-        company: "Enterprise Corp",
+        quote: "",
+        name: "more_coming",
+        role: "",
+        company: "",
       },
     ],
   },
