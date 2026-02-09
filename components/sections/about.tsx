@@ -1,216 +1,183 @@
-"use client";
+"use client"
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { Labrador } from "@/components/labrador/labrador";
-import { TriangleAccent } from "@/components/transitions/geometric-transition";
-import { aboutContent } from "@/config/content";
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { Cpu, Code, Users } from "lucide-react"
+import { aboutContent, education, spokenLanguages } from "@/config/content"
 
 interface AboutProps {
-  onNavigate?: (section: string) => void;
-  isActive?: boolean;
+  onNavigate: (section: string) => void
+  isActive: boolean
 }
 
-export function About({ onNavigate, isActive = false }: AboutProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+const iconMap: Record<string, React.ReactNode> = {
+  brain: <Cpu size={24} />,
+  code: <Code size={24} />,
+  users: <Users size={24} />,
+}
+
+export function About({ onNavigate, isActive }: AboutProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
+  const educationRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!isActive || !contentRef.current) return;
+    if (!isActive) return
 
-    const tl = gsap.timeline({ delay: 0.2 });
+    const tl = gsap.timeline({ delay: 0.2 })
 
-    // Title reveal
-    const title = contentRef.current.querySelector("h2");
-    if (title) {
+    if (headingRef.current) {
       tl.fromTo(
-        title,
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        0
+      )
     }
 
-    // Paragraph reveal
-    const paragraphs = contentRef.current.querySelectorAll("p");
-    tl.fromTo(
-      paragraphs,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power3.out" },
-      "-=0.3"
-    );
+    if (textRef.current) {
+      tl.fromTo(
+        textRef.current.children,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+        0.3
+      )
+    }
 
-    // Cards reveal with stagger
     if (cardsRef.current) {
-      const cards = cardsRef.current.children;
       tl.fromTo(
-        cards,
-        { y: 40, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "back.out(1.5)",
-        },
-        "-=0.2"
-      );
+        cardsRef.current.children,
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+        0.6
+      )
     }
-  }, [isActive]);
+
+    if (educationRef.current) {
+      tl.fromTo(
+        educationRef.current.children,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+        0.9
+      )
+    }
+  }, [isActive])
 
   return (
     <section
       ref={sectionRef}
-      data-section="about"
       className="section-viewport"
-      style={{
-        backgroundColor: "var(--deep-indigo)",
-        color: "var(--cream-white)",
-      }}
     >
-      {/* Accent shape */}
-      <TriangleAccent
-        position="bottom-left"
-        color="var(--golden-hour)"
-        size={250}
-        onClick={() => onNavigate?.("hero")}
-        interactive
-      />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        {/* Section heading */}
+        <div ref={headingRef} className="mb-16 opacity-0">
+          <div className="divider-gold mb-4" />
+          <h2 className="text-section-heading font-display mb-2">
+            {aboutContent.headline}
+          </h2>
+          <p className="font-body text-lg" style={{ color: "var(--text-secondary)" }}>
+            {aboutContent.subheadline}
+          </p>
+        </div>
 
-      {/* Hexagon decoration */}
-      <div
-        className="absolute top-20 right-20 w-32 h-32 opacity-20 hexagon"
-        style={{ backgroundColor: "var(--golden-hour)" }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          {/* Text content */}
-          <div ref={contentRef} className="space-y-8">
-            {/* Section label */}
-            <div className="flex items-center gap-4">
-              <div
-                className="w-12 h-[2px]"
-                style={{ backgroundColor: "var(--golden-hour)" }}
-              />
-              <span
-                className="text-sm uppercase tracking-[0.3em] font-body"
-                style={{ color: "var(--golden-hour)" }}
+        {/* Content grid */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+          {/* Text */}
+          <div ref={textRef}>
+            {aboutContent.paragraphs.map((paragraph, i) => (
+              <p
+                key={i}
+                className="font-body text-base leading-relaxed mb-5 opacity-0"
+                style={{ color: "var(--text-secondary)" }}
               >
-                About
-              </span>
+                {paragraph}
+              </p>
+            ))}
+
+            {/* Languages */}
+            <div className="mt-8 opacity-0">
+              <h3 className="font-display text-sm uppercase tracking-widest mb-4" style={{ color: "var(--accent-gold)" }}>
+                Languages
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {spokenLanguages.map((lang) => (
+                  <div
+                    key={lang.language}
+                    className="skill-tag"
+                  >
+                    <span className="font-medium" style={{ color: "var(--text-primary)" }}>{lang.language}</span>
+                    <span style={{ color: "var(--text-tertiary)" }}>/ {lang.level}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            {/* Title */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display leading-tight">
-              {aboutContent.headline.prefix}
-              <br />
-              <span style={{ color: "var(--golden-hour)" }}>{aboutContent.headline.highlight}</span>
-            </h2>
-
-            {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl font-body leading-relaxed opacity-80">
-              {aboutContent.intro}
-            </p>
-
-            <p className="text-sm sm:text-base md:text-lg font-body leading-relaxed opacity-60">
-              {aboutContent.description}
-            </p>
           </div>
 
-          {/* Visual side with dog */}
-          <div className="relative flex items-center justify-center mt-8 lg:mt-0">
-            {/* Geometric frame */}
-            <div
-              className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-72 md:h-80 lg:w-80 lg:h-96"
-              style={{
-                border: "2px sm:border-[3px] solid var(--golden-hour)",
-                transform: "rotate(3deg)",
-              }}
-            >
-              {/* Inner content */}
+          {/* Highlight Cards */}
+          <div ref={cardsRef} className="space-y-4">
+            {aboutContent.highlights.map((highlight, i) => (
               <div
-                className="absolute inset-3 sm:inset-4 flex items-center justify-center scale-75 sm:scale-100"
+                key={i}
+                className="card-cinematic p-6 cursor-pointer opacity-0"
+              >
+                <div className="relative z-10 flex items-start gap-4">
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
+                    style={{
+                      background: "var(--accent-gold-muted)",
+                      color: "var(--accent-gold)",
+                    }}
+                  >
+                    {iconMap[highlight.icon]}
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold mb-1">
+                      {highlight.title}
+                    </h3>
+                    <p className="font-body text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                      {highlight.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <div ref={educationRef}>
+          <h3 className="font-display text-sm uppercase tracking-widest mb-6" style={{ color: "var(--accent-gold)" }}>
+            Education
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {education.map((edu) => (
+              <div
+                key={edu.id}
+                className="p-5 rounded-lg border opacity-0"
                 style={{
-                  backgroundColor: "rgba(255, 179, 71, 0.1)",
+                  background: "var(--bg-elevated)",
+                  borderColor: "var(--border-subtle)",
                 }}
               >
-                <Labrador pose="sitting" size={150} followCursor />
+                <p className="font-display text-sm font-semibold mb-1">{edu.degree}</p>
+                {edu.specialization && (
+                  <p className="font-body text-xs mb-2" style={{ color: "var(--accent-gold)" }}>
+                    {edu.specialization}
+                  </p>
+                )}
+                <p className="font-body text-sm" style={{ color: "var(--text-secondary)" }}>
+                  {edu.institution}
+                </p>
+                <p className="font-mono text-xs mt-2" style={{ color: "var(--text-tertiary)" }}>
+                  {edu.period}
+                </p>
               </div>
-
-              {/* Corner accents */}
-              <div
-                className="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 w-4 h-4 sm:w-6 sm:h-6"
-                style={{ backgroundColor: "var(--golden-hour)" }}
-              />
-              <div
-                className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6"
-                style={{ backgroundColor: "var(--golden-hour)" }}
-              />
-            </div>
-
-            {/* Floating label */}
-            <div
-              className="absolute -bottom-2 sm:-bottom-4 right-0 px-2 sm:px-4 py-1 sm:py-2 font-mono text-xs sm:text-sm"
-              style={{
-                backgroundColor: "var(--golden-hour)",
-                color: "var(--deep-indigo)",
-                transform: "rotate(-3deg)",
-              }}
-            >
-              My companion ♥
-            </div>
+            ))}
           </div>
         </div>
-
-        {/* Trait cards */}
-        <div ref={cardsRef} className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-12 md:mt-20">
-          {aboutContent.traits.map((trait, i) => (
-            <div
-              key={trait.title}
-              className="geo-card p-4 sm:p-6 md:p-8 group"
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.03)",
-                borderColor: "rgba(255, 255, 255, 0.1)",
-              }}
-            >
-              {/* Icon */}
-              <div
-                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-6 transition-transform group-hover:scale-110"
-                style={{ color: "var(--golden-hour)" }}
-              >
-                {trait.icon}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl sm:text-2xl font-display mb-3 sm:mb-4">{trait.title}</h3>
-
-              {/* Description */}
-              <p className="font-body text-xs sm:text-sm leading-relaxed opacity-70">
-                {trait.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation dots */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
-        {["hero", "about", "skills", "projects", "contact"].map((section, i) => (
-          <button
-            key={section}
-            onClick={() => onNavigate?.(section)}
-            className={`nav-dot ${section === "about" ? "active" : ""}`}
-            style={{
-              borderColor: "var(--cream-white)",
-              backgroundColor: section === "about" ? "var(--golden-hour)" : "transparent",
-            }}
-            aria-label={`Go to ${section}`}
-          />
-        ))}
       </div>
     </section>
-  );
+  )
 }

@@ -1,272 +1,162 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiPython,
-  SiDocker,
-  SiPostgresql,
-  SiMongodb,
-  SiRedis,
-  SiNeo4J,
-  SiKubernetes,
-  SiTensorflow,
-  SiPytorch,
-  SiScikitlearn,
-  SiNumpy,
-  SiPandas,
-  SiOpencv,
-  SiFlutter,
-  SiDjango,
-  SiFastapi,
-  SiGithubactions,
-  SiLangchain,
-} from "react-icons/si";
-import { Cloud } from "lucide-react";
-import { Labrador } from "@/components/labrador/labrador";
-import { skills as skillsData, skillCategories } from "@/config/content";
+import { useEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
+import { skills, skillCategories } from "@/config/content"
 
-interface SkillsProps {
-  onNavigate?: (section: string) => void;
-  isActive?: boolean;
+const categoryLabelMap: Record<string, string> = {
+  ai_llm: "AI / LLM",
+  ml_data: "ML / Data",
+  backend: "Backend",
+  infra: "Infra",
+  frontend: "Frontend",
 }
 
-// Map skill names to their icons
-const skillIconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
-  "Django": SiDjango,
-  "FastAPI": SiFastapi,
-  "Node.js": SiNodedotjs,
-  "PostgreSQL": SiPostgresql,
-  "Redis": SiRedis,
-  "Neo4j": SiNeo4J,
-  "MongoDB": SiMongodb,
-  "React": SiReact,
-  "Next.js": SiNextdotjs,
-  "TypeScript": SiTypescript,
-  "Tailwind": SiTailwindcss,
-  "React Native": SiReact,
-  "Flutter": SiFlutter,
-  "TensorFlow": SiTensorflow,
-  "PyTorch": SiPytorch,
-  "scikit-learn": SiScikitlearn,
-  "NumPy": SiNumpy,
-  "Pandas": SiPandas,
-  "OpenCV": SiOpencv,
-  "Docker": SiDocker,
-  "Kubernetes": SiKubernetes,
-  "Azure": Cloud,
-  "GitHub Actions": SiGithubactions,
-  "LangChain": SiLangchain,
-  "Python": SiPython,
-};
+interface SkillsProps {
+  onNavigate: (section: string) => void
+  isActive: boolean
+}
 
-// Default icon for skills without a specific icon
-const DefaultIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
-  <div className={className} style={style}>
-    <span className="text-2xl">◇</span>
-  </div>
-);
+export function Skills({ onNavigate, isActive }: SkillsProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const tabsRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const [activeCategory, setActiveCategory] = useState<string>("all")
 
-const skills = skillsData.map(skill => ({
-  name: skill.name,
-  icon: skillIconMap[skill.name] || DefaultIcon,
-  category: skill.category,
-}));
-
-const categories = skillCategories;
-
-export function Skills({ onNavigate, isActive = false }: SkillsProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [filter, setFilter] = useState("all");
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
-  const filteredSkills = filter === "all" ? skills : skills.filter((s) => s.category === filter);
+  const filteredSkills =
+    activeCategory === "all"
+      ? skills
+      : skills.filter((s) => s.category === activeCategory)
 
   useEffect(() => {
-    if (!isActive || !gridRef.current) return;
+    if (!isActive) return
 
-    const tl = gsap.timeline({ delay: 0.2 });
+    const tl = gsap.timeline({ delay: 0.2 })
 
-    // Skill cards stagger reveal
-    const cards = gridRef.current.querySelectorAll(".skill-item");
-    tl.fromTo(
-      cards,
-      { scale: 0, opacity: 0, rotation: -10 },
-      {
-        scale: 1,
-        opacity: 1,
-        rotation: 0,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: "back.out(2)",
-      }
-    );
-  }, [isActive, filter]);
+    if (headingRef.current) {
+      tl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        0
+      )
+    }
+
+    if (tabsRef.current) {
+      tl.fromTo(
+        tabsRef.current.children,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: "power3.out" },
+        0.3
+      )
+    }
+  }, [isActive])
+
+  // Animate grid on category change
+  useEffect(() => {
+    if (!gridRef.current) return
+
+    gsap.fromTo(
+      gridRef.current.children,
+      { opacity: 0, scale: 0.9, y: 10 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.03, ease: "power3.out" }
+    )
+  }, [activeCategory])
 
   return (
     <section
       ref={sectionRef}
-      data-section="skills"
       className="section-viewport"
-      style={{
-        backgroundColor: "var(--cream-white)",
-        color: "var(--warm-black)",
-      }}
     >
-      {/* Geometric decorations */}
-      <div
-        className="absolute top-0 left-0 w-64 h-64 opacity-10"
-        style={{
-          backgroundColor: "var(--electric-cyan)",
-          clipPath: "polygon(0 0, 100% 0, 0 100%)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-0 w-48 h-48 opacity-10"
-        style={{
-          backgroundColor: "var(--electric-cyan)",
-          clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-        }}
-      />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        {/* Section heading */}
+        <div ref={headingRef} className="mb-12 opacity-0">
+          <div className="divider-gold mb-4" />
+          <h2 className="text-section-heading font-display mb-2">
+            Tech Stack
+          </h2>
+          <p className="font-body text-lg" style={{ color: "var(--text-secondary)" }}>
+            Technologies I work with daily
+          </p>
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8 mb-8 sm:mb-12 md:mb-16">
-          <div>
-            {/* Section label */}
-            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-              <span
-                className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-body"
-                style={{ color: "var(--electric-cyan)" }}
-              >
-                Skills
-              </span>
-              <div
-                className="w-8 sm:w-12 h-[2px]"
-                style={{ backgroundColor: "var(--electric-cyan)" }}
-              />
-            </div>
-
-            {/* Title */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display">
-              Tech
-              <br />
-              <span style={{ color: "var(--electric-cyan)" }}>Arsenal</span>
-            </h2>
-          </div>
-
-          {/* Filter tabs */}
-          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat.key}
-                onClick={() => setFilter(cat.key)}
-                className={`px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-body uppercase tracking-wider transition-all ${
-                  filter === cat.key
-                    ? "text-white"
-                    : "hover:opacity-70"
-                }`}
-                style={{
-                  backgroundColor: filter === cat.key ? "var(--warm-black)" : "transparent",
-                  border: `2px solid ${filter === cat.key ? "var(--warm-black)" : "var(--border)"}`,
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
+        {/* Category tabs */}
+        <div
+          ref={tabsRef}
+          className="flex flex-wrap gap-2 mb-10"
+        >
+          {skillCategories.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className="px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 cursor-pointer"
+              style={{
+                background:
+                  activeCategory === cat.key
+                    ? "var(--accent-gold)"
+                    : "var(--bg-surface)",
+                color:
+                  activeCategory === cat.key
+                    ? "var(--text-inverse)"
+                    : "var(--text-secondary)",
+                borderColor:
+                  activeCategory === cat.key
+                    ? "var(--accent-gold)"
+                    : "var(--border-subtle)",
+                border: "1px solid",
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
 
         {/* Skills grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
         >
-          {filteredSkills.map((skill) => {
-            const Icon = skill.icon;
-            return (
-              <div
-                key={skill.name}
-                className="skill-item group relative p-3 sm:p-4 md:p-6 flex flex-col items-center gap-2 sm:gap-3 md:gap-4 cursor-pointer transition-all duration-300"
-                style={{
-                  backgroundColor: "white",
-                  border: `2px solid ${hoveredSkill === skill.name ? "var(--electric-cyan)" : "var(--border)"}`,
-                  transform: hoveredSkill === skill.name ? "translateY(-8px)" : "none",
-                  boxShadow: hoveredSkill === skill.name ? "0 10px 30px rgba(0, 212, 255, 0.2)" : "none",
-                }}
-                onMouseEnter={() => setHoveredSkill(skill.name)}
-                onMouseLeave={() => setHoveredSkill(null)}
+          {filteredSkills.map((skill) => (
+            <div
+              key={skill.name}
+              className="group relative p-4 rounded-lg border text-center transition-all duration-300 cursor-default"
+              style={{
+                background: "var(--bg-elevated)",
+                borderColor: "var(--border-subtle)",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget
+                el.style.borderColor = "var(--border-gold)"
+                el.style.boxShadow = "var(--shadow-gold)"
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget
+                el.style.borderColor = "var(--border-subtle)"
+                el.style.boxShadow = "none"
+              }}
+            >
+              <span className="font-body text-sm font-medium block" style={{ color: "var(--text-primary)" }}>
+                {skill.name}
+              </span>
+              <span
+                className="font-mono text-[10px] uppercase tracking-wider mt-1 block"
+                style={{ color: "var(--text-tertiary)" }}
               >
-                {/* Diagonal corner accent on hover */}
-                <div
-                  className="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
-                  style={{
-                    borderStyle: "solid",
-                    borderWidth: hoveredSkill === skill.name ? "0 20px 20px 0" : "0 0 0 0",
-                    borderColor: "transparent var(--electric-cyan) transparent transparent",
-                  }}
-                />
-
-                {/* Icon */}
-                <Icon
-                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110"
-                  style={{
-                    color: hoveredSkill === skill.name ? "var(--electric-cyan)" : "var(--warm-black)",
-                  }}
-                />
-
-                {/* Name */}
-                <span className="text-xs sm:text-sm font-body font-medium text-center">{skill.name}</span>
-              </div>
-            );
-          })}
+                {categoryLabelMap[skill.category] || skill.category}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Dog following hovered skill */}
-        <div className="mt-8 sm:mt-12 md:mt-16 flex justify-center">
-          <div className="relative scale-75 sm:scale-100">
-            <Labrador
-              pose={hoveredSkill ? "playful" : "sitting"}
-              size={100}
-              followCursor
-            />
-            {hoveredSkill && (
-              <div
-                className="absolute -top-6 sm:-top-8 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono whitespace-nowrap animate-overshoot-in"
-                style={{
-                  backgroundColor: "var(--electric-cyan)",
-                  color: "white",
-                }}
-              >
-                {hoveredSkill}!
-              </div>
-            )}
-          </div>
+        {/* Skill count */}
+        <div className="mt-8 text-center">
+          <span className="font-mono text-sm" style={{ color: "var(--text-tertiary)" }}>
+            {filteredSkills.length} technologies
+            {activeCategory !== "all" && ` in ${skillCategories.find((c) => c.key === activeCategory)?.label}`}
+          </span>
         </div>
-      </div>
-
-      {/* Navigation dots */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
-        {["hero", "about", "skills", "projects", "contact"].map((section) => (
-          <button
-            key={section}
-            onClick={() => onNavigate?.(section)}
-            className={`nav-dot ${section === "skills" ? "active" : ""}`}
-            style={{
-              borderColor: "var(--warm-black)",
-              backgroundColor: section === "skills" ? "var(--electric-cyan)" : "transparent",
-            }}
-            aria-label={`Go to ${section}`}
-          />
-        ))}
       </div>
     </section>
-  );
+  )
 }

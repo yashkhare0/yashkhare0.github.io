@@ -1,153 +1,119 @@
 // =============================================================================
 // SITE CONTENT CONFIGURATION
 // =============================================================================
-// All resume and landing page content lives here. Updates to profiles, projects,
-// or testimonials can be made here without touching any UI code.
+// All portfolio content. Update profiles, projects, experience here.
 
 export const siteConfig = {
   name: "Yash Khare",
-  title: "AI Developer & Full-Stack Engineer",
+  title: "AI Software Engineer",
   email: "yash.khare.work@gmail.com",
   phone: "+33 769054521",
   location: "Berlin, Germany",
   website: "https://yashkhare0.github.io",
-};
+}
 
 // =============================================================================
 // HERO SECTION
 // =============================================================================
+
 export const heroContent = {
-  firstName: "YASH",
-  lastName: "KHARE",
-  tagline: {
-    prefix: "AI Developer & Engineer building intelligent systems with",
-    highlights: [
-      { text: "scalable architecture", color: "var(--sunset-coral)" },
-      { text: "rapid delivery", color: "var(--golden-hour)" },
-    ],
-    suffix: ".",
-  },
-  // Short version for the hero
-  subtitle:
-    "AI Developer & Engineer shipping production-ready AI products. 4+ years leading remote teams across Python, React, and cloud infrastructure.",
+  greeting: "Hi, I'm",
+  name: "Yash Khare",
+  tagline: "AI Software Engineer",
+  description:
+    "I ship fast without gambling with quality. Turning LLM/ML capabilities into reliable product features, building platforms that let teams ship repeatedly. Based in Berlin.",
   cta: {
-    primary: { label: "View Work", section: "projects" },
-    secondary: { label: "Say Hello", section: "contact" },
+    primary: { label: "View My Work", section: "projects" },
+    secondary: { label: "Get in Touch", section: "contact" },
   },
-};
+  stats: [
+    { value: "6+", label: "Years Experience" },
+    { value: "8", label: "Products Shipped" },
+    { value: "175K+", label: "Revenue Generated" },
+  ],
+}
 
 // =============================================================================
 // ABOUT SECTION
 // =============================================================================
+
 export const aboutContent = {
-  headline: {
-    prefix: "Building with",
-    highlight: "velocity",
-  },
-  intro:
-    "I'm an AI developer and full-stack engineer who ships fast without cutting corners. 8 products in 8 months, each deployed in under 3 weeks.",
-  description:
-    "Based in Berlin, I specialize in end-to-end product development — from ideation to production. Whether it's RAG pipelines, microservices, or enterprise dashboards, I focus on solutions that scale and deliver real business value.",
-  traits: [
-    {
-      title: "AI & ML",
-      description:
-        "RAG systems, vector search, LLM integrations. Building intelligent products that understand and respond.",
-      icon: "◇",
-    },
-    {
-      title: "Full-Stack",
-      description:
-        "Django, FastAPI, Next.js. Architecting scalable systems from database to deployment.",
-      icon: "△",
-    },
-    {
-      title: "Leadership",
-      description:
-        "Led teams of 5-10 developers across time zones. Shipped €175K+ in revenue in 6 months.",
-      icon: "○",
-    },
+  headline: "About Me",
+  subheadline: "Shipping AI products with solid foundations",
+  paragraphs: [
+    "I ship fast without gambling with quality. For AI products, that means solid foundations: clean APIs, testable pipelines, observable systems, and cost-aware deployments.",
+    "I focus on turning LLM/ML capabilities into reliable product features, aligning with stakeholders, and building platforms that let teams ship repeatedly. Based in Berlin, I work at the intersection of AI engineering and scalable product development.",
+    "With a Master's from ESCP Europe (GMAT 730, 96th percentile), I combine deep technical execution with business acumen. I've co-founded an AI startup, led remote teams across time zones, and generated six-figure revenues within months of launch.",
   ],
-};
+  highlights: [
+    { icon: "brain", title: "AI / LLM", description: "RAG, semantic search, prompt engineering, eval patterns. Hugging Face, Transformers, Ollama, vLLM." },
+    { icon: "code", title: "Backend & Infra", description: "Python, FastAPI, Django, Postgres, Redis, Neo4j, PGVector, RabbitMQ, Docker, Kubernetes, CI/CD." },
+    { icon: "users", title: "Product & Leadership", description: "Led teams of 5-10 developers. Shipped 8 products in 8 months. Scaled to six-figure revenue." },
+  ],
+}
 
 // =============================================================================
 // EXPERIENCE SECTION
 // =============================================================================
+
 export interface Experience {
-  id: string;
-  company: string;
-  role: string;
-  location: string;
-  period: string;
-  technologies: string[];
-  highlights: string[];
-  current?: boolean;
+  id: string
+  company: string
+  role: string
+  location: string
+  period: string
+  technologies: string[]
+  highlights: string[]
+  current?: boolean
 }
 
 export const experiences: Experience[] = [
   {
     id: "cosmo",
     company: "COSMO CONSULT",
-    role: "AI Developer",
+    role: "AI Software Engineer",
     location: "Berlin, Germany",
-    period: "Apr 2025 – Present",
+    period: "Apr 2025 - Present",
     current: true,
     technologies: [
-      "Next.js",
-      "Vercel",
-      "FastAPI",
-      "PostgreSQL",
-      "PGVector",
-      "Django",
-      "Neo4j",
-      "Azure",
-      "RabbitMQ",
-      "Pulumi",
-      "PostHog",
-      "WorkOS",
+      "Next.js", "Vercel", "FastAPI", "PostgreSQL", "PGVector",
+      "Django", "Neo4j", "Azure", "RabbitMQ", "Pulumi", "PostHog", "WorkOS",
     ],
     highlights: [
-      "Shipped 8 products end-to-end in 8 months with avg time-to-deployment < 3 weeks",
-      "Standardized analytics across all apps with PostHog: event taxonomy, funnels, retention dashboards",
-      "Architected 'Sonar' — the company's most important internal AI platform for transcript analysis",
+      "Developed, shipped and currently maintain 8 products end-to-end in 8 months (ideation to deployment) with avg time-to-deployment < 3 weeks",
+      "Standardized analytics and authentication across all apps with PostHog & WorkOS; weekly exec snapshots adopted by product and leadership for roadmap decisions",
+      "Architected and took full ownership of Sonar (company's most important internal AI platform): end-to-end workflow for live transcript ingestion and custom analysis",
+      "Built Translate (COSMO highest adopted internal platform of 2025) reaching 25% usage without any communications",
     ],
   },
   {
     id: "gem",
     company: "GEM AI",
-    role: "AI Engineer | CTO | Co-Founder",
+    role: "AI Engineer, Co-Founder",
     location: "Paris, France",
-    period: "Jan 2024 – Jan 2025",
+    period: "Jan 2024 - Jan 2025",
     technologies: [
-      "Python",
-      "Django",
-      "FastAPI",
-      "ReactJS",
-      "TypeScript",
-      "Azure",
-      "Docker",
-      "Kubernetes",
-      "PostgreSQL",
-      "GitHub Actions",
+      "Python", "Django", "FastAPI", "ReactJS", "TypeScript",
+      "Azure", "Docker", "Kubernetes", "PostgreSQL", "GitHub Actions",
     ],
     highlights: [
-      "Built 'Echo' — enterprise RAG tool generating €125,000 in licensing revenue in first month",
-      "Led team of 5 to build 'snap-and-solve' in 25 days with Next.js, FastAPI, and multi-model AI",
-      "Generated €175,000+ revenue in 6 months leading 10 developers across time zones",
-      "Developed adaptive syllabus mapping engine with Neo4j graphs and PGVector for assessments",
+      "Developed Echo, an enterprise-grade scalable RAG tool using Python, Django, and ReactJS, generating EUR 125,000 in licensing revenue in the first month",
+      "Scaled to a team of 5 to build Snap-and-Solve in 25 days using Next.js, FastAPI, integrating OpenAI, Mistral, Anthropic, and Ollama",
+      "Developed an adaptive syllabus mapping engine using Keras for OCR, Neo4j for graphs, and PGVector for vector storage",
+      "Implemented CI/CD pipelines with GitHub Actions, reducing deployment times by 40%. Scaled to >EUR 175,000 revenue and 10 developers in 6 months",
     ],
   },
   {
     id: "pernod",
     company: "PERNOD RICARD",
-    role: "Digital UX Researcher | Internship",
+    role: "UX Researcher",
     location: "Paris, France",
-    period: "Jul 2023 – Dec 2023",
+    period: "Jul 2023 - Dec 2023",
     technologies: ["Python", "Google Apps Script", "PowerBI", "Excel"],
     highlights: [
-      "Automated data reporting and engagement analysis, reducing manual effort by 40%",
-      "Conducted qualitative research for product development insights",
-      "Successfully converted internship into founding my own venture",
+      "Automated data reporting and engagement analysis using Python and Google Apps Script, reducing manual effort by 40%",
+      "Conducted qualitative research to generate user insights for product development, presented using PowerBI",
+      "Communicated insights through presentations to stakeholders, contributing to strategic decisions; converted internship into founding own venture",
     ],
   },
   {
@@ -155,173 +121,174 @@ export const experiences: Experience[] = [
     company: "PASSIONOID TECHNOLOGIES & BLIIP STUDIOS",
     role: "Co-Founder | Software Engineer",
     location: "Pune, India",
-    period: "Sep 2021 – May 2022",
+    period: "May 2019 - Sept 2022",
     technologies: [
-      "ReactJS",
-      "Flutter",
-      "Django",
-      "React Native",
-      "PostgreSQL",
-      "GitHub Actions",
+      "ReactJS", "Flutter", "Django", "React Native", "PostgreSQL", "GitHub Actions",
     ],
     highlights: [
-      "Led team of 5 to deliver 16+ projects for national and international clients in 3 years",
-      "Developed CRM Automation Engine in 3 months using ReactJS and Django",
-      "Built facility management platform with React and Django REST Framework",
+      "Led a team of 5 developers to successfully deliver 16+ projects for national and international clients in 3 years",
+      "Developed a CRM Automation Engine in 3 months using ReactJS and Python Django, streamlining client management through CI/CD pipelines",
+      "Developed a facility management platform leveraging React and Django REST Framework with GitHub Actions",
     ],
   },
-];
+]
 
 // =============================================================================
 // EDUCATION SECTION
 // =============================================================================
+
 export interface Education {
-  id: string;
-  institution: string;
-  degree: string;
-  specialization?: string;
-  location: string;
-  period: string;
-  highlights?: string[];
+  id: string
+  institution: string
+  degree: string
+  specialization?: string
+  location: string
+  period: string
+  highlights?: string[]
 }
 
 export const education: Education[] = [
   {
     id: "escp",
     institution: "ESCP Europe Business School",
-    degree: "Master's in Management",
+    degree: "Masters in Management",
     specialization: "Innovation & High Tech",
     location: "Berlin, Germany",
-    period: "Sep 2022 – Feb 2025",
+    period: "Sep 2022 - Feb 2025",
     highlights: [
       "GMAT: 730 (96th percentile) - V41 Q49",
-      "Advanced Python Programming, Machine Learning, Data Driven Marketing",
+      "Advanced Python Programming, Machine Learning and Analysis, Data Driven Marketing",
     ],
   },
-  {
-    id: "sp",
-    institution: "Sir Parshurambhau College",
-    degree: "Bachelor of Business Administration",
-    specialization: "Marketing Management",
-    location: "Pune, India",
-    period: "June 2017 – April 2020",
-    highlights: ["Big Data in Marketing, Financial Management, Business Strategy"],
-  },
-  {
-    id: "aissms",
-    institution: "A.I.S.S.M.S. Polytechnic College",
-    degree: "Diploma in Mechanical Engineering",
-    location: "Pune, India",
-    period: "June 2014 – Sept 2017",
-    highlights: ["Computer Science, Software Development, Fundamentals of Coding"],
-  },
-];
+]
 
 // =============================================================================
 // SKILLS SECTION
 // =============================================================================
+
 export interface Skill {
-  name: string;
-  category: "backend" | "frontend" | "ai" | "genai" | "tools" | "languages";
+  name: string
+  category: "ai_llm" | "ml_data" | "backend" | "infra" | "frontend"
 }
 
 export const skills: Skill[] = [
-  // Backend & Databases
-  { name: "Django", category: "backend" },
-  { name: "FastAPI", category: "backend" },
-  { name: "Node.js", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "Redis", category: "backend" },
-  { name: "Neo4j", category: "backend" },
-  { name: "MongoDB", category: "backend" },
-  { name: "PGVector", category: "backend" },
-  { name: "ChromaDB", category: "backend" },
+  // AI/LLM
+  { name: "RAG", category: "ai_llm" },
+  { name: "Semantic Search", category: "ai_llm" },
+  { name: "Prompt Engineering", category: "ai_llm" },
+  { name: "Eval Patterns", category: "ai_llm" },
+  { name: "Hugging Face", category: "ai_llm" },
+  { name: "Transformers", category: "ai_llm" },
+  { name: "Ollama", category: "ai_llm" },
+  { name: "vLLM", category: "ai_llm" },
+  { name: "LangChain", category: "ai_llm" },
+  { name: "LlamaIndex", category: "ai_llm" },
 
-  // Frontend
+  // ML/Data
+  { name: "Pandas", category: "ml_data" },
+  { name: "NumPy", category: "ml_data" },
+  { name: "scikit-learn", category: "ml_data" },
+  { name: "PyTorch", category: "ml_data" },
+  { name: "TensorFlow", category: "ml_data" },
+
+  // Backend
+  { name: "Python", category: "backend" },
+  { name: "FastAPI", category: "backend" },
+  { name: "Django", category: "backend" },
+  { name: "REST APIs", category: "backend" },
+  { name: "Async Python", category: "backend" },
+  { name: "Testing", category: "backend" },
+
+  // Data/Infra
+  { name: "PostgreSQL", category: "infra" },
+  { name: "Redis", category: "infra" },
+  { name: "Neo4j", category: "infra" },
+  { name: "PGVector", category: "infra" },
+  { name: "RabbitMQ", category: "infra" },
+  { name: "Docker", category: "infra" },
+  { name: "Kubernetes", category: "infra" },
+  { name: "CI/CD", category: "infra" },
+  { name: "Azure", category: "infra" },
+  { name: "Monitoring", category: "infra" },
+  { name: "Pulumi", category: "infra" },
+  { name: "PostHog", category: "infra" },
+
+  // Frontend (not on CV skills but used in experience)
   { name: "React", category: "frontend" },
   { name: "Next.js", category: "frontend" },
   { name: "TypeScript", category: "frontend" },
-  { name: "Tailwind", category: "frontend" },
+  { name: "Tailwind CSS", category: "frontend" },
   { name: "React Native", category: "frontend" },
   { name: "Flutter", category: "frontend" },
-
-  // AI/ML
-  { name: "TensorFlow", category: "ai" },
-  { name: "PyTorch", category: "ai" },
-  { name: "scikit-learn", category: "ai" },
-  { name: "NumPy", category: "ai" },
-  { name: "Pandas", category: "ai" },
-  { name: "OpenCV", category: "ai" },
-  { name: "spaCy", category: "ai" },
-  { name: "NLTK", category: "ai" },
-
-  // GenAI
-  { name: "LangChain", category: "genai" },
-  { name: "LlamaIndex", category: "genai" },
-  { name: "Hugging Face", category: "genai" },
-  { name: "Ollama", category: "genai" },
-  { name: "vLLM", category: "genai" },
-  { name: "RAG", category: "genai" },
-  { name: "Transformers", category: "genai" },
-
-  // Tools & Cloud
-  { name: "Docker", category: "tools" },
-  { name: "Kubernetes", category: "tools" },
-  { name: "Azure", category: "tools" },
-  { name: "GitHub Actions", category: "tools" },
-  { name: "Pulumi", category: "tools" },
-  { name: "PostHog", category: "tools" },
-];
+]
 
 export const skillCategories = [
   { key: "all", label: "All" },
+  { key: "ai_llm", label: "AI / LLM" },
+  { key: "ml_data", label: "ML / Data" },
   { key: "backend", label: "Backend" },
+  { key: "infra", label: "Data & Infra" },
   { key: "frontend", label: "Frontend" },
-  { key: "ai", label: "AI/ML" },
-  { key: "genai", label: "GenAI" },
-  { key: "tools", label: "DevOps" },
-];
-
-export const spokenLanguages = [
-  { language: "English", level: "Native" },
-  { language: "Hindi", level: "Native" },
-  { language: "French", level: "B1 - Intermediate" },
-  { language: "German", level: "A1 - Beginner" },
-];
+] as const
 
 // =============================================================================
 // PROJECTS SECTION
 // =============================================================================
-// Placeholder structure - User will provide actual project data later
+
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  longDescription?: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  year: string;
-  featured?: boolean;
-  image?: string;
+  id: string
+  title: string
+  description: string
+  longDescription?: string
+  tags: string[]
+  liveUrl?: string
+  githubUrl?: string
+  year: string
+  featured?: boolean
+  image?: string
 }
 
 export const projects: Project[] = [
-  // Placeholder projects based on resume highlights
+  {
+    id: "noll",
+    title: "noll.to",
+    description:
+      "Privacy-first document translation built for sensitive workflows. Focused on layout retention, controlled data handling, and reliable document processing. Shipped as a SaaS product.",
+    tags: ["SaaS", "Privacy", "Document Processing", "Translation"],
+    liveUrl: "https://noll.to",
+    year: "2025",
+    featured: true,
+  },
+  {
+    id: "testkizuna",
+    title: "testkizuna.com",
+    description:
+      "AI-assisted QA and testing product focused on turning quality checks into repeatable, automatable workflows, with a product mindset around reliability and engineering efficiency.",
+    tags: ["AI", "QA", "Testing", "Automation"],
+    liveUrl: "https://testkizuna.com",
+    year: "2025",
+  },
   {
     id: "sonar",
     title: "Sonar AI Platform",
     description:
-      "Internal AI platform for transcript ingestion and custom analysis. End-to-end workflow design running as an internal API product.",
+      "Company's most important internal AI platform. Designed the end-to-end workflow for live transcript ingestion and custom analysis, running as an internal API product.",
     tags: ["FastAPI", "PostgreSQL", "PGVector", "Azure", "RabbitMQ"],
     year: "2025",
-    featured: true,
+  },
+  {
+    id: "translate",
+    title: "Translate",
+    description:
+      "COSMO's highest adopted internal platform of 2025, reaching 25% usage without any communications or marketing. Built end-to-end as an internal tool.",
+    tags: ["Next.js", "FastAPI", "Azure", "Internal Tool"],
+    year: "2025",
   },
   {
     id: "echo",
     title: "Echo - Enterprise RAG",
     description:
-      "Enterprise-grade scalable retrieval-augmented generation tool. Generated €125,000 in licensing revenue in the first month.",
+      "Enterprise-grade scalable retrieval-augmented generation tool built in 45 days. Generated EUR 125,000 in licensing revenue in the first month.",
     tags: ["Python", "Django", "ReactJS", "PostgreSQL", "RAG"],
     year: "2024",
   },
@@ -329,7 +296,7 @@ export const projects: Project[] = [
     id: "snap-solve",
     title: "Snap-and-Solve",
     description:
-      "AI-powered problem solver integrating OpenAI, Mistral, Anthropic, and Ollama. Built in 25 days with a team of 5.",
+      "AI-powered problem solver integrating OpenAI, Mistral, Anthropic, and Ollama for open-source inference. Built in 25 days with a team of 5. Deployed on Azure Kubernetes.",
     tags: ["Next.js", "FastAPI", "Azure Kubernetes", "Prometheus", "Grafana"],
     year: "2024",
   },
@@ -337,24 +304,60 @@ export const projects: Project[] = [
     id: "syllabus-mapper",
     title: "Adaptive Syllabus Mapper",
     description:
-      "Personalized learning path engine using sequential knowledge graphs. OCR with Keras, graphs with Neo4j, vectors with PGVector.",
+      "Personalized learning path engine using sequential knowledge graphs. OCR with Keras, graphs with Neo4j, vectors with PGVector to optimize user proficiency assessments.",
     tags: ["Keras", "Neo4j", "PGVector", "Python", "OCR"],
     year: "2024",
   },
-];
+]
+
+// =============================================================================
+// TESTIMONIALS SECTION
+// =============================================================================
+
+export interface Testimonial {
+  id: string
+  quote: string
+  name: string
+  role: string
+  company: string
+  image?: string
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    id: "t1",
+    quote: "Yash has an exceptional ability to turn complex AI concepts into production-ready products. His speed of execution is remarkable.",
+    name: "Placeholder Name",
+    role: "CTO",
+    company: "Tech Company",
+  },
+  {
+    id: "t2",
+    quote: "Working with Yash transformed our approach to AI integration. He delivered a complete RAG system that generated revenue from day one.",
+    name: "Placeholder Name",
+    role: "VP Engineering",
+    company: "AI Startup",
+  },
+  {
+    id: "t3",
+    quote: "A rare combination of technical depth and business understanding. Yash doesn't just build features -- he builds products that matter.",
+    name: "Placeholder Name",
+    role: "Product Director",
+    company: "Enterprise Corp",
+  },
+]
 
 // =============================================================================
 // CONTACT SECTION
 // =============================================================================
+
 export const contactContent = {
-  headline: {
-    prefix: "Let's create",
-    middle: "something",
-    highlight: "amazing",
-  },
-  subtitle: "Have a project in mind? Or just want to say hello?\nI'd love to hear from you!",
+  headline: "Let's Build Something",
+  highlight: "Together",
+  subtitle:
+    "Have a project in mind or want to discuss AI solutions? I'm always open to new opportunities and conversations.",
   ctaLabel: "Get in Touch",
-};
+}
 
 export const socialLinks = [
   {
@@ -375,27 +378,80 @@ export const socialLinks = [
     label: "yash-khare",
     icon: "linkedin",
   },
-];
+]
+
+// =============================================================================
+// BLOG SECTION (external links + placeholders for future MDX)
+// =============================================================================
+
+export interface BlogPost {
+  id: string
+  title: string
+  excerpt: string
+  date: string
+  readingTime: string
+  tags: string[]
+  url?: string
+  slug?: string
+  external?: boolean
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: "b1",
+    title: "Building Production RAG Systems: Lessons from Echo",
+    excerpt:
+      "How we built an enterprise RAG tool that generated six-figure revenue in its first month. Architecture decisions, pitfalls, and what I'd do differently.",
+    date: "2024-12-15",
+    readingTime: "8 min",
+    tags: ["RAG", "AI", "Architecture"],
+    slug: "building-production-rag-systems",
+  },
+  {
+    id: "b2",
+    title: "Shipping 8 AI Products in 8 Months",
+    excerpt:
+      "A retrospective on building and deploying 8 end-to-end AI products with an average time-to-deployment of under 3 weeks.",
+    date: "2025-01-20",
+    readingTime: "6 min",
+    tags: ["Productivity", "Engineering", "AI"],
+    slug: "shipping-8-products-8-months",
+  },
+  {
+    id: "b3",
+    title: "Vector Databases in Practice: PGVector vs ChromaDB",
+    excerpt:
+      "A practical comparison of vector database solutions for production AI applications, based on real-world usage at scale.",
+    date: "2025-02-01",
+    readingTime: "10 min",
+    tags: ["Vector DB", "PostgreSQL", "AI"],
+    slug: "vector-databases-in-practice",
+  },
+]
+
+// =============================================================================
+// SPOKEN LANGUAGES
+// =============================================================================
+
+export const spokenLanguages = [
+  { language: "English", level: "Native" },
+  { language: "Hindi", level: "Native" },
+  { language: "French", level: "B1 - Intermediate" },
+  { language: "German", level: "A1 - Beginner" },
+]
 
 // =============================================================================
 // META & SEO
 // =============================================================================
+
 export const metaContent = {
-  title: "Yash Khare | AI Developer & Full-Stack Engineer",
+  title: "Yash Khare | AI Software Engineer",
   description:
-    "AI Developer & Full-Stack Engineer with 4+ years experience. Specialized in Python (Django, FastAPI) and React. Building scalable AI products in Berlin.",
+    "AI Software Engineer shipping production-ready AI products. Specialized in Python, FastAPI, Django, RAG, and LLM integration. Based in Berlin.",
   keywords: [
-    "AI Developer",
-    "Full-Stack Engineer",
-    "Python",
-    "Django",
-    "FastAPI",
-    "React",
-    "Next.js",
-    "RAG",
-    "LLM",
-    "Machine Learning",
-    "Berlin",
+    "AI Software Engineer", "AI Engineer", "Python", "Django", "FastAPI",
+    "React", "Next.js", "RAG", "LLM", "Machine Learning", "Berlin",
+    "Semantic Search", "Prompt Engineering",
   ],
   ogImage: "/og-image.png",
-};
+}

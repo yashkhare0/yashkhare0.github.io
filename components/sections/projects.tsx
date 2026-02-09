@@ -1,291 +1,219 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ArrowUpRight, Github } from "lucide-react";
-import { Labrador } from "@/components/labrador/labrador";
-import { projects } from "@/config/content";
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { ArrowUpRight, Github, Star } from "lucide-react"
+import { projects } from "@/config/content"
 
 interface ProjectsProps {
-  onNavigate?: (section: string) => void;
-  isActive?: boolean;
+  onNavigate: (section: string) => void
+  isActive: boolean
 }
 
-export function Projects({ onNavigate, isActive = false }: ProjectsProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const [dogPosition, setDogPosition] = useState({ x: 0, y: 0 });
+export function Projects({ onNavigate, isActive }: ProjectsProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const featuredRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  const featuredProject = projects.find((p) => p.featured)
+  const otherProjects = projects.filter((p) => !p.featured)
 
   useEffect(() => {
-    if (!isActive || !cardsRef.current) return;
+    if (!isActive) return
 
-    const tl = gsap.timeline({ delay: 0.2 });
+    const tl = gsap.timeline({ delay: 0.2 })
 
-    // Cards reveal with diagonal stagger
-    const cards = cardsRef.current.querySelectorAll(".project-card");
-    tl.fromTo(
-      cards,
-      {
-        y: 60,
-        opacity: 0,
-        clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
-      },
-      {
-        y: 0,
-        opacity: 1,
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power3.out",
-      }
-    );
-  }, [isActive]);
-
-  // Update dog position based on hovered card
-  useEffect(() => {
-    if (!hoveredProject || !cardsRef.current) return;
-
-    const card = cardsRef.current.querySelector(`[data-project="${hoveredProject}"]`);
-    if (card) {
-      const rect = card.getBoundingClientRect();
-      const containerRect = cardsRef.current.getBoundingClientRect();
-      setDogPosition({
-        x: rect.left - containerRect.left + rect.width / 2,
-        y: rect.bottom - containerRect.top,
-      });
+    if (headingRef.current) {
+      tl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        0
+      )
     }
-  }, [hoveredProject]);
 
-  const featuredProject = projects.find((p) => p.featured);
-  const otherProjects = projects.filter((p) => !p.featured);
+    if (featuredRef.current) {
+      tl.fromTo(
+        featuredRef.current,
+        { opacity: 0, y: 40, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" },
+        0.3
+      )
+    }
+
+    if (gridRef.current) {
+      tl.fromTo(
+        gridRef.current.children,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+        0.6
+      )
+    }
+  }, [isActive])
 
   return (
     <section
       ref={sectionRef}
-      data-section="projects"
       className="section-viewport"
-      style={{
-        backgroundColor: "var(--charcoal)",
-        color: "var(--cream-white)",
-      }}
     >
-      {/* Sakura accent shapes */}
-      <div
-        className="absolute top-0 right-0 w-96 h-96 opacity-5"
-        style={{
-          backgroundColor: "var(--sakura-pink)",
-          clipPath: "polygon(100% 0, 0 0, 100% 100%)",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col justify-start max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24 pb-24">
-        {/* Header */}
-        <div className="mb-8 md:mb-16 mt-8 md:mt-0">
-          <div className="flex items-center gap-4 mb-4">
-            <div
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: "var(--sakura-pink)" }}
-            />
-            <span
-              className="text-sm uppercase tracking-[0.3em] font-body"
-              style={{ color: "var(--sakura-pink)" }}
-            >
-              Selected Work
-            </span>
-          </div>
-
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display">
-            Projects that
-            <br />
-            <span style={{ color: "var(--sakura-pink)" }}>spark joy</span>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        {/* Section heading */}
+        <div ref={headingRef} className="mb-16 opacity-0">
+          <div className="divider-gold mb-4" />
+          <h2 className="text-section-heading font-display mb-2">
+            Projects
           </h2>
+          <p className="font-body text-lg" style={{ color: "var(--text-secondary)" }}>
+            Products I&apos;ve built and shipped
+          </p>
         </div>
 
         {/* Featured project */}
         {featuredProject && (
           <div
-            className="project-card group relative mb-8 md:mb-12 p-4 sm:p-6 md:p-8 lg:p-12 transition-all duration-300"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.03)",
-              border: "2px solid rgba(255, 143, 163, 0.2)",
-            }}
-            onMouseEnter={() => setHoveredProject(featuredProject.id)}
-            onMouseLeave={() => setHoveredProject(null)}
-            data-project={featuredProject.id}
+            ref={featuredRef}
+            className="card-cinematic p-8 mb-8 opacity-0"
           >
-            {/* Featured badge */}
-            <div
-              className="absolute top-0 right-0 px-3 py-1.5 sm:px-4 sm:py-2 text-xs uppercase tracking-wider font-body"
-              style={{
-                backgroundColor: "var(--sakura-pink)",
-                color: "var(--charcoal)",
-              }}
-            >
-              ★ Featured
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center mt-6 sm:mt-0">
-              <div>
-                <span className="text-sm font-mono opacity-50">{featuredProject.year}</span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display mt-2 mb-4 group-hover:translate-x-2 transition-transform">
-                  {featuredProject.title}
-                </h3>
-                <p className="text-base sm:text-lg font-body opacity-70 leading-relaxed mb-4 sm:mb-6">
-                  {featuredProject.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                  {featuredProject.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-mono"
-                      style={{
-                        border: "1px solid rgba(255, 143, 163, 0.3)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex flex-wrap gap-3 sm:gap-4">
-                  {featuredProject.liveUrl && (
-                    <a
-                      href={featuredProject.liveUrl}
-                      className="btn-geometric flex items-center gap-2 text-sm sm:text-base"
-                      style={{
-                        backgroundColor: "var(--sakura-pink)",
-                        color: "var(--charcoal)",
-                      }}
-                    >
-                      View Project
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  )}
-                  {featuredProject.githubUrl && (
-                    <a
-                      href={featuredProject.githubUrl}
-                      className="btn-outline flex items-center gap-2 text-sm sm:text-base"
-                      style={{
-                        borderColor: "var(--cream-white)",
-                        color: "var(--cream-white)",
-                      }}
-                    >
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                  )}
-                </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4">
+                <Star size={16} style={{ color: "var(--accent-gold)" }} />
+                <span
+                  className="font-mono text-xs uppercase tracking-widest"
+                  style={{ color: "var(--accent-gold)" }}
+                >
+                  Featured Project
+                </span>
               </div>
 
-              {/* Placeholder visual */}
-              <div
-                className="aspect-video lg:aspect-square flex items-center justify-center mt-4 lg:mt-0"
-                style={{
-                  backgroundColor: "rgba(255, 143, 163, 0.1)",
-                  border: "2px dashed rgba(255, 143, 163, 0.3)",
-                }}
+              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4">
+                {featuredProject.title}
+              </h3>
+              <p
+                className="font-body text-base leading-relaxed mb-6 max-w-2xl"
+                style={{ color: "var(--text-secondary)" }}
               >
-                <span className="text-4xl opacity-20">◇</span>
+                {featuredProject.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {featuredProject.tags.map((tag) => (
+                  <span key={tag} className="skill-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4">
+                <span
+                  className="font-mono text-sm"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  {featuredProject.year}
+                </span>
+                {featuredProject.githubUrl && (
+                  <a
+                    href={featuredProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 font-body text-sm transition-colors cursor-pointer"
+                    style={{ color: "var(--accent-gold)" }}
+                  >
+                    <Github size={14} />
+                    <span>Source</span>
+                  </a>
+                )}
+                {featuredProject.liveUrl && (
+                  <a
+                    href={featuredProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 font-body text-sm transition-colors cursor-pointer"
+                    style={{ color: "var(--accent-gold)" }}
+                  >
+                    <ArrowUpRight size={14} />
+                    <span>Live Demo</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
         )}
 
         {/* Other projects grid */}
-        <div ref={cardsRef} className="relative grid sm:grid-cols-2 gap-4 sm:gap-6">
-          {otherProjects.map((project, i) => (
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {otherProjects.map((project) => (
             <div
               key={project.id}
-              className="project-card group relative p-4 sm:p-6 transition-all duration-300 cursor-pointer"
-              style={{
-                backgroundColor: hoveredProject === project.id ? "rgba(255, 143, 163, 0.05)" : "rgba(255, 255, 255, 0.02)",
-                border: `2px solid ${hoveredProject === project.id ? "var(--sakura-pink)" : "rgba(255, 255, 255, 0.05)"}`,
-                transform: hoveredProject === project.id ? "translateY(-4px)" : "none",
-              }}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-              data-project={project.id}
+              className="card-cinematic p-6 opacity-0 cursor-pointer"
             >
-              {/* Diagonal corner */}
-              <div
-                className="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
-                style={{
-                  borderStyle: "solid",
-                  borderWidth: hoveredProject === project.id ? "0 40px 40px 0" : "0 0 0 0",
-                  borderColor: "transparent var(--sakura-pink) transparent transparent",
-                }}
-              />
-
-              {/* Year */}
-              <span className="text-xs font-mono opacity-50">{project.year}</span>
-
-              {/* Title */}
-              <h3 className="text-xl sm:text-2xl font-display mt-2 mb-3 group-hover:translate-x-1 transition-transform pr-8">
-                {project.title}
-              </h3>
-
-              {/* Description */}
-              <p className="font-body text-sm opacity-60 leading-relaxed mb-4">
-                {project.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
                   <span
-                    key={tag}
-                    className="px-2 py-0.5 text-xs font-mono opacity-50"
-                    style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                    className="font-mono text-xs"
+                    style={{ color: "var(--text-tertiary)" }}
                   >
-                    {tag}
+                    {project.year}
                   </span>
-                ))}
-              </div>
+                  <div className="flex items-center gap-2">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors"
+                        style={{ color: "var(--text-tertiary)" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-gold)")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-tertiary)")}
+                      >
+                        <Github size={16} />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors"
+                        style={{ color: "var(--text-tertiary)" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-gold)")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-tertiary)")}
+                      >
+                        <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
+                </div>
 
-              {/* Arrow */}
-              <ArrowUpRight
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1 group-hover:-translate-y-1"
-                style={{ color: "var(--sakura-pink)" }}
-              />
+                <h3 className="font-display text-lg font-bold mb-2">
+                  {project.title}
+                </h3>
+                <p
+                  className="font-body text-sm leading-relaxed mb-4"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.slice(0, 4).map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] px-2 py-0.5 rounded"
+                      style={{
+                        background: "var(--bg-surface)",
+                        color: "var(--text-tertiary)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
-
-          {/* Dog that follows hovered card */}
-          {hoveredProject && (
-            <div
-              className="absolute pointer-events-none transition-all duration-300 ease-out"
-              style={{
-                left: dogPosition.x - 40,
-                top: dogPosition.y + 10,
-                zIndex: 10,
-              }}
-            >
-              <Labrador pose="curious" size={80} />
-            </div>
-          )}
         </div>
       </div>
-
-      {/* Navigation dots */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
-        {["hero", "about", "skills", "projects", "contact"].map((section) => (
-          <button
-            key={section}
-            onClick={() => onNavigate?.(section)}
-            className={`nav-dot ${section === "projects" ? "active" : ""}`}
-            style={{
-              borderColor: "var(--cream-white)",
-              backgroundColor: section === "projects" ? "var(--sakura-pink)" : "transparent",
-            }}
-            aria-label={`Go to ${section}`}
-          />
-        ))}
-      </div>
     </section>
-  );
+  )
 }

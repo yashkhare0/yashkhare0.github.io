@@ -1,35 +1,35 @@
-import type { Metadata } from "next";
-import { Syne, Outfit, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import "@/styles/globals.css";
+import type { Metadata } from "next"
+import { Syne, Inter, JetBrains_Mono } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
+import "@/styles/globals.css"
 
 const syne = Syne({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-syne",
   display: "swap",
-});
+})
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
   display: "swap",
-});
+})
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
-});
+})
 
 export const metadata: Metadata = {
-  title: "Yash Khare | AI Developer & Full-Stack Engineer",
+  title: "Yash Khare | AI Software Engineer",
   description:
-    "AI Developer & Full-Stack Engineer with 4+ years experience. Specialized in Python (Django, FastAPI) and React. Building scalable AI products in Berlin.",
+    "AI Software Engineer shipping production-ready AI products. Specialized in Python, FastAPI, Django, RAG, and LLM integration. Based in Berlin.",
   keywords: [
-    "AI Developer",
-    "Full-Stack Engineer",
+    "AI Software Engineer",
+    "AI Engineer",
     "Python",
     "Django",
     "FastAPI",
@@ -37,7 +37,8 @@ export const metadata: Metadata = {
     "Next.js",
     "RAG",
     "LLM",
-    "Machine Learning",
+    "Semantic Search",
+    "Prompt Engineering",
     "Berlin",
   ],
   authors: [{ name: "Yash Khare" }],
@@ -50,29 +51,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://yashkhare0.github.io",
-    title: "Yash Khare | AI Developer & Full-Stack Engineer",
+    title: "Yash Khare | AI Software Engineer",
     description:
-      "AI Developer & Full-Stack Engineer with 4+ years experience. Building scalable AI products in Berlin.",
+      "AI Software Engineer shipping production-ready AI products. Based in Berlin.",
     siteName: "Yash Khare",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yash Khare | AI Developer & Full-Stack Engineer",
+    title: "Yash Khare | AI Software Engineer",
     description:
-      "AI Developer & Full-Stack Engineer with 4+ years experience. Building scalable AI products in Berlin.",
+      "AI Software Engineer shipping production-ready AI products. Based in Berlin.",
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${syne.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
+      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link
@@ -81,16 +82,18 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="antialiased overflow-hidden">
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange={false}
         >
+          {/* Noise texture overlay */}
+          <div className="noise-overlay" aria-hidden="true" />
           {children}
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
