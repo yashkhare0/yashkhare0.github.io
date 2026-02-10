@@ -11,6 +11,7 @@ import { BlogPreview } from "@/components/sections/blog-preview"
 import { Testimonials } from "@/components/sections/testimonials"
 import { Contact } from "@/components/sections/contact"
 import { SectionNav } from "@/components/navigation/section-nav"
+import { LanguageSwitcher } from "@/components/ui/language-switcher"
 
 type Section = "hero" | "about" | "experience" | "skills" | "projects" | "blog" | "testimonials" | "contact"
 
@@ -265,6 +266,9 @@ export default function Home() {
           {String(sectionList.indexOf(currentSection) + 1).padStart(2, "0")} / {String(sectionList.length).padStart(2, "0")}
         </span>
       </div>
+
+      {/* Language switcher — fixed next to theme toggle */}
+      <LanguageSwitcher className="fixed top-5 sm:top-6 right-27 sm:right-33 z-50" />
 
       {/* Section navigation */}
       <SectionNav

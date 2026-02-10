@@ -2,6 +2,7 @@ import { posts } from "#velite"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react"
 import type { Metadata } from "next"
+import { LanguageSwitcher } from "@/components/ui/language-switcher"
 
 export function generateStaticParams() {
   return posts
@@ -66,12 +67,15 @@ export default async function BlogPostPage({
           <ArrowLeft size={14} />
           Back to portfolio
         </a>
-        <span
-          className="font-mono text-[11px] uppercase tracking-wider"
-          style={{ color: "var(--text-tertiary)" }}
-        >
-          Blog
-        </span>
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <span
+            className="font-mono text-[11px] uppercase tracking-wider"
+            style={{ color: "var(--text-tertiary)" }}
+          >
+            Blog
+          </span>
+        </div>
       </nav>
 
       {/* Hero */}

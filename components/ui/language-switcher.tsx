@@ -1,7 +1,7 @@
 "use client"
 
 import { useLocale, locales, type Locale } from "@/lib/i18n"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 const localeFlags: Record<Locale, { flag: string; label: string }> = {
   en: { flag: "🇬🇧", label: "English" },
@@ -9,17 +9,20 @@ const localeFlags: Record<Locale, { flag: string; label: string }> = {
   fr: { flag: "🇫🇷", label: "Français" },
 }
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ className }: { className?: string }) {
   const currentLocale = useLocale()
   const router = useRouter()
+  const pathname = usePathname()
 
   const handleSwitch = (locale: Locale) => {
     if (locale === currentLocale) return
-    router.push(`/${locale}/`)
+    // Preserve the current path after the locale prefix
+    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "")
+    router.push(`/${locale}${pathWithoutLocale || "/"}`)
   }
 
   return (
-    <div className="fixed top-5 sm:top-6 right-27 sm:right-33 z-50 flex items-center gap-1">
+    <div className={`flex items-center gap-1 ${className ?? ""}`}>
       {locales.map((locale) => (
         <button
           key={locale}
