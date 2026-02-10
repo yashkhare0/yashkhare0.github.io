@@ -88,7 +88,7 @@ export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPrevie
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
         {/* Section number */}
-        <span ref={numberRef} className="section-number">05</span>
+        <span ref={numberRef} className="section-number">06</span>
 
         {/* Heading — no divider, serif accent */}
         <div ref={headingRef} className="mb-14 opacity-0">

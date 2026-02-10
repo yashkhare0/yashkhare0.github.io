@@ -89,7 +89,7 @@ export function Projects({ onNavigate, isActive, hasBeenVisited }: ProjectsProps
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
         {/* Section number */}
-        <span ref={numberRef} className="section-number">04</span>
+        <span ref={numberRef} className="section-number">05</span>
 
         {/* Heading with count badge */}
         <div ref={headingRef} className="mb-12 opacity-0">

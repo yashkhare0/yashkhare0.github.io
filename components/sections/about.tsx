@@ -54,7 +54,6 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
   const headingRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
-  const educationRef = useRef<HTMLDivElement>(null)
   const activityRef = useRef<HTMLDivElement>(null)
   const animatedRef = useRef(false)
 
@@ -190,16 +189,6 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
       )
     }
 
-    // Education — fade up
-    if (educationRef.current) {
-      tl.fromTo(
-        educationRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-        0.8
-      )
-    }
-
     // Activity — fade up
     if (activityRef.current) {
       tl.fromTo(
@@ -264,228 +253,200 @@ export function About({ onNavigate, isActive, hasBeenVisited }: AboutProps) {
             </div>
           </div>
 
-          {/* Highlight Cards — magnetic tilt */}
-          <div ref={cardsRef} className="space-y-4">
-            {t.about.highlights.map((highlight, i) => (
-              <MagneticCard key={i} className="opacity-0">
-                <div className="card-editorial p-6">
-                  <div className="relative z-20 flex items-start gap-4">
-                    <div
-                      className="flex-shrink-0 w-11 h-11 rounded-lg flex items-center justify-center"
-                      style={{
-                        background: "var(--accent-gold-muted)",
-                        color: "var(--accent-gold)",
-                      }}
-                    >
-                      {iconMap[highlight.icon]}
-                    </div>
-                    <div>
-                      <h3 className="font-display text-base font-semibold mb-1">
-                        {highlight.title}
-                      </h3>
-                      <p className="font-body text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                        {highlight.description}
-                      </p>
+          {/* Right column: GitHub activity + highlight cards */}
+          <div className="flex flex-col">
+            {/* Highlight Cards — magnetic tilt */}
+            <div ref={cardsRef} className="space-y-4 order-2 mt-8">
+              {t.about.highlights.map((highlight, i) => (
+                <MagneticCard key={i} className="opacity-0">
+                  <div className="card-editorial p-6">
+                    <div className="relative z-20 flex items-start gap-4">
+                      <div
+                        className="shrink-0 w-11 h-11 rounded-lg flex items-center justify-center"
+                        style={{
+                          background: "var(--accent-gold-muted)",
+                          color: "var(--accent-gold)",
+                        }}
+                      >
+                        {iconMap[highlight.icon]}
+                      </div>
+                      <div>
+                        <h3 className="font-display text-base font-semibold mb-1">
+                          {highlight.title}
+                        </h3>
+                        <p className="font-body text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                          {highlight.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </MagneticCard>
-            ))}
-          </div>
-        </div>
+                </MagneticCard>
+              ))}
+            </div>
 
-        {/* Education */}
-        <div ref={educationRef} className="opacity-0 mb-16">
-          <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-5" style={{ color: "var(--text-tertiary)" }}>
-            {t.about.educationHeading}
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {t.about.education.map((edu, i) => (
-              <div
-                key={i}
-                className="p-5 rounded-lg border"
-                style={{
-                  background: "var(--bg-elevated)",
-                  borderColor: "var(--border-subtle)",
-                }}
-              >
-                <p className="font-display text-sm font-semibold mb-1">{edu.degree}</p>
-                {edu.specialization && (
-                  <p className="font-body text-xs mb-2" style={{ color: "var(--accent-gold)" }}>
-                    {edu.specialization}
-                  </p>
-                )}
-                <p className="font-body text-sm" style={{ color: "var(--text-secondary)" }}>
-                  {edu.institution}
-                </p>
-                <p className="font-mono text-xs mt-2" style={{ color: "var(--text-tertiary)" }}>
-                  {edu.period}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+            {/* GitHub Activity */}
+            <div ref={activityRef} className="opacity-0 order-1">
+              <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "var(--text-tertiary)" }}>
+                {t.about.githubHeading}
+              </h3>
 
-        {/* GitHub Activity */}
-        <div ref={activityRef} className="opacity-0">
-          <h3 className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "var(--text-tertiary)" }}>
-            {t.about.githubHeading}
-          </h3>
-
-          {ghLoading ? (
-            /* Loading skeleton */
-            <div className="space-y-4">
-              <div className="flex gap-6">
-                {[1, 2, 3].map((i) => (
+              {ghLoading ? (
+                /* Loading skeleton */
+                <div className="space-y-4">
+                  <div className="flex gap-6">
+                    {[1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="h-16 w-32 rounded-lg animate-pulse"
+                        style={{ background: "var(--bg-surface)" }}
+                      />
+                    ))}
+                  </div>
                   <div
-                    key={i}
-                    className="h-16 w-32 rounded-lg animate-pulse"
+                    className="h-24 w-full rounded-lg animate-pulse"
                     style={{ background: "var(--bg-surface)" }}
                   />
-                ))}
-              </div>
-              <div
-                className="h-24 w-full rounded-lg animate-pulse"
-                style={{ background: "var(--bg-surface)" }}
-              />
-            </div>
-          ) : ghError ? (
-            /* Error state */
-            <div
-              className="p-6 rounded-lg border text-center"
-              style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
-            >
-              <p className="font-body text-sm mb-3" style={{ color: "var(--text-tertiary)" }}>
-                {t.about.githubUnavailable}
-              </p>
-              <a
-                href="https://github.com/yashkhare0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-body text-sm cursor-pointer"
-                style={{ color: "var(--accent-gold)" }}
-              >
-                <Github size={14} />
-                <span>{t.about.viewOnGithub}</span>
-              </a>
-            </div>
-          ) : (
-            <>
-              {/* Streak Stats */}
-              {streakData && (
-                <div className="flex flex-wrap items-center gap-6 sm:gap-10 mb-8">
-                  <div>
-                    <div
-                      className="font-serif text-2xl sm:text-3xl mb-0.5"
-                      style={{ color: "var(--accent-gold)" }}
-                    >
-                      {streakData.totalContributions.toLocaleString()}
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Calendar size={11} style={{ color: "var(--text-tertiary)" }} />
-                      <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        {t.about.totalContributions}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div
-                      className="font-serif text-2xl sm:text-3xl mb-0.5"
-                      style={{ color: "var(--accent-gold)" }}
-                    >
-                      {streakData.currentStreak.length}
-                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Flame size={11} style={{ color: "var(--text-tertiary)" }} />
-                      <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        {t.about.currentStreak}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div
-                      className="font-serif text-2xl sm:text-3xl mb-0.5"
-                      style={{ color: "var(--accent-gold)" }}
-                    >
-                      {streakData.longestStreak.length}
-                      <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <TrendingUp size={11} style={{ color: "var(--text-tertiary)" }} />
-                      <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
-                        {t.about.longestStreak}
-                      </span>
-                    </div>
-                  </div>
                 </div>
-              )}
-
-              {/* Contribution Heatmap */}
-              {heatmapWeeks.length > 0 && (
-                <div className="mb-6">
-                  <div
-                    className="p-4 rounded-lg border overflow-x-auto"
-                    style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
+              ) : ghError ? (
+                /* Error state */
+                <div
+                  className="p-6 rounded-lg border text-center"
+                  style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
+                >
+                  <p className="font-body text-sm mb-3" style={{ color: "var(--text-tertiary)" }}>
+                    {t.about.githubUnavailable}
+                  </p>
+                  <a
+                    href="https://github.com/yashkhare0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-body text-sm cursor-pointer"
+                    style={{ color: "var(--accent-gold)" }}
                   >
-                    <div className="flex gap-[3px]" style={{ minWidth: "fit-content" }}>
-                      {heatmapWeeks.map((week, wi) => (
-                        <div key={wi} className="flex flex-col gap-[3px]">
-                          {week.map((day, di) => (
-                            <div
-                              key={`${wi}-${di}`}
-                              className="rounded-[2px] transition-colors duration-200"
-                              style={{
-                                width: "10px",
-                                height: "10px",
-                                background:
-                                  day.level === -1
-                                    ? "transparent"
-                                    : levelColors[day.level] || levelColors[0],
-                              }}
-                              title={
-                                day.date
-                                  ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${day.date}`
-                                  : undefined
-                              }
-                            />
+                    <Github size={14} />
+                    <span>{t.about.viewOnGithub}</span>
+                  </a>
+                </div>
+              ) : (
+                <>
+                  {/* Streak Stats */}
+                  {streakData && (
+                    <div className="flex flex-wrap items-center gap-6 sm:gap-10 mb-8">
+                      <div>
+                        <div
+                          className="font-serif text-2xl sm:text-3xl mb-0.5"
+                          style={{ color: "var(--accent-gold)" }}
+                        >
+                          {streakData.totalContributions.toLocaleString()}
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Calendar size={11} style={{ color: "var(--text-tertiary)" }} />
+                          <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
+                            {t.about.totalContributions}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div
+                          className="font-serif text-2xl sm:text-3xl mb-0.5"
+                          style={{ color: "var(--accent-gold)" }}
+                        >
+                          {streakData.currentStreak.length}
+                          <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Flame size={11} style={{ color: "var(--text-tertiary)" }} />
+                          <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
+                            {t.about.currentStreak}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div
+                          className="font-serif text-2xl sm:text-3xl mb-0.5"
+                          style={{ color: "var(--accent-gold)" }}
+                        >
+                          {streakData.longestStreak.length}
+                          <span className="text-base ml-1" style={{ color: "var(--text-tertiary)" }}>{t.about.days}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <TrendingUp size={11} style={{ color: "var(--text-tertiary)" }} />
+                          <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
+                            {t.about.longestStreak}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Contribution Heatmap */}
+                  {heatmapWeeks.length > 0 && (
+                    <div className="mb-6">
+                      <div
+                        className="p-4 rounded-lg border overflow-x-auto"
+                        style={{ background: "var(--bg-elevated)", borderColor: "var(--border-subtle)" }}
+                      >
+                        <div className="flex gap-[3px]" style={{ minWidth: "fit-content" }}>
+                          {heatmapWeeks.map((week, wi) => (
+                            <div key={wi} className="flex flex-col gap-[3px]">
+                              {week.map((day, di) => (
+                                <div
+                                  key={`${wi}-${di}`}
+                                  className="rounded-[2px] transition-colors duration-200"
+                                  style={{
+                                    width: "10px",
+                                    height: "10px",
+                                    background:
+                                      day.level === -1
+                                        ? "transparent"
+                                        : levelColors[day.level] || levelColors[0],
+                                  }}
+                                  title={
+                                    day.date
+                                      ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${day.date}`
+                                      : undefined
+                                  }
+                                />
+                              ))}
+                            </div>
                           ))}
                         </div>
-                      ))}
-                    </div>
 
-                    {/* Legend */}
-                    <div className="flex items-center justify-end gap-2 mt-3">
-                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.less}</span>
-                      {levelColors.map((color, i) => (
-                        <div
-                          key={i}
-                          className="rounded-[2px]"
-                          style={{ width: "10px", height: "10px", background: color }}
-                        />
-                      ))}
-                      <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.more}</span>
+                        {/* Legend */}
+                        <div className="flex items-center justify-end gap-2 mt-3">
+                          <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.less}</span>
+                          {levelColors.map((color, i) => (
+                            <div
+                              key={i}
+                              className="rounded-[2px]"
+                              style={{ width: "10px", height: "10px", background: color }}
+                            />
+                          ))}
+                          <span className="font-mono text-[10px]" style={{ color: "var(--text-tertiary)" }}>{t.about.more}</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  )}
+
+                  {/* GitHub profile link */}
+                  <a
+                    href="https://github.com/yashkhare0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-body text-sm cursor-pointer transition-colors"
+                    style={{ color: "var(--accent-gold)" }}
+                  >
+                    <Github size={14} />
+                    <span>@yashkhare0 on GitHub</span>
+                  </a>
+                </>
               )}
-
-              {/* GitHub profile link */}
-              <a
-                href="https://github.com/yashkhare0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-body text-sm cursor-pointer transition-colors"
-                style={{ color: "var(--accent-gold)" }}
-              >
-                <Github size={14} />
-                <span>@yashkhare0 on GitHub</span>
-              </a>
-            </>
-          )}
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   )

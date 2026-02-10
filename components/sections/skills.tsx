@@ -102,7 +102,7 @@ export function Skills({ onNavigate, isActive, hasBeenVisited }: SkillsProps) {
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
         {/* Section number */}
-        <span ref={numberRef} className="section-number">03</span>
+        <span ref={numberRef} className="section-number">04</span>
 
         {/* Heading with inline count */}
         <div ref={headingRef} className="mb-10 opacity-0">

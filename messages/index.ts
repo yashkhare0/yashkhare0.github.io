@@ -7,6 +7,7 @@ export interface Translations {
     home: string
     about: string
     work: string
+    education: string
     skills: string
     projects: string
     blog: string
@@ -38,6 +39,7 @@ export interface Translations {
       institution: string
       location: string
       period: string
+      details?: string[]
     }[]
     githubHeading: string
     totalContributions: string

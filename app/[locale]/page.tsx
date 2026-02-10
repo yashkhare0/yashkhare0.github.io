@@ -5,6 +5,7 @@ import { gsap } from "gsap"
 import { Hero } from "@/components/sections/hero"
 import { About } from "@/components/sections/about"
 import { Experience } from "@/components/sections/experience"
+import { Education } from "@/components/sections/education"
 import { Skills } from "@/components/sections/skills"
 import { Projects } from "@/components/sections/projects"
 import { BlogPreview } from "@/components/sections/blog-preview"
@@ -13,9 +14,9 @@ import { Contact } from "@/components/sections/contact"
 import { SectionNav } from "@/components/navigation/section-nav"
 import { LanguageSwitcher } from "@/components/ui/language-switcher"
 
-type Section = "hero" | "about" | "experience" | "skills" | "projects" | "blog" | "testimonials" | "contact"
+type Section = "hero" | "about" | "experience" | "education" | "skills" | "projects" | "blog" | "testimonials" | "contact"
 
-const sectionList: Section[] = ["hero", "about", "experience", "skills", "projects", "blog", "testimonials", "contact"]
+const sectionList: Section[] = ["hero", "about", "experience", "education", "skills", "projects", "blog", "testimonials", "contact"]
 
 function SectionRenderer({
   section,
@@ -33,6 +34,7 @@ function SectionRenderer({
     case "hero": return <Hero {...props} />
     case "about": return <About {...props} />
     case "experience": return <Experience {...props} />
+    case "education": return <Education {...props} />
     case "skills": return <Skills {...props} />
     case "projects": return <Projects {...props} />
     case "blog": return <BlogPreview {...props} />
@@ -130,7 +132,7 @@ export default function Home() {
           break
       }
 
-      // Number keys 1-8
+      // Number keys 1-9
       const num = parseInt(e.key)
       if (num >= 1 && num <= sectionList.length) {
         navigateTo(sectionList[num - 1])

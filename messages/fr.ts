@@ -10,6 +10,7 @@ const fr: Translations = {
     home: "Accueil",
     about: "À propos",
     work: "Parcours",
+    education: "Formation",
     skills: "Compétences",
     projects: "Projets",
     blog: "Blog",
@@ -75,6 +76,29 @@ const fr: Translations = {
         institution: "ESCP Europe Business School",
         location: "Berlin, Allemagne",
         period: "Sep 2022 - Fév 2025",
+        details: [
+          "Score de 730 (96e percentile) au GMAT (V41Q49).",
+          "Cours pertinents : Advanced Python Programming, Machine Learning and Analysis, Data Driven Marketing.",
+        ],
+      },
+      {
+        degree: "Bachelor of Business Administration",
+        specialization: "Marketing Management",
+        institution: "Sir Parshurambhau College",
+        location: "Pune, Inde",
+        period: "Juin 2017 - Avril 2020",
+        details: [
+          "Cours pertinents : Big Data in Marketing, Financial Management, Business Strategy.",
+        ],
+      },
+      {
+        degree: "Ingénierie mécanique",
+        institution: "A.I.S.S.M.S. Polytechnic College",
+        location: "Pune, Inde",
+        period: "Juin 2014 - Sept 2017",
+        details: [
+          "Cours pertinents : Computer Science, Software Development, Fundamentals of Coding.",
+        ],
       },
     ],
     githubHeading: "Activité GitHub",

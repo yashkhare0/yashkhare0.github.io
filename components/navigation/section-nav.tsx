@@ -19,6 +19,7 @@ export function SectionNav({ sections, currentSection, onNavigate, disabled }: S
     hero: t.nav.home,
     about: t.nav.about,
     experience: t.nav.work,
+    education: t.nav.education,
     skills: t.nav.skills,
     projects: t.nav.projects,
     blog: t.nav.blog,
@@ -70,7 +71,7 @@ export function SectionNav({ sections, currentSection, onNavigate, disabled }: S
 
             {/* Dot / line indicator */}
             <div
-              className="flex-shrink-0 rounded-full transition-all duration-400"
+              className="shrink-0 rounded-full transition-all duration-400"
               style={{
                 width: isActive ? "20px" : "6px",
                 height: "6px",

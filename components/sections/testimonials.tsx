@@ -66,7 +66,7 @@ export function Testimonials({ onNavigate, isActive, hasBeenVisited }: Testimoni
     >
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8">
         {/* Section number */}
-        <span ref={numberRef} className="section-number">06</span>
+        <span ref={numberRef} className="section-number">07</span>
 
         {/* Heading — centered, large serif quote mark */}
         <div ref={headingRef} className="mb-14 opacity-0">
