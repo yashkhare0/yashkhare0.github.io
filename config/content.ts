@@ -404,53 +404,10 @@ export const socialLinks = [
 ]
 
 // =============================================================================
-// BLOG SECTION (external links + placeholders for future MDX)
+// BLOG SECTION — now powered by Velite (content/posts/*.md)
 // =============================================================================
-
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-  readingTime: string
-  tags: string[]
-  url?: string
-  slug?: string
-  external?: boolean
-}
-
-export const blogPosts: BlogPost[] = [
-  {
-    id: "b1",
-    title: "Building Production RAG Systems: Lessons from Echo",
-    excerpt:
-      "How we built an enterprise RAG tool that generated six-figure revenue in its first month. Architecture decisions, pitfalls, and what I'd do differently.",
-    date: "2024-12-15",
-    readingTime: "8 min",
-    tags: ["RAG", "AI", "Architecture"],
-    slug: "building-production-rag-systems",
-  },
-  {
-    id: "b2",
-    title: "Shipping 8 AI Products in 8 Months",
-    excerpt:
-      "A retrospective on building and deploying 8 end-to-end AI products with an average time-to-deployment of under 3 weeks.",
-    date: "2025-01-20",
-    readingTime: "6 min",
-    tags: ["Productivity", "Engineering", "AI"],
-    slug: "shipping-8-products-8-months",
-  },
-  {
-    id: "b3",
-    title: "Vector Databases in Practice: PGVector vs ChromaDB",
-    excerpt:
-      "A practical comparison of vector database solutions for production AI applications, based on real-world usage at scale.",
-    date: "2025-02-01",
-    readingTime: "10 min",
-    tags: ["Vector DB", "PostgreSQL", "AI"],
-    slug: "vector-databases-in-practice",
-  },
-]
+// Blog posts are defined in content/posts/ as Markdown files.
+// Import them via: import { posts } from "#velite"
 
 // =============================================================================
 // SPOKEN LANGUAGES

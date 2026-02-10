@@ -81,10 +81,6 @@ export interface Translations {
   blog: {
     headline: string
     subheadline: string
-    posts: {
-      title: string
-      excerpt: string
-    }[]
   }
   testimonials: {
     headline: string

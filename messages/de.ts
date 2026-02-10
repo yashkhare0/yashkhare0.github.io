@@ -215,23 +215,6 @@ const de: Translations = {
   blog: {
     headline: "Artikel",
     subheadline: "Gedanken zu KI, Engineering und Produktentwicklung",
-    posts: [
-      {
-        title: "Produktions-RAG-Systeme bauen: Lehren aus Echo",
-        excerpt:
-          "Wie wir ein Enterprise-RAG-Tool gebaut haben, das im ersten Monat sechsstelligen Umsatz generierte. Architekturentscheidungen, Fallstricke und was ich anders machen würde.",
-      },
-      {
-        title: "8 KI-Produkte in 8 Monaten ausliefern",
-        excerpt:
-          "Ein Rückblick auf den Bau und das Deployment von 8 End-to-End-KI-Produkten mit einer durchschnittlichen Time-to-Deployment von unter 3 Wochen.",
-      },
-      {
-        title: "Vektordatenbanken in der Praxis: PGVector vs ChromaDB",
-        excerpt:
-          "Ein praktischer Vergleich von Vektordatenbank-Lösungen für produktive KI-Anwendungen, basierend auf realem Einsatz im großen Maßstab.",
-      },
-    ],
   },
   testimonials: {
     headline: "Empfehlungen",

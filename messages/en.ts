@@ -215,23 +215,6 @@ const en: Translations = {
   blog: {
     headline: "Writing",
     subheadline: "Thoughts on AI, engineering, and building products",
-    posts: [
-      {
-        title: "Building Production RAG Systems: Lessons from Echo",
-        excerpt:
-          "How we built an enterprise RAG tool that generated six-figure revenue in its first month. Architecture decisions, pitfalls, and what I'd do differently.",
-      },
-      {
-        title: "Shipping 8 AI Products in 8 Months",
-        excerpt:
-          "A retrospective on building and deploying 8 end-to-end AI products with an average time-to-deployment of under 3 weeks.",
-      },
-      {
-        title: "Vector Databases in Practice: PGVector vs ChromaDB",
-        excerpt:
-          "A practical comparison of vector database solutions for production AI applications, based on real-world usage at scale.",
-      },
-    ],
   },
   testimonials: {
     headline: "Kind Words",

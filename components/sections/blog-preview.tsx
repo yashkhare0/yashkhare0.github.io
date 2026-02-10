@@ -3,9 +3,10 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ArrowUpRight, Clock, Calendar } from "lucide-react"
-import { blogPosts } from "@/config/content"
+import { posts } from "#velite"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { useTranslation } from "@/lib/i18n"
+import { useLocale } from "@/lib/i18n"
 
 interface BlogPreviewProps {
   onNavigate: (section: string) => void
@@ -15,6 +16,7 @@ interface BlogPreviewProps {
 
 export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPreviewProps) {
   const t = useTranslation()
+  const locale = useLocale()
   const sectionRef = useRef<HTMLElement>(null)
   const numberRef = useRef<HTMLSpanElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -75,11 +77,9 @@ export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPrevie
     })
   }
 
-  const mergedPosts = blogPosts.map((post, i) => ({
-    ...post,
-    title: t.blog.posts[i]?.title ?? post.title,
-    excerpt: t.blog.posts[i]?.excerpt ?? post.excerpt,
-  }))
+  const publishedPosts = posts
+    .filter((p) => p.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return (
     <section
@@ -102,59 +102,64 @@ export function BlogPreview({ onNavigate, isActive, hasBeenVisited }: BlogPrevie
 
         {/* Blog grid */}
         <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mergedPosts.map((post) => (
-            <MagneticCard key={post.id} intensity={5} className="opacity-0">
-              <article className="card-editorial p-6 h-full group cursor-pointer">
-                <div className="relative z-20">
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded"
-                        style={{
-                          background: "var(--accent-gold-muted)",
-                          color: "var(--accent-gold)",
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-display text-lg font-bold mb-3 transition-colors duration-300 group-hover:text-[var(--accent-gold)]">
-                    {post.title}
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p
-                    className="font-body text-sm leading-relaxed mb-4 line-clamp-3"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {post.excerpt}
-                  </p>
-
-                  {/* Meta */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
-                        <Calendar size={12} />
-                        <span className="font-mono text-xs">{formatDate(post.date)}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
-                        <Clock size={12} />
-                        <span className="font-mono text-xs">{post.readingTime}</span>
-                      </div>
+          {publishedPosts.map((post) => (
+            <MagneticCard key={post.slug} intensity={5} className="opacity-0">
+              <a
+                href={`/${locale}/blog/${post.slug}/`}
+                className="block h-full"
+              >
+                <article className="card-editorial p-6 h-full group cursor-pointer">
+                  <div className="relative z-20">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded"
+                          style={{
+                            background: "var(--accent-gold-muted)",
+                            color: "var(--accent-gold)",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                    <ArrowUpRight
-                      size={15}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      style={{ color: "var(--accent-gold)" }}
-                    />
+
+                    {/* Title */}
+                    <h3 className="font-display text-lg font-bold mb-3 transition-colors duration-300 group-hover:text-[var(--accent-gold)]">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p
+                      className="font-body text-sm leading-relaxed mb-4 line-clamp-3"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {post.excerpt}
+                    </p>
+
+                    {/* Meta */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
+                          <Calendar size={12} />
+                          <span className="font-mono text-xs">{formatDate(post.date)}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
+                          <Clock size={12} />
+                          <span className="font-mono text-xs">{post.readingTime}</span>
+                        </div>
+                      </div>
+                      <ArrowUpRight
+                        size={15}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        style={{ color: "var(--accent-gold)" }}
+                      />
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </a>
             </MagneticCard>
           ))}
         </div>

@@ -33,5 +33,6 @@ yarn-error.log*
 .turbo
 
 .contentlayer
+.velite
 .env
 /AI Engineer - Yash Khare.pdf

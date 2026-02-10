@@ -215,23 +215,6 @@ const fr: Translations = {
   blog: {
     headline: "Articles",
     subheadline: "Réflexions sur l'IA, l'ingénierie et la construction de produits",
-    posts: [
-      {
-        title: "Construire des systèmes RAG en production : leçons d'Echo",
-        excerpt:
-          "Comment nous avons construit un outil RAG entreprise qui a généré un chiffre d'affaires à six chiffres dès son premier mois. Décisions d'architecture, pièges et ce que je ferais différemment.",
-      },
-      {
-        title: "Livrer 8 produits IA en 8 mois",
-        excerpt:
-          "Un retour d'expérience sur la construction et le déploiement de 8 produits IA de bout en bout avec un temps moyen de déploiement inférieur à 3 semaines.",
-      },
-      {
-        title: "Bases de données vectorielles en pratique : PGVector vs ChromaDB",
-        excerpt:
-          "Une comparaison pratique des solutions de bases de données vectorielles pour les applications IA en production, basée sur une utilisation réelle à grande échelle.",
-      },
-    ],
   },
   testimonials: {
     headline: "Témoignages",
