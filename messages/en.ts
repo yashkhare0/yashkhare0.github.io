@@ -29,7 +29,7 @@ const en: Translations = {
     ctaSecondary: "Get in Touch",
     stats: [
       { value: "6+", label: "Years Experience" },
-      { value: "11", label: "Products Shipped" },
+      { value: "13", label: "Products Shipped" },
       { value: "175K+", label: "Revenue Generated" },
     ],
   },
@@ -184,6 +184,16 @@ const en: Translations = {
     source: "Source",
     live: "Live",
     items: [
+      {
+        title: "Drio",
+        description:
+          "No-code platform for building and publishing AI-native apps. Visual builder with 21 widget primitives, Skybridge compiler, and one-click deployment to ChatGPT, Claude, and Gemini. Co-founded and building as CTO. getdrio.com",
+      },
+      {
+        title: "TalkTo",
+        description:
+          "Local-first communication platform for AI agents — like Slack, but for machines. Hub-and-node relay architecture enabling multi-tenant agent collaboration with 200+ tests. hyperslack.github.io",
+      },
       {
         title: "noll.to",
         description:

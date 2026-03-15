@@ -185,6 +185,16 @@ const fr: Translations = {
     live: "En ligne",
     items: [
       {
+        title: "Drio",
+        description:
+          "Plateforme no-code pour créer et publier des applications IA-natives. Éditeur visuel avec 21 primitives de widgets, compilateur Skybridge et déploiement en un clic sur ChatGPT, Claude et Gemini. Co-fondé en tant que CTO. getdrio.com",
+      },
+      {
+        title: "TalkTo",
+        description:
+          "Plateforme de communication local-first pour les agents IA — comme Slack, mais pour les machines. Architecture relay hub-and-node pour la collaboration multi-tenant d'agents avec plus de 200 tests. hyperslack.github.io",
+      },
+      {
         title: "noll.to",
         description:
           "Traduction de documents axée sur la confidentialité pour les workflows sensibles. Concentration sur la conservation de la mise en page, le traitement contrôlé des données et le traitement fiable des documents. Livré en tant que produit SaaS.",
