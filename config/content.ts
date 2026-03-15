@@ -28,7 +28,7 @@ export const heroContent = {
   },
   stats: [
     { value: "6+", label: "Years Experience" },
-    { value: "11", label: "Products Shipped" },
+    { value: "13", label: "Products Shipped" },
     { value: "175K+", label: "Revenue Generated" },
   ],
 }
@@ -250,6 +250,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "drio",
+    title: "Drio",
+    description:
+      "No-code platform for building and publishing AI-native apps. Visual builder with 21 widget primitives, Skybridge compiler, and one-click deployment to ChatGPT, Claude, and Gemini. Co-founded as CTO.",
+    tags: ["Next.js", "Convex", "MCP", "TypeScript", "AI", "Startup"],
+    liveUrl: "https://getdrio.com",
+    year: "2025",
+    featured: true,
+  },
+  {
+    id: "talkto",
+    title: "TalkTo",
+    description:
+      "Local-first communication platform for AI agents — like Slack, but for machines. Hub-and-node relay architecture enabling multi-tenant agent collaboration with 600+ tests.",
+    tags: ["TypeScript", "SQLite", "REST API", "AI Agents", "Open Source"],
+    liveUrl: "https://hyperslack.github.io",
+    githubUrl: "https://github.com/hyperslack/talkto",
+    year: "2025",
+  },
+  {
     id: "noll",
     title: "noll.to",
     description:
@@ -257,7 +277,6 @@ export const projects: Project[] = [
     tags: ["SaaS", "Privacy", "Document Processing", "Translation"],
     liveUrl: "https://noll.to",
     year: "2025",
-    featured: true,
   },
   {
     id: "testkizuna",
