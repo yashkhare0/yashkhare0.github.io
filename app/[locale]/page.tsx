@@ -83,6 +83,10 @@ export default function Home() {
       setCurrentSection(section)
       setDisplayedSection(section)
 
+      // Update URL hash
+      const hash = section === "hero" ? "" : `#${section}`
+      window.history.pushState(null, "", hash || window.location.pathname)
+
       // Let React render the new section behind the wipe
       await new Promise((resolve) => setTimeout(resolve, 80))
 
@@ -103,6 +107,29 @@ export default function Home() {
     },
     [currentSection, isTransitioning]
   )
+
+  // On mount, navigate to section from URL hash
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "") as Section
+    if (hash && sectionList.includes(hash) && hash !== "hero") {
+      setVisitedSections((prev) => new Set(prev).add(hash))
+      setCurrentSection(hash)
+      setDisplayedSection(hash)
+    }
+  }, [])
+
+  // Listen for popstate (browser back/forward)
+  useEffect(() => {
+    const handlePopState = () => {
+      const hash = window.location.hash.replace("#", "") as Section
+      const target = hash && sectionList.includes(hash) ? hash : "hero"
+      if (target !== currentSection) {
+        navigateTo(target)
+      }
+    }
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [currentSection, navigateTo])
 
   // Keyboard navigation
   useEffect(() => {
