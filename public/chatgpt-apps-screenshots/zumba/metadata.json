@@ -1,0 +1,14 @@
+{
+  "app_name": "Zumba",
+  "slug": "zumba",
+  "url_path": "/apps/zumba/asdk_app_6957f7b0146081919810c8f1fbbccf45",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Zumba Fitness, LLC",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

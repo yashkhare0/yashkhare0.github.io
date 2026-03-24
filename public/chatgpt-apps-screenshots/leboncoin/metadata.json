@@ -1,0 +1,14 @@
+{
+  "app_name": "leboncoin",
+  "slug": "leboncoin",
+  "url_path": "/apps/leboncoin/asdk_app_697b2a38d9bc8191b3dfc5ef0abc557c",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "leboncoin",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

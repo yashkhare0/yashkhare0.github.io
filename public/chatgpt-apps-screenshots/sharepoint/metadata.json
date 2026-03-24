@@ -1,0 +1,13 @@
+{
+  "app_name": "SharePoint",
+  "slug": "sharepoint",
+  "url_path": "/apps/sharepoint/connector_1e4f6a44acf14e3ca1d96672f8c945bc",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search, Writes",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

@@ -1,0 +1,16 @@
+{
+  "app_name": "Hugging Face",
+  "slug": "hugging-face",
+  "url_path": "/apps/hugging-face/asdk_app_6939e86417648191b7bda087d872685b",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Hugging Face generate a realistic farm using FLUX.1",
+    "@Hugging Face what models are currently trending?"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

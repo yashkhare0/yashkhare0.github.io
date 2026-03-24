@@ -1,0 +1,14 @@
+{
+  "app_name": "Pylon",
+  "slug": "pylon",
+  "url_path": "/apps/pylon/asdk_app_6981220f09208191afc299c6cb7a4979",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Writes",
+    "Developer": "Pylon Labs Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

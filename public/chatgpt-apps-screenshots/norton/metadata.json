@@ -1,0 +1,19 @@
+{
+  "app_name": "Norton",
+  "slug": "norton",
+  "url_path": "/apps/norton/asdk_app_699dc623e5488191955863d8c4a7ad19",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive",
+    "Developer": "Gen Digital Inc",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Norton This free Bitcoin text just came in – scam? https://lihi.cc/s4TTF",
+    "@Norton Take a look at this image – anything suspicious?",
+    "@Norton, Safe to click this link? https://bit.ly/3qW7zsw",
+    "@Norton, Can you confirm https://norton.com is secure?"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

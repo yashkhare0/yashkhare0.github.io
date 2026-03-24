@@ -1,0 +1,16 @@
+{
+  "app_name": "realestate.com.au",
+  "slug": "realestate-com-au",
+  "url_path": "/apps/realestate-com-au/asdk_app_6943a66cd50881918bee527e5fbdcde3",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "realestate.com.au Pty Ltd",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@realestate.com.au show me 3 bed houses in Richmond, VIC under $2m"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

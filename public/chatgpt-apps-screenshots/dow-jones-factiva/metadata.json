@@ -1,0 +1,14 @@
+{
+  "app_name": "Dow Jones Factiva",
+  "slug": "dow-jones-factiva",
+  "url_path": "/apps/dow-jones-factiva/asdk_app_69a843c0928081918d0c8ecadf4b5274",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "File Search",
+    "Developer": "Factiva, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

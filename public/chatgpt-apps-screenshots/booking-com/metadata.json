@@ -1,0 +1,15 @@
+{
+  "app_name": "Booking.com",
+  "slug": "booking-com",
+  "url_path": "/apps/booking-com/connector_69272cb413a081919685ec3c88d1744e",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Booking.com top hotels in Miami Beach"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

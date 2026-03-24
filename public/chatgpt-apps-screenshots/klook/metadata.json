@@ -1,0 +1,16 @@
+{
+  "app_name": "Klook",
+  "slug": "klook",
+  "url_path": "/apps/klook/asdk_app_6964a85e4b188191b1388655fd37aaec",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "KLOOK TRAVEL TECHNOLOGY PTE. LTD.",
+    "Version": "3.0.0"
+  },
+  "prompts": [
+    "@Klook Recommend Things to do in Tokyo for me"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

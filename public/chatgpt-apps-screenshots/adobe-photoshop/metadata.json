@@ -1,0 +1,17 @@
+{
+  "app_name": "Adobe Photoshop",
+  "slug": "adobe-photoshop",
+  "url_path": "/apps/adobe-photoshop/connector_69312da8e4dc81919370cb86fd172b6c",
+  "info": {
+    "Category": "Design",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Adobe Photoshop blur the background",
+    "@Adobe Photoshop apply an artistic effect",
+    "@Adobe Photoshop what effects are available?"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

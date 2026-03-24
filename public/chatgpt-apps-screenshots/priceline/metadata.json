@@ -1,0 +1,14 @@
+{
+  "app_name": "Priceline",
+  "slug": "priceline",
+  "url_path": "/apps/priceline/asdk_app_694c08abbb5481918f814ea25c49a9d6",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Priceline.com LLC",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

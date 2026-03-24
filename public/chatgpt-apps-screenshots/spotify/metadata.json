@@ -1,0 +1,18 @@
+{
+  "app_name": "Spotify",
+  "slug": "spotify",
+  "url_path": "/apps/spotify/connector_68de829bf7648191acd70a907364c67c",
+  "info": {
+    "Category": "Entertainment",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Spotify Recommend episodes with best film pics for the awards",
+    "@Spotify Give me a playlist of my favorite 160 BPM tracks",
+    "@Spotify Make a playlist with some Latin artists that are on my heavy rotation",
+    "@Spotify I need to get in the zone. Can you pull up a focus mix?"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

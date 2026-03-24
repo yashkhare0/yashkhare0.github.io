@@ -1,0 +1,15 @@
+{
+  "app_name": "Coursera",
+  "slug": "coursera",
+  "url_path": "/apps/coursera/connector_68e01e8c1c2081918b4567a0b959d3ff",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Coursera show me a video about machine learning"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

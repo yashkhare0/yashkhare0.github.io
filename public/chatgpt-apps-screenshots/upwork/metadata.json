@@ -1,0 +1,14 @@
+{
+  "app_name": "Upwork",
+  "slug": "upwork",
+  "url_path": "/apps/upwork/asdk_app_694a9b3397cc8191a5b00f26adcb385b",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "Upwork",
+    "Version": "5.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

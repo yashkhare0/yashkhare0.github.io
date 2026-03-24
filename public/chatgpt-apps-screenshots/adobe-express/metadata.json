@@ -1,0 +1,17 @@
+{
+  "app_name": "Adobe Express",
+  "slug": "adobe-express",
+  "url_path": "/apps/adobe-express/connector_6938a61c70f88191bbdca2dedb90d08b",
+  "info": {
+    "Category": "Design",
+    "Capabilities": "Interactive, Writes",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@Adobe Express let's make a birthday party invitation",
+    "@Adobe Express Zoo Party, June 15, 45 Maple Drive, Emma Smith’s 6th birthday",
+    "@Adobe Express change the dino to an alligator"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

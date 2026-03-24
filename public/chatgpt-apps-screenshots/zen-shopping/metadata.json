@@ -1,0 +1,19 @@
+{
+  "app_name": "Zen Shopping",
+  "slug": "zen-shopping",
+  "url_path": "/apps/zen-shopping/asdk_app_6944c4eec37c8191839ab9eafaa2f1f4",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "Vidline Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Zen Shopping Pick a wireless office mouse under $50, silent model",
+    "@Zen Shopping Buy black Sony WH-1000XM5 headphones from top-rated seller",
+    "@Zen Shopping Select a gift under $35 for a coffee lover",
+    "@Zen Shopping I need a rug that can be delivered to my home by tomorrow"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

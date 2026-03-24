@@ -1,0 +1,13 @@
+{
+  "app_name": "Box",
+  "slug": "box",
+  "url_path": "/apps/box/connector_2fc94c70cbb74b7caa6d07bf7231202e",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

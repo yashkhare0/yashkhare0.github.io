@@ -1,0 +1,19 @@
+{
+  "app_name": "Wix",
+  "slug": "wix",
+  "url_path": "/apps/wix/asdk_app_6947eaa4edd081919561e4ee3a2e5dcc",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Wix.com",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Wix create a fresh matcha site with an online store and booking tools.",
+    "@Wix build a minimalist editorial blog website for my homeware brand.",
+    "@Wix create a high-contrast running site with bookings and subscriptions.",
+    "@Wix make a sleek site for founder events offering premium content access."
+  ],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

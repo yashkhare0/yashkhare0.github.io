@@ -1,0 +1,14 @@
+{
+  "app_name": "Cruise Critic",
+  "slug": "cruise-critic",
+  "url_path": "/apps/cruise-critic/asdk_app_69602a0b457c81918fe9a56cfcdc1906",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Cruise Critic",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

@@ -1,0 +1,17 @@
+{
+  "app_name": "Jimdo",
+  "slug": "jimdo",
+  "url_path": "/apps/jimdo/asdk_app_69457f1c95f88191b86a51118646f8ce",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Jimdo GmbH",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Jimdo Create a website for my photography business",
+    "@Jimdo we offer personal and event photography sessions"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

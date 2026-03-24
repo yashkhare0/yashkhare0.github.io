@@ -1,0 +1,16 @@
+{
+  "app_name": "Jobkorea",
+  "slug": "jobkorea",
+  "url_path": "/apps/jobkorea/asdk_app_69435b64a9848191b421ac7c1de855cd",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive",
+    "Developer": "Jobkorea",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Jobkorea 강남 지역의 백엔드 개발자 공고 알려줘"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

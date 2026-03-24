@@ -1,0 +1,16 @@
+{
+  "app_name": "Semrush",
+  "slug": "semrush",
+  "url_path": "/apps/semrush/connector_691fa57b709c8191b61c48b1f78dce21",
+  "info": {
+    "Category": "Productivity",
+    "Developer": "Semrush Holdings, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Semrush analyze the traffic sources breakdown for nike.com",
+    "@Semrush show me the keywords where adidas.com ranks in positions 4-10"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

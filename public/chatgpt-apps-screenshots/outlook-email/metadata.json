@@ -1,0 +1,13 @@
+{
+  "app_name": "Outlook Email",
+  "slug": "outlook-email",
+  "url_path": "/apps/outlook-email/connector_4aaab2856305417b993eca9a216aaf6e",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Writes",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

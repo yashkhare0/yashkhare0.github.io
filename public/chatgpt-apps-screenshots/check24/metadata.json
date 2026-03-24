@@ -1,0 +1,14 @@
+{
+  "app_name": "CHECK24",
+  "slug": "check24",
+  "url_path": "/apps/check24/asdk_app_696e5d26c05081919740c015fa530ac8",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "CHECK24 GmbH",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

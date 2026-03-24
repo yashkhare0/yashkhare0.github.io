@@ -1,0 +1,18 @@
+{
+  "app_name": "Hyatt",
+  "slug": "hyatt",
+  "url_path": "/apps/hyatt/asdk_app_69433857037c8191874b4c3b35bb3468",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Hyatt",
+    "Version": "4.0.0"
+  },
+  "prompts": [
+    "@Hyatt find me a hotel this weekend near Millennium Park in Chicago",
+    "@Hyatt search hotels in Denver for April 22-24",
+    "@Hyatt I'm looking for hotels in Hawaii for a family getaway in May"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

@@ -1,0 +1,18 @@
+{
+  "app_name": "Cafe24",
+  "slug": "cafe24",
+  "url_path": "/apps/cafe24/asdk_app_694a040432f481918c9a1f992de6946c",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "cafe24",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Cafe24 Find men’s casual leather jackets for fall",
+    "@Cafe24 Show me men’s jackets between $100 and $300",
+    "@Cafe24 Any shopping tips for me?"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

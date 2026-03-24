@@ -1,0 +1,14 @@
+{
+  "app_name": "Asana",
+  "slug": "asana",
+  "url_path": "/apps/asana/asdk_app_69616780bd208191b4fb44ba44f72b61",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Asana, Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Trade Me Property",
+  "slug": "trade-me-property",
+  "url_path": "/apps/trade-me-property/asdk_app_6943668049ac8191b12fc7de4ac1a7dc",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Trade Me Limited",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

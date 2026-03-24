@@ -1,0 +1,14 @@
+{
+  "app_name": "GetYourGuide",
+  "slug": "getyourguide",
+  "url_path": "/apps/getyourguide/asdk_app_697b2e34df7481919271077bd5342384",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "GetYourGuide Deutschland GmbH",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

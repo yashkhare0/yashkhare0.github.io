@@ -1,0 +1,15 @@
+{
+  "app_name": "Vercel",
+  "slug": "vercel",
+  "url_path": "/apps/vercel/connector_690a90ec05c881918afb6a55dc9bbaa1",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Vercel why is my build failing?"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

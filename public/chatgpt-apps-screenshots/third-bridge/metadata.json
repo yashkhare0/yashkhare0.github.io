@@ -1,0 +1,13 @@
+{
+  "app_name": "Third Bridge",
+  "slug": "third-bridge",
+  "url_path": "/apps/third-bridge/asdk_app_6983505f8b9c8191a2e6f104325b1f20",
+  "info": {
+    "Category": "Finance",
+    "Developer": "Third Bridge Group",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

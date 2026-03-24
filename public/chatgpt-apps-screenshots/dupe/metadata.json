@@ -1,0 +1,16 @@
+{
+  "app_name": "Dupe",
+  "slug": "dupe",
+  "url_path": "/apps/dupe/asdk_app_6949a8ef3c1481918712fd15126dfe6e",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "Dupe.com",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Dupe Find me cheaper alternatives for this outdoor chair"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

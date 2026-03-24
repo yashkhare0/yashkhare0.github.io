@@ -1,0 +1,17 @@
+{
+  "app_name": "DoneDeal",
+  "slug": "donedeal",
+  "url_path": "/apps/donedeal/asdk_app_69441e180ab08191bfa67c85bdd424c6",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "Distilled",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@DoneDeal Show me SUV's from Dealerships",
+    "@DoneDeal Show me EVs"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

@@ -1,0 +1,13 @@
+{
+  "app_name": "Granola",
+  "slug": "granola",
+  "url_path": "/apps/granola/asdk_app_697761cab6f48191b5ed345919a3ce8b",
+  "info": {
+    "Category": "Productivity",
+    "Developer": "Granola",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

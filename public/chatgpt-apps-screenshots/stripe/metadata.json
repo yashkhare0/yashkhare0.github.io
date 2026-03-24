@@ -1,0 +1,13 @@
+{
+  "app_name": "Stripe",
+  "slug": "stripe",
+  "url_path": "/apps/stripe/connector_690ab09fa43c8191bca40280e4563238",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "File Search, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

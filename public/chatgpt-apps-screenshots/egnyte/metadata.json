@@ -1,0 +1,15 @@
+{
+  "app_name": "Egnyte",
+  "slug": "egnyte",
+  "url_path": "/apps/egnyte/connector_691f749cd9088191befeb1d543c37d98",
+  "info": {
+    "Category": "Collaboration",
+    "Capabilities": "File Search, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Egnyte what IT contracts do we have?"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

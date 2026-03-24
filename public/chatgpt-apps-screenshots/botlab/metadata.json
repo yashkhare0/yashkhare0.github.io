@@ -1,0 +1,14 @@
+{
+  "app_name": "Botlab",
+  "slug": "botlab",
+  "url_path": "/apps/botlab/asdk_app_6985b1b1d23081919592a355865b08c2",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "AI Rudder Pte Ltd",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

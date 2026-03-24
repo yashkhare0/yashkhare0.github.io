@@ -1,0 +1,18 @@
+{
+  "app_name": "Figma",
+  "slug": "figma",
+  "url_path": "/apps/figma/connector_68df038e0ba48191908c8434991bbac2",
+  "info": {
+    "Category": "Design",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Figma, Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Figma read the attached PRD and create a flowchart of the 2FA flow",
+    "@Figma design a minimal, bold poster for a design conference in Tokyo",
+    "@Figma create a competitive analysis deck comparing travel platforms"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

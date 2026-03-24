@@ -1,0 +1,19 @@
+{
+  "app_name": "MoneySuperMarket",
+  "slug": "moneysupermarket",
+  "url_path": "/apps/moneysupermarket/asdk_app_6943e22bc7248191b535c8f7f7c04577",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "MoneySuperMarket",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@moneysupermarket get me a quick car insurance estimate",
+    "@moneysupermarket get me a car insurance quote",
+    "@moneysupermarket why do I need Car Insurance?",
+    "@MoneySuperMarket get me a broadband deal"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "invideo",
+  "slug": "invideo",
+  "url_path": "/apps/invideo/asdk_app_6943c531f50c8191b40bcd2ca978c780",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Invideo Inc",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

@@ -1,0 +1,19 @@
+{
+  "app_name": "Flixor",
+  "slug": "flixor",
+  "url_path": "/apps/flixor/asdk_app_694515af58088191a8b0a0f5f0b6d767",
+  "info": {
+    "Category": "Entertainment",
+    "Capabilities": "Interactive",
+    "Developer": "Vidline Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Flixor Recommend a few good movies",
+    "@Flixor I'm feeling a bit down. Can you recommend?",
+    "@Flixor I really enjoyed Inception. What else should l watch_",
+    "@Flixor I want to relax this weekend. Please recommend a few movies."
+  ],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

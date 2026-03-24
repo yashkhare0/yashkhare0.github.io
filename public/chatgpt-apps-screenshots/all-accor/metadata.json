@@ -1,0 +1,14 @@
+{
+  "app_name": "ALL Accor",
+  "slug": "all-accor",
+  "url_path": "/apps/all-accor/asdk_app_6964b9f1c11c81919eefdc73903ad657",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Accor SA",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

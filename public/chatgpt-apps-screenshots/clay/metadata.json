@@ -1,0 +1,15 @@
+{
+  "app_name": "Clay",
+  "slug": "clay",
+  "url_path": "/apps/clay/asdk_app_69377d07cd9c8191a988f06f15b8c674",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Clay find GTM Leaders at Conclusive AI"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

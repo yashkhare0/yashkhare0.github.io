@@ -1,0 +1,14 @@
+{
+  "app_name": "CarGurus",
+  "slug": "cargurus",
+  "url_path": "/apps/cargurus/asdk_app_694461b01ea081918268ff71a7face2b",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "CarGurus, Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

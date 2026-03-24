@@ -1,0 +1,17 @@
+{
+  "app_name": "Turo",
+  "slug": "turo",
+  "url_path": "/apps/turo/asdk_app_6962f22632708191ac37920ed65e5392",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Turo Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Turo find me a budget-friendly convertible to pick up at LAX next weekend",
+    "@Turo show me vehicles with snow tires and a ski rack"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "redBus",
+  "slug": "redbus",
+  "url_path": "/apps/redbus/asdk_app_6985bcfea1dc8191a6125b4efbf6d17e",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "redBus",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

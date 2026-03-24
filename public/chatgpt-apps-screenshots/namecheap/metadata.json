@@ -1,0 +1,14 @@
+{
+  "app_name": "Namecheap",
+  "slug": "namecheap",
+  "url_path": "/apps/namecheap/asdk_app_696e2dbbec1c8191b0b1d2d2014954d9",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Interactive",
+    "Developer": "Namecheap, Inc",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

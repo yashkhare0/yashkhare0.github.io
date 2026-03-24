@@ -1,0 +1,14 @@
+{
+  "app_name": "FareHarbor",
+  "slug": "fareharbor",
+  "url_path": "/apps/fareharbor/asdk_app_695ce16201208191be7ae2d9a41411d8",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "FareHarbor",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

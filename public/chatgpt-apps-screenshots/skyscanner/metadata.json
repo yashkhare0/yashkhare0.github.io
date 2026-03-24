@@ -1,0 +1,14 @@
+{
+  "app_name": "Skyscanner",
+  "slug": "skyscanner",
+  "url_path": "/apps/skyscanner/asdk_app_694546cd042881919bb746a8dc300f38",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Skyscanner Limited",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

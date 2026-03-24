@@ -1,0 +1,14 @@
+{
+  "app_name": "B12 Website Generator",
+  "slug": "b12-website-generator",
+  "url_path": "/apps/b12-website-generator/asdk_app_694361dfee78819186aabf41a657510e",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "B12",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

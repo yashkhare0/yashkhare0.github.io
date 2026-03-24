@@ -1,0 +1,16 @@
+{
+  "app_name": "Evaneos",
+  "slug": "evaneos",
+  "url_path": "/apps/evaneos/asdk_app_69612510d5288191b6a4174252337e93",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Evaneos",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Evaneos destinations pour partir en famille cet été à la plage"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

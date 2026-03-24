@@ -1,0 +1,14 @@
+{
+  "app_name": "Preply Language Tutor Finder",
+  "slug": "preply-language-tutor-finder",
+  "url_path": "/apps/preply-language-tutor-finder/asdk_app_69443c60fa6481919e4ecf30e6b382f0",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive",
+    "Developer": "Preply",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

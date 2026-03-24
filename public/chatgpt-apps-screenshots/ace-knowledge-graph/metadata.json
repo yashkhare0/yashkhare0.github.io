@@ -1,0 +1,17 @@
+{
+  "app_name": "Ace Knowledge Graph",
+  "slug": "ace-knowledge-graph",
+  "url_path": "/apps/ace-knowledge-graph/asdk_app_6944f7c806d0819195abf0177e5ff78a",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Sider AI",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Ace Knowledge Graph Help me understand React ecosystem.",
+    "@Ace Knowledge Graph Show me my knowledge graphs."
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,13 @@
+{
+  "app_name": "Slack",
+  "slug": "slack",
+  "url_path": "/apps/slack/connector_0f9c9d4592e54d0a9a12b3f44a1e2010",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

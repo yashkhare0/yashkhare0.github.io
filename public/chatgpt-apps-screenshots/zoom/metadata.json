@@ -1,0 +1,16 @@
+{
+  "app_name": "Zoom",
+  "slug": "zoom",
+  "url_path": "/apps/zoom/asdk_app_69373a13116c819189d046aea1278836",
+  "info": {
+    "Category": "Collaboration",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Zoom recap my last meeting",
+    "@Zoom what did Austin say about goals?"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

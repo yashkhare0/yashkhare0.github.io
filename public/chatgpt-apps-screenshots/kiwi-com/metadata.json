@@ -1,0 +1,14 @@
+{
+  "app_name": "Kiwi.com",
+  "slug": "kiwi-com",
+  "url_path": "/apps/kiwi-com/asdk_app_6943b1ccb3ec81918f2e8ed24986f6b0",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Kiwi.com",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

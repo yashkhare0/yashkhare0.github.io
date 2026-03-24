@@ -1,0 +1,14 @@
+{
+  "app_name": "PC Express",
+  "slug": "pc-express",
+  "url_path": "/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Loblaw Digital",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

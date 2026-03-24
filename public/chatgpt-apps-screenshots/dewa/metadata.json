@@ -1,0 +1,14 @@
+{
+  "app_name": "DEWA",
+  "slug": "dewa",
+  "url_path": "/apps/dewa/asdk_app_6979a17a49a481919e64da0a47a7c005",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "Dubai Electricity & Water Authority",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

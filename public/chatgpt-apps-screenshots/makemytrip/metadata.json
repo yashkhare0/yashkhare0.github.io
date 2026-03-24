@@ -1,0 +1,14 @@
+{
+  "app_name": "MakeMyTrip",
+  "slug": "makemytrip",
+  "url_path": "/apps/makemytrip/asdk_app_697889aa44408191a672657ce9a3dde1",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "MakeMyTrip",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

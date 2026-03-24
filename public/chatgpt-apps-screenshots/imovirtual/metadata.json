@@ -1,0 +1,14 @@
+{
+  "app_name": "Imovirtual",
+  "slug": "imovirtual",
+  "url_path": "/apps/imovirtual/asdk_app_6981e6ceb0c48191868bff15712b2348",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "OLX",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

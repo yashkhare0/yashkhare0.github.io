@@ -1,0 +1,18 @@
+{
+  "app_name": "Quizlet",
+  "slug": "quizlet",
+  "url_path": "/apps/quizlet/asdk_app_694336f3c5088191bcdfe35bb532ad83",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Quizlet",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Quizlet Create flashcards on photosynthesis",
+    "@Quizlet Generate flashcards on music trivia",
+    "@Quizlet Create flashcards from my Spanish notes"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

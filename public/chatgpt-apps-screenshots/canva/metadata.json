@@ -1,0 +1,16 @@
+{
+  "app_name": "Canva",
+  "slug": "canva",
+  "url_path": "/apps/canva/connector_68df33b1a2d081918778431a9cfca8ba",
+  "info": {
+    "Category": "Design",
+    "Capabilities": "File Search, Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Canva create some social media posts based on our October campaign brief",
+    "@Canva use these latest investor meeting notes to make a Q1 2026 pitch deck using my go-to-market brand template"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

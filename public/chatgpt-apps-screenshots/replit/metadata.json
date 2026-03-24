@@ -1,0 +1,18 @@
+{
+  "app_name": "Replit",
+  "slug": "replit",
+  "url_path": "/apps/replit/asdk_app_6934801c799081918131791660f02890",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Interactive, Writes",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@Replit i need a website for my bookstore",
+    "@Replit create an personal habit tracker app",
+    "@Replit make a portfolio page with my work",
+    "@Replit build me a business management tool"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

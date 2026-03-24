@@ -1,0 +1,14 @@
+{
+  "app_name": "DataCamp",
+  "slug": "datacamp",
+  "url_path": "/apps/datacamp/asdk_app_694554ff18b881919f022f6dc96dc038",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive",
+    "Developer": "DataCamp",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

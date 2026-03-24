@@ -1,0 +1,17 @@
+{
+  "app_name": "ImmoScout24",
+  "slug": "immoscout24",
+  "url_path": "/apps/immoscout24/asdk_app_6944007758f0819182384317215cc509",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Immobilien Scout GmbH",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@ImmoScout24 Ich suche ein Haus am See.",
+    "@ImmoScout24 Suche Altbauwohnung in Berlin Prenzlauer Berg unter 1.500€."
+  ],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

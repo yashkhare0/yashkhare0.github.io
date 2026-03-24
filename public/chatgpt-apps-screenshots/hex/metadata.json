@@ -1,0 +1,17 @@
+{
+  "app_name": "Hex",
+  "slug": "hex",
+  "url_path": "/apps/hex/connector_690a9430a270819196671dcb4c95898e",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Hex pull up my board meeting dashboard",
+    "@Hex who are our top customers by revenue?",
+    "@Hex how is our sales conversion vs. benchmarks?"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

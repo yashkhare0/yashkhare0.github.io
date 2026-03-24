@@ -1,0 +1,14 @@
+{
+  "app_name": "엘포인트",
+  "slug": "app",
+  "url_path": "/apps/app/asdk_app_6997ca4101888191b2f9caee3bf34ea3",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "LOTTE Members",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

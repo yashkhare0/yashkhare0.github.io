@@ -1,0 +1,14 @@
+{
+  "app_name": "Bible",
+  "slug": "bible",
+  "url_path": "/apps/bible/asdk_app_69865a0b673c81919482f6da6fa1684b",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Life.Church (YouVersion)",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

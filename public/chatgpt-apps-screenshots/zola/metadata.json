@@ -1,0 +1,16 @@
+{
+  "app_name": "Zola",
+  "slug": "zola",
+  "url_path": "/apps/zola/asdk_app_6944237ed76c8191aa27dfa79198aeca",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Zola, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Zola find wedding venues in Brooklyn"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

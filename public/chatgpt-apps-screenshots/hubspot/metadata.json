@@ -1,0 +1,18 @@
+{
+  "app_name": "HubSpot",
+  "slug": "hubspot",
+  "url_path": "/apps/hubspot/asdk_app_697acb8e53d88191bf7a79e62012ae14",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "File Search, Writes",
+    "Developer": "HubSpot",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@HubSpot create a follow-up task to schedule a meeting with Brightlane",
+    "@HubSpot show me unresolved high-priority tickets",
+    "@HubSpot which lead sources brought in the most contacts this quarter?"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

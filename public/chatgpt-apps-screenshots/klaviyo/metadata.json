@@ -1,0 +1,14 @@
+{
+  "app_name": "Klaviyo",
+  "slug": "klaviyo",
+  "url_path": "/apps/klaviyo/asdk_app_694421e60cc88191a1e5bb4aa79950e4",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Klaviyo",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

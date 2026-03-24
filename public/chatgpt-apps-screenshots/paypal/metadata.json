@@ -1,0 +1,14 @@
+{
+  "app_name": "PayPal",
+  "slug": "paypal",
+  "url_path": "/apps/paypal/asdk_app_6969249b1a948191a1a1e32116504509",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "PayPal",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

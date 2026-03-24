@@ -1,0 +1,14 @@
+{
+  "app_name": "Internshala",
+  "slug": "internshala",
+  "url_path": "/apps/internshala/asdk_app_695f41bcf9c48191936f395f1be1ee08",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "Scholiverse Educare Private Limited",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

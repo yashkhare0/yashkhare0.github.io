@@ -1,0 +1,15 @@
+{
+  "app_name": "Brand24",
+  "slug": "brand24",
+  "url_path": "/apps/brand24/asdk_app_695ba18f3294819196bbe3bdc5630bf3",
+  "info": {
+    "Category": "Business",
+    "Developer": "Brand24 Global Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Brand24 Compare online popularity of the biggest sports shoe brands"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

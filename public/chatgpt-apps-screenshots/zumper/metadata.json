@@ -1,0 +1,14 @@
+{
+  "app_name": "Zumper",
+  "slug": "zumper",
+  "url_path": "/apps/zumper/asdk_app_6944bb2abac08191b2584a3ac4a1c448",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Zumper Inc",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

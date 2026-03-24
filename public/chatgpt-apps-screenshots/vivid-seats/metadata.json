@@ -1,0 +1,17 @@
+{
+  "app_name": "Vivid Seats",
+  "slug": "vivid-seats",
+  "url_path": "/apps/vivid-seats/asdk_app_6949b040fc98819180163e512d3bc878",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "Vivid Seats",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@vividseats, help me find tickets to the bulls game",
+    "@vividseats, help me find theatre events in my city"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

@@ -1,0 +1,19 @@
+{
+  "app_name": "Strive PDF Generator",
+  "slug": "strive-pdf-generator",
+  "url_path": "/apps/strive-pdf-generator/asdk_app_6943659c75288191aaff11209f4e4fdd",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Strive Math",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Strive create a quadratic equations worksheet with 10 questions",
+    "@Strive create an IB physics mock exam focused on Kinematics",
+    "@Strive create a IEEE styled research paper with two-columns",
+    "@Strive create a circle theorem quiz with the diagrams"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

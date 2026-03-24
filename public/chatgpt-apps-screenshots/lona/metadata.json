@@ -1,0 +1,14 @@
+{
+  "app_name": "Lona",
+  "slug": "lona",
+  "url_path": "/apps/lona/asdk_app_694336b0c0948191a4ad234f9942885b",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Mindsight Ventures SL",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

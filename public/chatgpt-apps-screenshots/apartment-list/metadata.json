@@ -1,0 +1,14 @@
+{
+  "app_name": "Apartment List",
+  "slug": "apartment-list",
+  "url_path": "/apps/apartment-list/asdk_app_697bf12df23c81918f96282880909558",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Apartment List Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

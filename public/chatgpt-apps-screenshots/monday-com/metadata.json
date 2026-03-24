@@ -1,0 +1,16 @@
+{
+  "app_name": "Monday.com",
+  "slug": "monday-com",
+  "url_path": "/apps/monday-com/connector_690aabb71bf481918b8d5b614ed3fd4c",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Monday.com what's the marketing campaign status?",
+    "@Monday.com brief me on the onboarding revamp"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Statsig",
+  "slug": "statsig",
+  "url_path": "/apps/statsig/asdk_app_6967f065ac9481918969c660ff7686e9",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "File Search, Writes",
+    "Developer": "Statsig, LLC",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

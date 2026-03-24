@@ -1,0 +1,14 @@
+{
+  "app_name": "Redfin",
+  "slug": "redfin",
+  "url_path": "/apps/redfin/asdk_app_69446e62b0448191925a9c3398500f72",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "Redfin",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Wayground",
+  "slug": "wayground",
+  "url_path": "/apps/wayground/asdk_app_6992e030d5dc81919d25d4d355253749",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Quizizz Inc. (DELAWARE CORPORATION), Wayground",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,18 @@
+{
+  "app_name": "Agentforce Sales",
+  "slug": "agentforce-sales",
+  "url_path": "/apps/agentforce-sales/asdk_app_697d413990c88191a2bf4799604f8f6c",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Salesforce",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Agentforce Sales show me my top 10 leads ",
+    "@Agentforce Sales show me activities for Astro Radio",
+    "@Agentforce Sales what did I last speak to Nova Eve about"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

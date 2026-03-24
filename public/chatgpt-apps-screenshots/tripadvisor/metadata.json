@@ -1,0 +1,15 @@
+{
+  "app_name": "Tripadvisor",
+  "slug": "tripadvisor",
+  "url_path": "/apps/tripadvisor/connector_69050bf6de9c8191b3968f2cc08d33d6",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Tripadvisor find me a hotel near the Empire State Building"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

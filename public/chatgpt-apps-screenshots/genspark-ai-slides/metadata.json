@@ -1,0 +1,14 @@
+{
+  "app_name": "Genspark AI Slides",
+  "slug": "genspark-ai-slides",
+  "url_path": "/apps/genspark-ai-slides/asdk_app_694d313cc67c8191804aee33eeb7dfec",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Mainfunc PTE.LTD",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

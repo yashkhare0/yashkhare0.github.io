@@ -1,0 +1,14 @@
+{
+  "app_name": "Vio",
+  "slug": "vio",
+  "url_path": "/apps/vio/asdk_app_6943ea2205bc819197978fd17e22f5c1",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Vio.com",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

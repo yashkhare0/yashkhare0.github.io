@@ -1,0 +1,14 @@
+{
+  "app_name": "SlidesGPT",
+  "slug": "slidesgpt",
+  "url_path": "/apps/slidesgpt/asdk_app_695bd06f20d88191b873f501a7dd6620",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Lightstone GmbH",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "LOTTE CHEMICAL",
+  "slug": "lotte-chemical",
+  "url_path": "/apps/lotte-chemical/asdk_app_697af3648eb08191a0abbe08142d2889",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "LOTTE CHEMICAL",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

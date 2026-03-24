@@ -1,0 +1,14 @@
+{
+  "app_name": "VON POLL IMMOBILIEN",
+  "slug": "von-poll-immobilien",
+  "url_path": "/apps/von-poll-immobilien/asdk_app_698f00654b98819194a4897cc32428dc",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "von Poll Immobilien GmbH",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

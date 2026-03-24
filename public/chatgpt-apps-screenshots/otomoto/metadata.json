@@ -1,0 +1,14 @@
+{
+  "app_name": "Otomoto",
+  "slug": "otomoto",
+  "url_path": "/apps/otomoto/asdk_app_698c54e054c08191b7980a9a1e126157",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive",
+    "Developer": "OLX Group",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

@@ -1,0 +1,18 @@
+{
+  "app_name": "TickerSage",
+  "slug": "tickersage",
+  "url_path": "/apps/tickersage/asdk_app_69450cc7d19c8191adbbc72a3c291079",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive",
+    "Developer": "Vidline Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@TickerSage Check BTC's real-time price",
+    "@TickerSage Check NVIDIA's real-time price",
+    "@TickerSage Add BOLL, MACD, and KDJ indicators"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Conductor",
+  "slug": "conductor",
+  "url_path": "/apps/conductor/asdk_app_69324e325c3481918ab56a16d567629c",
+  "info": {
+    "Category": "Business",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Conductor who are my top competitors for “wireless earbuds”?"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

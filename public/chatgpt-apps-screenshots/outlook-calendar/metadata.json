@@ -1,0 +1,13 @@
+{
+  "app_name": "Outlook Calendar",
+  "slug": "outlook-calendar",
+  "url_path": "/apps/outlook-calendar/connector_e6a7394682e24467ac68c60696f275a4",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Writes",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

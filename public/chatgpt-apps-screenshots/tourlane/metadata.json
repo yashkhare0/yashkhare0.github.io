@@ -1,0 +1,14 @@
+{
+  "app_name": "Tourlane",
+  "slug": "tourlane",
+  "url_path": "/apps/tourlane/asdk_app_694916659c2c819190dd02fb6f388ff1",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Tourlane GmbH",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "AutoScout24",
+  "slug": "autoscout24",
+  "url_path": "/apps/autoscout24/asdk_app_69442d964bd08191a7958aabc6e34394",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "AutoScout24 GmbH",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

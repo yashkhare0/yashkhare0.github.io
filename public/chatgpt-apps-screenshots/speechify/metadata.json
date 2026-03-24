@@ -1,0 +1,14 @@
+{
+  "app_name": "Speechify",
+  "slug": "speechify",
+  "url_path": "/apps/speechify/asdk_app_694bc5ee1fb88191b40710e2bda75a27",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive",
+    "Developer": "Speechify, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

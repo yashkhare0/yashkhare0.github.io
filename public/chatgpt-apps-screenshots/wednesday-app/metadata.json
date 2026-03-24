@@ -1,0 +1,14 @@
+{
+  "app_name": "Wednesday.app",
+  "slug": "wednesday-app",
+  "url_path": "/apps/wednesday-app/asdk_app_694964a4157c819182d54ad82353d717",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive",
+    "Developer": "Upfluence Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

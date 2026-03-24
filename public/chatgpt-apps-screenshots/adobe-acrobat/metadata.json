@@ -1,0 +1,16 @@
+{
+  "app_name": "Adobe Acrobat",
+  "slug": "adobe-acrobat",
+  "url_path": "/apps/adobe-acrobat/connector_6938a7d323f48191aeabaf579802bf45",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Adobe Acrobat create a job application PDF by merging these docs",
+    "@Adobe Acrobat combine these reports into one PDF"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

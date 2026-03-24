@@ -1,0 +1,16 @@
+{
+  "app_name": "Airtable",
+  "slug": "airtable",
+  "url_path": "/apps/airtable/asdk_app_693ca6ce2db08191bb52d66743c65184",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Airtable show me a kanban of the product roadmap. What’s at risk? What’s up next?",
+    "@Airtable which roadmap initiatives should I discuss with the enterprise sales team today?"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

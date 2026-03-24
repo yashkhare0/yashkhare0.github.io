@@ -1,0 +1,19 @@
+{
+  "app_name": "Outliner",
+  "slug": "outliner",
+  "url_path": "/apps/outliner/asdk_app_6944b58290148191ae970160f3078cf4",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Sider AI",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Outliner Deeply refine the outline content",
+    "@Outliner Generate a research-oriented outline for “AI Video”",
+    "@Outliner Rewrite node titles to sound more like a research outline",
+    "@Outliner Expand the current outline to include “Data Privacy & Compliance”"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "CARS24",
+  "slug": "cars24",
+  "url_path": "/apps/cars24/asdk_app_6960ed8bd9508191bcc2297e0210d3ec",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "CARS24 Services Private Limited",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

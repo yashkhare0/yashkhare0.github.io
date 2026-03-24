@@ -1,0 +1,14 @@
+{
+  "app_name": "Daloopa",
+  "slug": "daloopa",
+  "url_path": "/apps/daloopa/connector_692f6343042c8191b6617e8352444692",
+  "info": {
+    "Category": "Finance",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Daloopa can you give an overview for NVDA?"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

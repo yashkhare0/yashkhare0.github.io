@@ -1,0 +1,18 @@
+{
+  "app_name": "Manus",
+  "slug": "manus",
+  "url_path": "/apps/manus/asdk_app_694e289261b08191b244259e30ce0836",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Butterfly Effect Pte. Ltd.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Manus make a 5 pages slides about history of AI",
+    "@Manus Build a simple landing page for my AI writing assistant product",
+    "@Manus Research the current trends in US electric vehicle market"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

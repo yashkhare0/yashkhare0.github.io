@@ -1,0 +1,17 @@
+{
+  "app_name": "BODi",
+  "slug": "bodi",
+  "url_path": "/apps/bodi/asdk_app_6973d9d2e15c81919ed38814903e0ebc",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "BODi",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@BODi I want to build muscle and get stronger",
+    "@BODi Show me yoga workouts I can do in less than 30 minutes"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

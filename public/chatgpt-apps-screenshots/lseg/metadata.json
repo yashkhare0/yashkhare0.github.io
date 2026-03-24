@@ -1,0 +1,14 @@
+{
+  "app_name": "LSEG",
+  "slug": "lseg",
+  "url_path": "/apps/lseg/asdk_app_69459754518481919e83239d1be91073",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive",
+    "Developer": "LSEG Engineering",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

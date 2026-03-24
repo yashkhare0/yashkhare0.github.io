@@ -1,0 +1,13 @@
+{
+  "app_name": "Brex",
+  "slug": "brex",
+  "url_path": "/apps/brex/asdk_app_6961bc9309ec819199ce7ce38b7d3bf1",
+  "info": {
+    "Category": "Finance",
+    "Developer": "Brex Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

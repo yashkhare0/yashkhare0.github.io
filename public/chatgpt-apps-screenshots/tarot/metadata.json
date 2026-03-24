@@ -1,0 +1,16 @@
+{
+  "app_name": "Tarot",
+  "slug": "tarot",
+  "url_path": "/apps/tarot/asdk_app_6943a2c078b0819188de39e4fe168d9b",
+  "info": {
+    "Category": "Entertainment",
+    "Capabilities": "Interactive",
+    "Developer": "Vidline Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Tarot I want clarity on my life now and what’s ahead."
+  ],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

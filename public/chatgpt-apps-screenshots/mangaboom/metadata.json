@@ -1,0 +1,18 @@
+{
+  "app_name": "MangaBoom",
+  "slug": "mangaboom",
+  "url_path": "/apps/mangaboom/asdk_app_694515f686a88191abd2f9c020d4bc06",
+  "info": {
+    "Category": "Entertainment",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Vidline Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@MangaBoom A cat believes it’s the boss and seriously manages the human.",
+    "@MangaBoom A person keeps getting shocked by static electricity in winter.",
+    "@MangaBoom Turn the conversation attached into a fun comic."
+  ],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

@@ -1,0 +1,17 @@
+{
+  "app_name": "Lovable",
+  "slug": "lovable",
+  "url_path": "/apps/lovable/asdk_app_693a0a79ffe48191901173077edcf914",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Interactive, Writes",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@Lovable build me an AI-powered customer support app",
+    "@Lovable build me an AI-powered coaching app",
+    "@Lovable build me a marketing campaign planner"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,13 @@
+{
+  "app_name": "S&P Global",
+  "slug": "s-p-global",
+  "url_path": "/apps/s-p-global/asdk_app_6980f65d75b881918eaa6d65477d87c6",
+  "info": {
+    "Category": "Finance",
+    "Developer": "S&P Global",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

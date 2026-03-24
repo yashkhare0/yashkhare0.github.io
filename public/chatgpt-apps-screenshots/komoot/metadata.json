@@ -1,0 +1,18 @@
+{
+  "app_name": "komoot",
+  "slug": "komoot",
+  "url_path": "/apps/komoot/asdk_app_6943d405cbac8191bc7aa723c333335e",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "komoot GmbH",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@komoot what are the best routes to see the Tre Cime di Lavaredo?",
+    "@komoot show me the must-see places in New York City",
+    "@komoot show me easy hikes with stunning views in Yosemite National Park!"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

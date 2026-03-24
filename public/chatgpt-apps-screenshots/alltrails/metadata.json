@@ -1,0 +1,15 @@
+{
+  "app_name": "AllTrails",
+  "slug": "alltrails",
+  "url_path": "/apps/alltrails/connector_68f1afc5a6008191a701eaaab428816c",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@AllTrails show me a map of easy lake-view hikes near South Lake Tahoe that aren’t crowded"
+  ],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

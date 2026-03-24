@@ -1,0 +1,16 @@
+{
+  "app_name": "HeyGen",
+  "slug": "heygen",
+  "url_path": "/apps/heygen/asdk_app_69418aad55e08191aa5e437b649ca2e4",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "HeyGen Technology Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@HeyGen Create a video explaining the rules of golf"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "CarMax",
+  "slug": "carmax",
+  "url_path": "/apps/carmax/asdk_app_6984b17734bc819181eef86a269cdae4",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "CarMax, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "png"
+}

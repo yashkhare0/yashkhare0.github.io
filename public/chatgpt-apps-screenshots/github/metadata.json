@@ -1,0 +1,13 @@
+{
+  "app_name": "GitHub",
+  "slug": "github",
+  "url_path": "/apps/github/connector_76869538009648d5b282a4bb21c3d157",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "File Search, Writes",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

@@ -1,0 +1,13 @@
+{
+  "app_name": "Docket",
+  "slug": "docket",
+  "url_path": "/apps/docket/asdk_app_695f5fdd510c8191b10eb0ff0a3369ef",
+  "info": {
+    "Category": "Business",
+    "Developer": "Docket AI",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

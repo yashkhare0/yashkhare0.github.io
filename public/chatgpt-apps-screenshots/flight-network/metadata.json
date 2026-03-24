@@ -1,0 +1,14 @@
+{
+  "app_name": "Flight Network",
+  "slug": "flight-network",
+  "url_path": "/apps/flight-network/asdk_app_69848e517d0c819191695bf9b23f0208",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Etraveli Group",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

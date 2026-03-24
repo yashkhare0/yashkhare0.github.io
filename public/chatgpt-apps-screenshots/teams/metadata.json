@@ -1,0 +1,13 @@
+{
+  "app_name": "Teams",
+  "slug": "teams",
+  "url_path": "/apps/teams/connector_246af0940da3457da0e751171dc1ce60",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search, Writes",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

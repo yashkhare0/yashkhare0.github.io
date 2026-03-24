@@ -1,0 +1,14 @@
+{
+  "app_name": "Streak",
+  "slug": "streak",
+  "url_path": "/apps/streak/asdk_app_697a6fa71cf0819180be837fb974e099",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search, Writes",
+    "Developer": "Rewardly, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "AutoTrader",
+  "slug": "autotrader",
+  "url_path": "/apps/autotrader/asdk_app_694426f4c978819186fffa16b4fab82a",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "AutoTrader.ca",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

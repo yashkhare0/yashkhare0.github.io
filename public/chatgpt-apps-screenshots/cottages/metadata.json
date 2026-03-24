@@ -1,0 +1,17 @@
+{
+  "app_name": "Cottages",
+  "slug": "cottages",
+  "url_path": "/apps/cottages/asdk_app_6945254ad31c81919d07ba1c357a1a57",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Alpic",
+    "Version": "2.0.0"
+  },
+  "prompts": [
+    "@Cottages Show me great cottages with hot tubs in Devon in August",
+    "@Cottages Any luxury cottages for a group of six traveling with two dogs?"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

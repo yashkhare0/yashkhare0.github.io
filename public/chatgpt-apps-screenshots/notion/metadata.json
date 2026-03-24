@@ -1,0 +1,13 @@
+{
+  "app_name": "Notion",
+  "slug": "notion",
+  "url_path": "/apps/notion/connector_37316be7febe4224b3d31465bae4dbd7",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search",
+    "Developer": "Notion"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

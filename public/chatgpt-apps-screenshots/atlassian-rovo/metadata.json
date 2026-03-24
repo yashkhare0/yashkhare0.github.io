@@ -1,0 +1,16 @@
+{
+  "app_name": "Atlassian Rovo",
+  "slug": "atlassian-rovo",
+  "url_path": "/apps/atlassian-rovo/connector_692de805e3ec8191834719067174a384",
+  "info": {
+    "Category": "Collaboration",
+    "Capabilities": "File Search, Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Atlassian Rovo create Jira tasks in project Vita MVP with the product spec details",
+    "@Atlassian Rovo summarize our mobile first experience launch"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

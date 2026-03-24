@@ -1,0 +1,13 @@
+{
+  "app_name": "Jotform",
+  "slug": "jotform",
+  "url_path": "/apps/jotform/asdk_app_6940945609248191a4986e5d23cb2529",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

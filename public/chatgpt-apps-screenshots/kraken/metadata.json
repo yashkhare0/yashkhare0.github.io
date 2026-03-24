@@ -1,0 +1,14 @@
+{
+  "app_name": "Kraken",
+  "slug": "kraken",
+  "url_path": "/apps/kraken/asdk_app_695f55cf2ca081918403123dcf8b4026",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive",
+    "Developer": "Payward Interactive, Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

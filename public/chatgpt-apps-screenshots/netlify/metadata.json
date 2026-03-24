@@ -1,0 +1,18 @@
+{
+  "app_name": "Netlify",
+  "slug": "netlify",
+  "url_path": "/apps/netlify/asdk_app_691f1f8f72408191afdbbdf8242bdf86",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Netlify what projects do I have?",
+    "@Netlify can you show me the latest production deploy for the Music App?",
+    "@Netlify add a new environment variable for this project",
+    "@Netlify where is my site being visited from?"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

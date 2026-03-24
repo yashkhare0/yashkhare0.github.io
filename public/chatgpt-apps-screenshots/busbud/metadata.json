@@ -1,0 +1,14 @@
+{
+  "app_name": "Busbud",
+  "slug": "busbud",
+  "url_path": "/apps/busbud/asdk_app_6945a0c33d448191bd121973efe850fa",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Busbud Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

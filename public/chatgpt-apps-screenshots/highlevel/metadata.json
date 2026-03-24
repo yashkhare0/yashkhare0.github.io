@@ -1,0 +1,18 @@
+{
+  "app_name": "HighLevel",
+  "slug": "highlevel",
+  "url_path": "/apps/highlevel/asdk_app_69402343886881919c40ceb13a6ea1c2",
+  "info": {
+    "Category": "Business",
+    "Capabilities": "Writes",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@HighLevel give me an overview of how things have been for the last month",
+    "@HighLevel give me KPI details over the same range",
+    "@HighLevel give me a pie chart of contact sources",
+    "@HighLevel generate a Contact Segmentation Map"
+  ],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

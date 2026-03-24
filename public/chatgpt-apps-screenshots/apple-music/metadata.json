@@ -1,0 +1,17 @@
+{
+  "app_name": "Apple Music",
+  "slug": "apple-music",
+  "url_path": "/apps/apple-music/asdk_app_6938a94a61d881918ef32cb999ff937c",
+  "info": {
+    "Category": "Entertainment",
+    "Capabilities": "Interactive, Writes",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@Apple Music make me a playlist with today's latest hits",
+    "@Apple Music show me new music with cool, chill vibes",
+    "@Apple Music find music that will get me in the holiday spirit"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

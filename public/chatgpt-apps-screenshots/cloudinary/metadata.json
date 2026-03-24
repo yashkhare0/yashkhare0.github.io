@@ -1,0 +1,17 @@
+{
+  "app_name": "Cloudinary",
+  "slug": "cloudinary",
+  "url_path": "/apps/cloudinary/asdk_app_691f245d4070819184e05b4889161ba8",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Writes",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Cloudinary upload this image and enable auto-tagging",
+    "@Cloudinary create a 300x200 thumbnail version with a sepia effect and rounded corners",
+    "@Cloudinary find all images tagged 'mountain' uploaded in the last 30 days"
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

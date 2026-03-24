@@ -1,0 +1,14 @@
+{
+  "app_name": "Tuio",
+  "slug": "tuio",
+  "url_path": "/apps/tuio/asdk_app_6970fc7c958881918cfa39d58fc37e82",
+  "info": {
+    "Category": "Finance",
+    "Capabilities": "Interactive",
+    "Developer": "Waniwani",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

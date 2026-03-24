@@ -1,0 +1,16 @@
+{
+  "app_name": "OpenTable",
+  "slug": "opentable",
+  "url_path": "/apps/opentable/asdk_app_6935ba0e15b48191ae8ad5795b213c19",
+  "info": {
+    "Category": "Food",
+    "Capabilities": "Interactive",
+    "Version": "v1.0.0"
+  },
+  "prompts": [
+    "@OpenTable what restaurants near me are available tonight?",
+    "@OpenTable find SF restaurants that are good for groups"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

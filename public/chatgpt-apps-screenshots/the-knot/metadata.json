@@ -1,0 +1,16 @@
+{
+  "app_name": "The Knot",
+  "slug": "the-knot",
+  "url_path": "/apps/the-knot/asdk_app_6948281ec3b8819192a431bb40b2c598",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive",
+    "Developer": "The Knot Worldwide",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@The Knot Help me find Wedding florists in Savannah, GA."
+  ],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}

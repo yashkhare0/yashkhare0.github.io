@@ -1,0 +1,16 @@
+{
+  "app_name": "TheFork",
+  "slug": "thefork",
+  "url_path": "/apps/thefork/asdk_app_69324a40807c819189017b29ac8438dd",
+  "info": {
+    "Category": "Food",
+    "Capabilities": "Interactive",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@TheFork top restaurants in Milan",
+    "@TheFork show me these restaurants on a map"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

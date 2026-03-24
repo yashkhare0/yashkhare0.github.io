@@ -1,0 +1,14 @@
+{
+  "app_name": "MarcoPolo",
+  "slug": "marcopolo",
+  "url_path": "/apps/marcopolo/asdk_app_698429b2c5fc8191bb997f52cb2a413a",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Writes",
+    "Developer": "Immersa, Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "svg"
+}

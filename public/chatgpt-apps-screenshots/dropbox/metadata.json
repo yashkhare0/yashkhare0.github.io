@@ -1,0 +1,13 @@
+{
+  "app_name": "Dropbox",
+  "slug": "dropbox",
+  "url_path": "/apps/dropbox/connector_14e85e16800b4e53bc6246019a83a307",
+  "info": {
+    "Category": "Productivity",
+    "Capabilities": "File Search",
+    "Developer": "OpenAI"
+  },
+  "prompts": [],
+  "screenshot_count": 0,
+  "icon_type": "svg"
+}

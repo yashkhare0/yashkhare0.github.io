@@ -1,0 +1,14 @@
+{
+  "app_name": "Kleinanzeigen",
+  "slug": "kleinanzeigen",
+  "url_path": "/apps/kleinanzeigen/asdk_app_694a63a053f081918b9a3738bd3640c9",
+  "info": {
+    "Category": "Shopping",
+    "Capabilities": "Interactive",
+    "Developer": "kleinanzeigen.de GmbH",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "png"
+}

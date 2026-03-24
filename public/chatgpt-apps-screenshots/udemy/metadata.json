@@ -1,0 +1,14 @@
+{
+  "app_name": "Udemy",
+  "slug": "udemy",
+  "url_path": "/apps/udemy/asdk_app_695fe602c18c8191ba4db9079e660925",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive",
+    "Developer": "Udemy",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 4,
+  "icon_type": "svg"
+}

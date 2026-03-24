@@ -1,0 +1,14 @@
+{
+  "app_name": "Viator",
+  "slug": "viator",
+  "url_path": "/apps/viator/asdk_app_6943d8c716c08191bb9a3ef0358147e2",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "TripAdvisor Inc.",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Omio",
+  "slug": "omio",
+  "url_path": "/apps/omio/asdk_app_69452c927b948191b2ea4515d84601ea",
+  "info": {
+    "Category": "Travel",
+    "Capabilities": "Interactive",
+    "Developer": "Omio Corp",
+    "Version": "2.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 3,
+  "icon_type": "png"
+}

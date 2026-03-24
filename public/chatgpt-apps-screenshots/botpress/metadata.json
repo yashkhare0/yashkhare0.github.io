@@ -1,0 +1,16 @@
+{
+  "app_name": "Botpress",
+  "slug": "botpress",
+  "url_path": "/apps/botpress/asdk_app_698641f6925c81918cbc124d87370d06",
+  "info": {
+    "Category": "Developer Tools",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Botpress Inc.",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Botpress create a bot"
+  ],
+  "screenshot_count": 2,
+  "icon_type": "svg"
+}

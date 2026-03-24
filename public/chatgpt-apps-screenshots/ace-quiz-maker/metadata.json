@@ -1,0 +1,17 @@
+{
+  "app_name": "Ace Quiz Maker",
+  "slug": "ace-quiz-maker",
+  "url_path": "/apps/ace-quiz-maker/asdk_app_6948b604f2388191b8c2b99c44f583a1",
+  "info": {
+    "Category": "Education",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Sider AI",
+    "Version": "1.0.0"
+  },
+  "prompts": [
+    "@Ace Quiz Maker Test me on calculus: derivatives and integrals.",
+    "@Ace Quiz Maker Create a quiz on photosynthesis in plant cells."
+  ],
+  "screenshot_count": 3,
+  "icon_type": "svg"
+}

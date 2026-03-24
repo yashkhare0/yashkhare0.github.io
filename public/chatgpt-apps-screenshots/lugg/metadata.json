@@ -1,0 +1,14 @@
+{
+  "app_name": "Lugg",
+  "slug": "lugg",
+  "url_path": "/apps/lugg/asdk_app_69482e4ec0c08191967b7187cc2704a7",
+  "info": {
+    "Category": "Lifestyle",
+    "Capabilities": "Interactive, Writes",
+    "Developer": "Lugg Inc",
+    "Version": "1.0.0"
+  },
+  "prompts": [],
+  "screenshot_count": 1,
+  "icon_type": "png"
+}
